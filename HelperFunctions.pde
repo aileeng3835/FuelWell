@@ -1,6 +1,8 @@
 int calculateBMR(User user) {
-        if (user.sex.equals(male){
-            return (10 × weight(kg)) + (6.25 × height(cm)) - (5 × age(year)) + 5;
-        ;}
-        Else if userSex:female{(10 × weight(kg)) + (6.25 × height(cm)) - (5 × age(year)) - 161}
+        if (user.sex.equals(male)){
+            return (10 * user.weight) + (6.25 * user.userHeight) - (5 * user.age) + 5;
+        }
+        else if (user.sex.equals(female)){
+            return (10 * user.weight) + (6.25 * user.userHeight) - (5 * user.age) - 161;
+        }
     }
