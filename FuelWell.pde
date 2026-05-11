@@ -27,7 +27,7 @@ Else{tdee}
 
 calcMacros(Float cals, String goal){ 
 If goal:bulk{protein:0.30, carbs:0.50, fat:0.20} 
-Else if goal:cut OR goal:”lose weight”{protein:0.40, carbs:0.30, fat:0.30} Else{protein:0.30, carbs:0.40, fat:0.30} 
+else if goal:cut OR goal:”lose weight”{protein:0.40, carbs:0.30, fat:0.30} Else{protein:0.30, carbs:0.40, fat:0.30} 
 }
 
 isPlanSafe(User user, Float cals){ 
