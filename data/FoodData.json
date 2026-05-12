@@ -5,7 +5,69 @@
             "gramsFat": 0,
             "gramsCarbs": 0,
             "gramsProtein": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"]
+            "gramsSugar": 0,
+            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "SourceLink": "linkhere"
+
+        },
+        {
+            "name": "Banana",
+            "gramsFat": 0.29,
+            "gramsCarbs": 23,
+            "gramsProtein": 0.74,
+            "gramsSugar": 15.8,
+            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "SourceLink": "https://fdc.nal.usda.gov/food-details/1105314/nutrients"
+
+        },
+        {
+            "name": "foodTemplate",
+            "gramsFat": 0,
+            "gramsCarbs": 0,
+            "gramsProtein": 0,
+            "gramsSugar": 0,
+            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "SourceLink": "linkhere"
+
+        },
+        {
+            "name": "foodTemplate",
+            "gramsFat": 0,
+            "gramsCarbs": 0,
+            "gramsProtein": 0,
+            "gramsSugar": 0,
+            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "SourceLink": "linkhere"
+
+        },
+        {
+            "name": "foodTemplate",
+            "gramsFat": 0,
+            "gramsCarbs": 0,
+            "gramsProtein": 0,
+            "gramsSugar": 0,
+            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "SourceLink": "linkhere"
+
+        },
+        {
+            "name": "foodTemplate",
+            "gramsFat": 0,
+            "gramsCarbs": 0,
+            "gramsProtein": 0,
+            "gramsSugar": 0,
+            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "SourceLink": "linkhere"
+
+        },
+        {
+            "name": "foodTemplate",
+            "gramsFat": 0,
+            "gramsCarbs": 0,
+            "gramsProtein": 0,
+            "gramsSugar": 0,
+            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "SourceLink": "linkhere"
 
         }
     ]
