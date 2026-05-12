@@ -5,7 +5,69 @@
             "gramsFat": 0,
             "gramsCarbs": 0,
             "gramsProtein": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"]
+            "gramsSugar": 0,
+            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "SourceLink": "linkhere"
+
+        },
+        {
+            "name": "Banana",
+            "gramsFat": 0.33,
+            "gramsCarbs": 26.4,
+            "gramsProtein": 0.851,
+            "gramsSugar": 18.2,
+            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "SourceLink": "https://fdc.nal.usda.gov/food-details/1105314/nutrients"
+
+        },
+        {
+            "name": "Strawberries (100g)",
+            "gramsFat": 0.22,
+            "gramsCarbs": 7.96,
+            "gramsProtein": 0.64,
+            "gramsSugar": 4.86,
+            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "SourceLink": "https://fdc.nal.usda.gov/food-details/2346409/nutrients"
+
+        },
+        {
+            "name": "foodTemplate",
+            "gramsFat": 0,
+            "gramsCarbs": 0,
+            "gramsProtein": 0,
+            "gramsSugar": 0,
+            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "SourceLink": "linkhere"
+
+        },
+        {
+            "name": "foodTemplate",
+            "gramsFat": 0,
+            "gramsCarbs": 0,
+            "gramsProtein": 0,
+            "gramsSugar": 0,
+            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "SourceLink": "linkhere"
+
+        },
+        {
+            "name": "foodTemplate",
+            "gramsFat": 0,
+            "gramsCarbs": 0,
+            "gramsProtein": 0,
+            "gramsSugar": 0,
+            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "SourceLink": "linkhere"
+
+        },
+        {
+            "name": "foodTemplate",
+            "gramsFat": 0,
+            "gramsCarbs": 0,
+            "gramsProtein": 0,
+            "gramsSugar": 0,
+            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "SourceLink": "linkhere"
 
         }
     ]
