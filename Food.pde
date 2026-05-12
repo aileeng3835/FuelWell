@@ -4,14 +4,16 @@ class Food {
     float gramsFat;
     float gramsCarbs;
     float gramsProtein;
+    float gramsSugar; // sugar is a type of carb
     String[] restrictionCategories;
 
     //Constructor
-    Food(String name, float gramsFat, float gramsCarbs, float gramsProtein, String[] restrictionCategories) {
+    Food(String name, float gramsFat, float gramsCarbs, float gramsProtein, float gramsSugar, String[] restrictionCategories) {
         this.name = name;
         this.gramsFat = gramsFat;
         this.gramsCarbs = gramsCarbs;
         this.gramsProtein = gramsProtein;
+        this.gramsSugar = gramsSugar;
         this.restrictionCategories = restrictionCategories;
 
     }
