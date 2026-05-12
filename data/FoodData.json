@@ -1,0 +1,12 @@
+{
+    "FoodList": [
+        {
+            "name": "foodTemplate",
+            "gramsFat": 0,
+            "gramsCarbs": 0,
+            "gramsProtein": 0,
+            "restrictions": ["restriction1", "restriction2", "restriction3"]
+
+        }
+    ]
+}
