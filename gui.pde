@@ -46,6 +46,14 @@ public void veganClicked(GCheckbox source, GEvent event) { //_CODE_:isVegan:7891
   println("isVegan - GCheckbox >> GEvent." + event + " @ " + millis());
 } //_CODE_:isVegan:789138:
 
+public void confirm(GButton source, GEvent event) { //_CODE_:isConfirmed:360619:
+  println("isConfirmed - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:isConfirmed:360619:
+
+public void dropList1_click1(GDropList source, GEvent event) { //_CODE_:dropList1:796694:
+  println("dropList1 - GDropList >> GEvent." + event + " @ " + millis());
+} //_CODE_:dropList1:796694:
+
 
 
 // Create all the GUI controls. 
@@ -59,41 +67,47 @@ public void createGUI(){
   window1.noLoop();
   window1.setActionOnClose(G4P.KEEP_OPEN);
   window1.addDrawHandler(this, "win_draw1");
-  isPesc = new GCheckbox(window1, 0, 160, 120, 20);
+  isPesc = new GCheckbox(window1, 120, 120, 120, 20);
   isPesc.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   isPesc.setText("Pescetarian");
   isPesc.setOpaque(false);
   isPesc.addEventHandler(this, "pescClicked");
-  isGluten = new GCheckbox(window1, 0, 180, 120, 20);
+  isGluten = new GCheckbox(window1, 120, 140, 120, 20);
   isGluten.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   isGluten.setText("Gluten-Free");
   isGluten.setOpaque(false);
   isGluten.addEventHandler(this, "glutenClicked");
-  isNut = new GCheckbox(window1, 0, 200, 120, 20);
+  isNut = new GCheckbox(window1, 120, 160, 120, 20);
   isNut.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   isNut.setText("Nut Allergy");
   isNut.setOpaque(false);
   isNut.addEventHandler(this, "nutClicked");
-  isLactose = new GCheckbox(window1, 0, 220, 120, 20);
+  isLactose = new GCheckbox(window1, 120, 180, 120, 20);
   isLactose.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   isLactose.setText("Lactose Intolerant");
   isLactose.setOpaque(false);
   isLactose.addEventHandler(this, "lactoseClicked");
-  isVegetarian = new GCheckbox(window1, 0, 100, 120, 20);
+  isVegetarian = new GCheckbox(window1, 120, 60, 120, 20);
   isVegetarian.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   isVegetarian.setText("Vegetarian");
   isVegetarian.setOpaque(false);
   isVegetarian.addEventHandler(this, "vegetarianClicked");
-  isHalal = new GCheckbox(window1, 0, 140, 120, 20);
+  isHalal = new GCheckbox(window1, 120, 100, 120, 20);
   isHalal.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   isHalal.setText("Halal");
   isHalal.setOpaque(false);
   isHalal.addEventHandler(this, "halalClicked");
-  isVegan = new GCheckbox(window1, 0, 120, 120, 20);
+  isVegan = new GCheckbox(window1, 120, 80, 120, 20);
   isVegan.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   isVegan.setText("Vegan");
   isVegan.setOpaque(false);
   isVegan.addEventHandler(this, "veganClicked");
+  isConfirmed = new GButton(window1, 80, 205, 80, 30);
+  isConfirmed.setText("Submit");
+  isConfirmed.addEventHandler(this, "confirm");
+  dropList1 = new GDropList(window1, 10, 110, 90, 80, 3, 10);
+  dropList1.setItems(loadStrings("list_796694"), 0);
+  dropList1.addEventHandler(this, "dropList1_click1");
   window1.loop();
 }
 
@@ -107,3 +121,5 @@ GCheckbox isLactose;
 GCheckbox isVegetarian; 
 GCheckbox isHalal; 
 GCheckbox isVegan; 
+GButton isConfirmed; 
+GDropList dropList1; 
