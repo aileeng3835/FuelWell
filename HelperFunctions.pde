@@ -1,37 +1,56 @@
-int calculateBMR(User user) {
-        if (user.sex.equals(male)){
-            return (10 * user.weight) + (6.25 * user.userHeight) - (5 * user.age) + 5;
+float calculateBMR(User user) {
+    float bmr;
+        if (user.sex.equals("male")){
+            bmr = (10 * user.weight) + (6.25 * user.userHeight) - (5 * user.age) + 5;
+            return bmr;
         }
-        else if (user.sex.equals(female)){
-            return (10 * user.weight) + (6.25 * user.userHeight) - (5 * user.age) - 161;
+        else if (user.sex.equals("female")){
+            bmr = (10 * user.weight) + (6.25 * user.userHeight) - (5 * user.age) - 161;
+            return bmr;
         }
     }
 
-float calcTargetCals(int bmr, int goal){
+float calcTargetCals(float bmr, int goal){
         float tdee = 1.2;
         
-        if(user.goal==2 || user.goal==3){
+        if(goal==2 || goal==3){
             return tdee-=500;
         }
-        else if(user.goal==1){
+        else if(goal==1){
             return tdee+=500;
         }
         else{
             return tdee;
         }
     }
+    
+HashMap<String, Float> calcMacros(float cals, int goal) {
+    HashMap<String, Float> macros = new HashMap<String, Float>();
+    
+    if (goal == 1) {
+        macros.put("protein", 0.30f);
+        macros.put("carbs", 0.50f);
+        macros.put("fat", 0.20f);
+    } else if (goal == 2 || goal == 3) {
+        macros.put("protein", 0.40f);
+        macros.put("carbs", 0.30f);
+        macros.put("fat", 0.30f);
+    } else {
+        macros.put("protein", 0.30f);
+        macros.put("carbs", 0.40f);
+        macros.put("fat", 0.30f);
+    }
+    
+    return macros;
+    }
+
     /*
-    calcMacros(Float cals, String goal){ 
-        If goal:bulk{protein:0.30, carbs:0.50, fat:0.20} 
-        else if goal:cut OR goal:”lose weight”{protein:0.40, carbs:0.30, fat:0.30} Else{protein:0.30, carbs:0.40, fat:0.30} 
-        }
+Boolean isPlanSafe(User user, Float cals){ 
+If user.sex:female AND cals < 1200{False} 
+Else if user.sex:male AND cals < 1500{False} 
+Else{True} }
         
-        isPlanSafe(User user, Float cals){ 
-        If user.sex:female AND cals < 1200{False} 
-        Else if user.sex:male AND cals < 1500{False} 
-        Else{True} }
-        
-        
+
         filterDB(Array[Food] db, Array[String] restrictions){
         Array[Food] allowedFoods = [] 
         For food in db{ 
