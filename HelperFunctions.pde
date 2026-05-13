@@ -1,23 +1,21 @@
 float calculateBMR(User user) {
-    float bmr;
-        if (user.sex.equals("male")){
-            bmr = (10 * user.weight) + (6.25 * user.userHeight) - (5 * user.age) + 5;
-            return bmr;
-        }
-        else if (user.sex.equals("female")){
-            bmr = (10 * user.weight) + (6.25 * user.userHeight) - (5 * user.age) - 161;
-            return bmr;
-        }
+    if (user.sex.equals("male")) {
+        return (10 * user.weight) + (6.25 * user.userHeight) - (5 * user.age) + 5;
+    }
+    else if (user.sex.equals("female")) {
+        return (10 * user.weight) + (6.25 * user.userHeight) - (5 * user.age) - 161;
+    }
+    return 0;
     }
 
 float calcTargetCals(float bmr, int goal){
-        float tdee = 1.2;
+        float tdee = bmr * 1.2;
         
         if(goal==2 || goal==3){
-            return tdee-=500;
+            return tdee - 500;
         }
         else if(goal==1){
-            return tdee+=500;
+            return tdee + 500;
         }
         else{
             return tdee;
@@ -25,22 +23,30 @@ float calcTargetCals(float bmr, int goal){
     }
     
 HashMap<String, Float> calcMacros(float cals, int goal) {
-    HashMap<String, Float> macros = new HashMap<String, Float>();
+        HashMap<String, Float> macros = new HashMap<String, Float>();
     
+    float proteinPercent;
+    float carbsPercent;
+    float fatPercent;
+
     if (goal == 1) {
-        macros.put("protein", 0.30f);
-        macros.put("carbs", 0.50f);
-        macros.put("fat", 0.20f);
+        proteinPercent = 0.30f;
+        carbsPercent = 0.50f;
+        fatPercent = 0.20f;
     } else if (goal == 2 || goal == 3) {
-        macros.put("protein", 0.40f);
-        macros.put("carbs", 0.30f);
-        macros.put("fat", 0.30f);
+        proteinPercent = 0.40f;
+        carbsPercent = 0.30f;
+        fatPercent = 0.30f;
     } else {
-        macros.put("protein", 0.30f);
-        macros.put("carbs", 0.40f);
-        macros.put("fat", 0.30f);
+        proteinPercent = 0.30f;
+        carbsPercent = 0.40f;
+        fatPercent = 0.30f;
     }
     
+    macros.put("protein", (cals * proteinPercent) / 4);
+    macros.put("carbs", (cals * carbsPercent) / 4);
+    macros.put("fat", (cals * fatPercent) / 9);
+
     return macros;
     }
 
