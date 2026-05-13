@@ -1,4 +1,6 @@
 class Diet {
-float cals;
-
-}
+    float cals;
+    float protein;
+    float carbs;
+    float fat;
+  }

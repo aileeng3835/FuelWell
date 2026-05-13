@@ -1,21 +1,21 @@
 float calculateBMR(User user) {
-    if (user.sex.equals("male")) {
+    if (user.sex.equalsIgnoreCase("male")) {
         return (10 * user.weight) + (6.25 * user.userHeight) - (5 * user.age) + 5;
     }
-    else if (user.sex.equals("female")) {
+    else if (user.sex.equalsIgnoreCase("female")) {
         return (10 * user.weight) + (6.25 * user.userHeight) - (5 * user.age) - 161;
     }
     return 0;
     }
 
 float calcTargetCals(float bmr, int goal){
-        float tdee = bmr * 1.2;
+        float tdee = bmr * 1.4;
         
         if(goal==2 || goal==3){
-            return tdee - 500;
+            return tdee - 300;
         }
         else if(goal==1){
-            return tdee + 500;
+            return tdee + 300;
         }
         else{
             return tdee;
@@ -30,16 +30,16 @@ HashMap<String, Float> calcMacros(float cals, int goal) {
     float fatPercent;
 
     if (goal == 1) {
-        proteinPercent = 0.30f;
-        carbsPercent = 0.50f;
-        fatPercent = 0.20f;
-    } else if (goal == 2 || goal == 3) {
-        proteinPercent = 0.40f;
-        carbsPercent = 0.30f;
+        proteinPercent = 0.25f;
+        carbsPercent = 0.40f;
         fatPercent = 0.30f;
-    } else {
+    } else if (goal == 2 || goal == 3) {
         proteinPercent = 0.30f;
         carbsPercent = 0.40f;
+        fatPercent = 0.30f;
+    } else {
+        proteinPercent = 0.20f;
+        carbsPercent = 0.50f;
         fatPercent = 0.30f;
     }
     
@@ -51,10 +51,14 @@ HashMap<String, Float> calcMacros(float cals, int goal) {
     }
 
 boolean isPlanSafe(User user, float cals){
-    if(user.sex.equals("female") && cals <= 1400){
+    if(user.sex == null){
+        return true;
+    }
+
+    if(user.sex.equalsIgnoreCase("female") && cals <= 1400){
         return false;
     }
-    else if(user.sex.equals("male") && cals <= 1600){
+    else if(user.sex.equalsIgnoreCase("male") && cals <= 1600){
         return false;
     }
     else{

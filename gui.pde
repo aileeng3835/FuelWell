@@ -47,7 +47,31 @@ public void veganClicked(GCheckbox source, GEvent event) { //_CODE_:isVegan:7891
 } //_CODE_:isVegan:789138:
 
 public void confirm(GButton source, GEvent event) { //_CODE_:isConfirmed:360619:
-  println("isConfirmed - GButton >> GEvent." + event + " @ " + millis());
+  try {
+    user.age = Integer.parseInt(age.getText());
+    user.userHeight = Float.parseFloat(userHeight.getText());
+    user.weight = Float.parseFloat(weight.getText());
+
+    user.sex = sex.getSelectedText();
+    user.goal = Goal.getSelectedIndex();
+
+    float bmr = calculateBMR(user);
+    diet.cals = calcTargetCals(bmr, user.goal);
+
+    HashMap<String, Float> macros = calcMacros(diet.cals, user.goal);
+
+    diet.protein = macros.get("protein");
+    diet.carbs = macros.get("carbs");
+    diet.fat = macros.get("fat");
+
+    SubmitClicked = true;
+
+    println("Success!");
+  } 
+  
+  catch(Exception e) {
+    println("Please fill all fields correctly.");
+  }
 } //_CODE_:isConfirmed:360619:
 
 public void goal_click(GDropList source, GEvent event) { //_CODE_:Goal:796694:
@@ -125,6 +149,7 @@ public void createGUI(){
   Goal.setItems(loadStrings("list_796694"), 0);
   Goal.addEventHandler(this, "goal_click");
   age = new GTextField(window1, 90, 60, 120, 20, G4P.SCROLLBARS_NONE);
+  age.setPromptText("Enter Age");
   age.setOpaque(true);
   age.addEventHandler(this, "age_typed");
   AgeLabel = new GLabel(window1, 20, 60, 60, 20);
@@ -136,6 +161,7 @@ public void createGUI(){
   SexLabel.setText("Sex:");
   SexLabel.setOpaque(false);
   userHeight = new GTextField(window1, 90, 120, 120, 20, G4P.SCROLLBARS_NONE);
+  userHeight.setPromptText("Enter Height(cm)");
   userHeight.setOpaque(true);
   userHeight.addEventHandler(this, "height_typed");
   heightLabel = new GLabel(window1, 20, 120, 60, 20);
@@ -143,6 +169,7 @@ public void createGUI(){
   heightLabel.setText("Height:");
   heightLabel.setOpaque(false);
   weight = new GTextField(window1, 90, 150, 120, 20, G4P.SCROLLBARS_NONE);
+  weight.setPromptText("Enter Weight(kg)");
   weight.setOpaque(true);
   weight.addEventHandler(this, "weight_typed");
   weightLabel = new GLabel(window1, 20, 150, 60, 20);
