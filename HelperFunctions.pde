@@ -50,12 +50,19 @@ HashMap<String, Float> calcMacros(float cals, int goal) {
     return macros;
     }
 
-    /*
-Boolean isPlanSafe(User user, Float cals){ 
-If user.sex:female AND cals < 1200{False} 
-Else if user.sex:male AND cals < 1500{False} 
-Else{True} }
-        
+boolean isPlanSafe(User user, float cals){
+    if(user.sex.equals("female") && cals <= 1400){
+        return false;
+    }
+    else if(user.sex.equals("male") && cals <= 1800){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
+    /*  
 
         filterDB(Array[Food] db, Array[String] restrictions){
         Array[Food] allowedFoods = [] 
