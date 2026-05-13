@@ -50,9 +50,25 @@ public void confirm(GButton source, GEvent event) { //_CODE_:isConfirmed:360619:
   println("isConfirmed - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:isConfirmed:360619:
 
-public void purpose_click1(GDropList source, GEvent event) { //_CODE_:pupose:796694:
+public void goal_click(GDropList source, GEvent event) { //_CODE_:Goal:796694:
   println("dropList1 - GDropList >> GEvent." + event + " @ " + millis());
-} //_CODE_:pupose:796694:
+} //_CODE_:Goal:796694:
+
+public void age_typed(GTextField source, GEvent event) { //_CODE_:age:593487:
+  println("textfield1 - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:age:593487:
+
+public void height_typed(GTextField source, GEvent event) { //_CODE_:userHeight:838058:
+  println("Sex - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:userHeight:838058:
+
+public void weight_typed(GTextField source, GEvent event) { //_CODE_:weight:470218:
+  println("weight - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:weight:470218:
+
+public void sex_click(GDropList source, GEvent event) { //_CODE_:sex:571054:
+  println("sex - GDropList >> GEvent." + event + " @ " + millis());
+} //_CODE_:sex:571054:
 
 
 
@@ -63,51 +79,86 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setMouseOverEnabled(false);
   surface.setTitle("Sketch Window");
-  window1 = GWindow.getWindow(this, "Fuel Well", 0, 0, 240, 240, JAVA2D);
+  window1 = GWindow.getWindow(this, "Fuel Well", 0, 0, 400, 290, JAVA2D);
   window1.noLoop();
   window1.setActionOnClose(G4P.KEEP_OPEN);
   window1.addDrawHandler(this, "win_draw1");
-  isPesc = new GCheckbox(window1, 120, 120, 120, 20);
+  isPesc = new GCheckbox(window1, 250, 130, 120, 20);
   isPesc.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   isPesc.setText("Pescetarian");
   isPesc.setOpaque(false);
   isPesc.addEventHandler(this, "pescClicked");
-  isGluten = new GCheckbox(window1, 120, 140, 120, 20);
+  isGluten = new GCheckbox(window1, 250, 150, 120, 20);
   isGluten.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   isGluten.setText("Gluten-Free");
   isGluten.setOpaque(false);
   isGluten.addEventHandler(this, "glutenClicked");
-  isNut = new GCheckbox(window1, 120, 160, 120, 20);
+  isNut = new GCheckbox(window1, 250, 170, 120, 20);
   isNut.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   isNut.setText("Nut Allergy");
   isNut.setOpaque(false);
   isNut.addEventHandler(this, "nutClicked");
-  isLactose = new GCheckbox(window1, 120, 180, 120, 20);
+  isLactose = new GCheckbox(window1, 250, 190, 120, 20);
   isLactose.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   isLactose.setText("Lactose Intolerant");
   isLactose.setOpaque(false);
   isLactose.addEventHandler(this, "lactoseClicked");
-  isVegetarian = new GCheckbox(window1, 120, 60, 120, 20);
+  isVegetarian = new GCheckbox(window1, 250, 70, 120, 20);
   isVegetarian.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   isVegetarian.setText("Vegetarian");
   isVegetarian.setOpaque(false);
   isVegetarian.addEventHandler(this, "vegetarianClicked");
-  isHalal = new GCheckbox(window1, 120, 100, 120, 20);
+  isHalal = new GCheckbox(window1, 250, 110, 120, 20);
   isHalal.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   isHalal.setText("Halal");
   isHalal.setOpaque(false);
   isHalal.addEventHandler(this, "halalClicked");
-  isVegan = new GCheckbox(window1, 120, 80, 120, 20);
+  isVegan = new GCheckbox(window1, 250, 90, 120, 20);
   isVegan.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   isVegan.setText("Vegan");
   isVegan.setOpaque(false);
   isVegan.addEventHandler(this, "veganClicked");
-  isConfirmed = new GButton(window1, 80, 205, 80, 30);
+  isConfirmed = new GButton(window1, 160, 230, 80, 30);
   isConfirmed.setText("Submit");
   isConfirmed.addEventHandler(this, "confirm");
-  pupose = new GDropList(window1, 10, 110, 90, 120, 5, 10);
-  pupose.setItems(loadStrings("list_796694"), 0);
-  pupose.addEventHandler(this, "purpose_click1");
+  Goal = new GDropList(window1, 90, 180, 120, 100, 4, 10);
+  Goal.setItems(loadStrings("list_796694"), 0);
+  Goal.addEventHandler(this, "goal_click");
+  age = new GTextField(window1, 90, 60, 120, 20, G4P.SCROLLBARS_NONE);
+  age.setOpaque(true);
+  age.addEventHandler(this, "age_typed");
+  AgeLabel = new GLabel(window1, 20, 60, 60, 20);
+  AgeLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
+  AgeLabel.setText("Age: ");
+  AgeLabel.setOpaque(false);
+  SexLabel = new GLabel(window1, 20, 90, 60, 20);
+  SexLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
+  SexLabel.setText("Sex:");
+  SexLabel.setOpaque(false);
+  userHeight = new GTextField(window1, 90, 120, 120, 20, G4P.SCROLLBARS_NONE);
+  userHeight.setOpaque(true);
+  userHeight.addEventHandler(this, "height_typed");
+  heightLabel = new GLabel(window1, 20, 120, 60, 20);
+  heightLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
+  heightLabel.setText("Height:");
+  heightLabel.setOpaque(false);
+  weight = new GTextField(window1, 90, 150, 120, 20, G4P.SCROLLBARS_NONE);
+  weight.setOpaque(true);
+  weight.addEventHandler(this, "weight_typed");
+  weightLabel = new GLabel(window1, 20, 150, 60, 20);
+  weightLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
+  weightLabel.setText("Weight:");
+  weightLabel.setOpaque(false);
+  sex = new GDropList(window1, 90, 90, 120, 60, 2, 10);
+  sex.setItems(loadStrings("list_571054"), 0);
+  sex.addEventHandler(this, "sex_click");
+  goalLabel = new GLabel(window1, 20, 180, 60, 20);
+  goalLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
+  goalLabel.setText("Goal:");
+  goalLabel.setOpaque(false);
+  dietaryLabel = new GLabel(window1, 250, 50, 120, 20);
+  dietaryLabel.setText("Dietary Restrictions:");
+  dietaryLabel.setOpaque(false);
   window1.loop();
 }
 
@@ -122,4 +173,14 @@ GCheckbox isVegetarian;
 GCheckbox isHalal; 
 GCheckbox isVegan; 
 GButton isConfirmed; 
-GDropList pupose; 
+GDropList Goal; 
+GTextField age; 
+GLabel AgeLabel; 
+GLabel SexLabel; 
+GTextField userHeight; 
+GLabel heightLabel; 
+GTextField weight; 
+GLabel weightLabel; 
+GDropList sex; 
+GLabel goalLabel; 
+GLabel dietaryLabel; 
