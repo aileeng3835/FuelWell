@@ -50,7 +50,6 @@ public void confirm(GButton source, GEvent event) { //_CODE_:isConfirmed:360619:
   println("isConfirmed - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:isConfirmed:360619:
 
-<<<<<<< HEAD
 public void goal_click(GDropList source, GEvent event) { //_CODE_:Goal:796694:
   println("dropList1 - GDropList >> GEvent." + event + " @ " + millis());
 } //_CODE_:Goal:796694:
@@ -70,19 +69,6 @@ public void weight_typed(GTextField source, GEvent event) { //_CODE_:weight:4702
 public void sex_click(GDropList source, GEvent event) { //_CODE_:sex:571054:
   println("sex - GDropList >> GEvent." + event + " @ " + millis());
 } //_CODE_:sex:571054:
-=======
-public void purpose_click1(GDropList source, GEvent event) { //_CODE_:pupose:796694:
-  // purpose.type = purpose.getSelectedText(); 
-  // println("Just got", purpose.type);
-  
-  // if ( purpose.type.equals("Diet")){
-  //   pupose.equals("Diet");
-  // }
-    
-  clear();
-} //_CODE_:pupose:796694:
->>>>>>> 8f2736c280d49293dd3efde375ddedef080edc7f
-
 
 
 
