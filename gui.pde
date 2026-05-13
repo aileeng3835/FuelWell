@@ -50,9 +50,9 @@ public void confirm(GButton source, GEvent event) { //_CODE_:isConfirmed:360619:
   println("isConfirmed - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:isConfirmed:360619:
 
-public void dropList1_click1(GDropList source, GEvent event) { //_CODE_:dropList1:796694:
+public void purpose_click1(GDropList source, GEvent event) { //_CODE_:pupose:796694:
   println("dropList1 - GDropList >> GEvent." + event + " @ " + millis());
-} //_CODE_:dropList1:796694:
+} //_CODE_:pupose:796694:
 
 
 
@@ -63,7 +63,7 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setMouseOverEnabled(false);
   surface.setTitle("Sketch Window");
-  window1 = GWindow.getWindow(this, "Window title", 0, 0, 240, 240, JAVA2D);
+  window1 = GWindow.getWindow(this, "Fuel Well", 0, 0, 240, 240, JAVA2D);
   window1.noLoop();
   window1.setActionOnClose(G4P.KEEP_OPEN);
   window1.addDrawHandler(this, "win_draw1");
@@ -105,9 +105,9 @@ public void createGUI(){
   isConfirmed = new GButton(window1, 80, 205, 80, 30);
   isConfirmed.setText("Submit");
   isConfirmed.addEventHandler(this, "confirm");
-  dropList1 = new GDropList(window1, 10, 110, 90, 80, 3, 10);
-  dropList1.setItems(loadStrings("list_796694"), 0);
-  dropList1.addEventHandler(this, "dropList1_click1");
+  pupose = new GDropList(window1, 10, 110, 90, 120, 5, 10);
+  pupose.setItems(loadStrings("list_796694"), 0);
+  pupose.addEventHandler(this, "purpose_click1");
   window1.loop();
 }
 
@@ -122,4 +122,4 @@ GCheckbox isVegetarian;
 GCheckbox isHalal; 
 GCheckbox isVegan; 
 GButton isConfirmed; 
-GDropList dropList1; 
+GDropList pupose; 
