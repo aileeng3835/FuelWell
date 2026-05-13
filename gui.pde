@@ -51,8 +51,16 @@ public void confirm(GButton source, GEvent event) { //_CODE_:isConfirmed:360619:
 } //_CODE_:isConfirmed:360619:
 
 public void purpose_click1(GDropList source, GEvent event) { //_CODE_:pupose:796694:
-  println("dropList1 - GDropList >> GEvent." + event + " @ " + millis());
+  // purpose.type = purpose.getSelectedText(); 
+  // println("Just got", purpose.type);
+  
+  // if ( purpose.type.equals("Diet")){
+  //   pupose.equals("Diet");
+  // }
+    
+  clear();
 } //_CODE_:pupose:796694:
+
 
 
 
