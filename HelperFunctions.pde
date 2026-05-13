@@ -54,7 +54,7 @@ boolean isPlanSafe(User user, float cals){
     if(user.sex.equals("female") && cals <= 1400){
         return false;
     }
-    else if(user.sex.equals("male") && cals <= 1800){
+    else if(user.sex.equals("male") && cals <= 1600){
         return false;
     }
     else{
