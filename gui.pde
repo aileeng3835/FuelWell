@@ -149,7 +149,7 @@ public void createGUI(){
   Goal.setItems(loadStrings("list_796694"), 0);
   Goal.addEventHandler(this, "goal_click");
   age = new GTextField(window1, 90, 60, 120, 20, G4P.SCROLLBARS_NONE);
-  age.setPromptText("Enter Age");
+  age.setPromptText("Enter Age (years)");
   age.setOpaque(true);
   age.addEventHandler(this, "age_typed");
   AgeLabel = new GLabel(window1, 20, 60, 60, 20);
@@ -161,7 +161,7 @@ public void createGUI(){
   SexLabel.setText("Sex:");
   SexLabel.setOpaque(false);
   userHeight = new GTextField(window1, 90, 120, 120, 20, G4P.SCROLLBARS_NONE);
-  userHeight.setPromptText("Enter Height(cm)");
+  userHeight.setPromptText("Enter Height (cm)");
   userHeight.setOpaque(true);
   userHeight.addEventHandler(this, "height_typed");
   heightLabel = new GLabel(window1, 20, 120, 60, 20);
@@ -169,7 +169,7 @@ public void createGUI(){
   heightLabel.setText("Height:");
   heightLabel.setOpaque(false);
   weight = new GTextField(window1, 90, 150, 120, 20, G4P.SCROLLBARS_NONE);
-  weight.setPromptText("Enter Weight(kg)");
+  weight.setPromptText("Enter Weight (kg)");
   weight.setOpaque(true);
   weight.addEventHandler(this, "weight_typed");
   weightLabel = new GLabel(window1, 20, 150, 60, 20);
@@ -186,6 +186,10 @@ public void createGUI(){
   dietaryLabel = new GLabel(window1, 250, 50, 120, 20);
   dietaryLabel.setText("Dietary Restrictions:");
   dietaryLabel.setOpaque(false);
+  titleLabel = new GLabel(window1, 110, 20, 180, 20);
+  titleLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  titleLabel.setText("FuelWell User Dashboard");
+  titleLabel.setOpaque(false);
   window1.loop();
 }
 
@@ -211,3 +215,4 @@ GLabel weightLabel;
 GDropList sex; 
 GLabel goalLabel; 
 GLabel dietaryLabel; 
+GLabel titleLabel; 
