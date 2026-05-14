@@ -47,10 +47,10 @@ void draw() {
     text("Carbs: " + round(diet.carbs) + " g", 70, 280);
     text("Fat: " + round(diet.fat) + " g", 70, 340);
 
-    if (!isPlanSafe(user, diet.cals)) {
-      fill(255, 80, 80);
-      textSize(18);
-      text("Warning: Calories may be too low.", 35, 420);
-    }
+    // if (!isPlanSafe(user, diet.cals)) {
+    //   fill(255, 80, 80);
+    //   textSize(18);
+    //   text("Warning: Calories may be too low.", 35, 420);
+    // }
   }
 }
