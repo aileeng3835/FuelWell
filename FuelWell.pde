@@ -34,7 +34,7 @@ void draw() {
     line(30, 90, 370, 90);
 
     textSize(28);
-    text("Daily Calories:", 70, 150);
+    text("Daily Calories: ", 70, 150);
 
     textSize(36);
     fill(57, 255, 94);
@@ -44,7 +44,7 @@ void draw() {
     textSize(24);
 
     text("Protein: " + round(diet.protein) + " g", 70, 220);
-    text("Carbs: " + round(diet.carbs) + " g", 70, 280);
+    text("Carbohydrate: " + round(diet.carbs) + " g", 70, 280);
     text("Fat: " + round(diet.fat) + " g", 70, 340);
 
     if (!isPlanSafe(user, diet.cals)) {
