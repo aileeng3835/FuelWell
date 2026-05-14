@@ -44,8 +44,8 @@ void draw() {
     textSize(24);
 
     text("Protein: " + round(diet.protein) + " g", 70, 220);
-    text("Carbohydrate: " + round(diet.carbs) + " g", 70, 280);
-    text("Fat: " + round(diet.fat) + " g", 70, 340);
+    text("Carbohydrates: " + round(diet.carbs) + " g", 70, 280);
+    text("Fats: " + round(diet.fat) + " g", 70, 340);
 
     if (!isPlanSafe(user, diet.cals)) {
       fill(255, 80, 80);
