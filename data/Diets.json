@@ -6,7 +6,9 @@
             "carbsPercent": 0.0,
             "fatPercent": 0.0,
             "isMaintain": false,
-            "isLoseWeight": false
+            "isLoseWeight": false,
+            "totalDays": 0,
+            "daysPassed": 0
         },
         {
             "name": "Bulk",
@@ -14,7 +16,9 @@
             "carbsPercent": 0.40,
             "fatPercent": 0.30,
             "isMaintain": false,
-            "isLoseWeight": false
+            "isLoseWeight": false,
+            "totalDays": 0,
+            "daysPassed": 0
         },
         {
             "name": "Cut",
@@ -22,7 +26,9 @@
             "carbsPercent": 0.40,
             "fatPercent": 0.30,
             "isMaintain": false,
-            "isLoseWeight": true
+            "isLoseWeight": true,
+            "totalDays": 0,
+            "daysPassed": 0
         },
         {
             "name": "Lose Weight",
@@ -30,7 +36,9 @@
             "carbsPercent": 0.40,
             "fatPercent": 0.30,
             "isMaintain": false,
-            "isLoseWeight": true
+            "isLoseWeight": true,
+            "totalDays": 0,
+            "daysPassed": 0
         },
         {
             "name": "MaintainHealth",
@@ -38,7 +46,9 @@
             "carbsPercent": 0.50,
             "fatPercent": 0.30,
             "isMaintain": false,
-            "isLoseWeight": true
+            "isLoseWeight": true,
+            "totalDays": 0,
+            "daysPassed": 0
         }
     ]
 }
