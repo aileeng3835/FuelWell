@@ -54,14 +54,25 @@ boolean isPlanSafe(User user, float cals){
         return true;
     }
 }
+void resetDiet(Diet diet) { 
+    diet.targetWeight = 0;
+    diet.numDays = 0;
+    diet.daysPassed = 0;
+}
 
-// Diet[] createBaseDiets() {
-//     int numBaseDiets = 4;
-//     Diet[] baseDiets = new Diet[numBaseDiets];
+void resetUser(User user) {
+    user.name = "name";
+    user.age = 0;
+    user.sex = null;
+    user.userHeight = 0;
+    user.weight = 0;
+    user.dietaryRestrictions = null;
+    user.diet = null;
+}
 
-//     baseDiets[1] = 
+// have a function to save current user and diet info to their respective jsons
 
-// }
+
 
     /*  
 

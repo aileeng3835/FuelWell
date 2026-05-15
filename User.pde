@@ -1,5 +1,6 @@
 class User {
   //Fields
+  String name;
   int age;
   String sex;
   float userHeight, weight;

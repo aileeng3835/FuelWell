@@ -27,6 +27,8 @@ class Diet {
       this.fatPercent = fat;
       this.dietName = dietName;
       this.targetWeight = 0; // user sets this later
+      this.numDays = 0;
+      this.daysPassed = 0;
       this.isMaintain = isMaintain;
       this.isLoseWeight = isLoseWeight;
 
