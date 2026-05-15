@@ -8,44 +8,33 @@ float calculateBMR(User user) {
     return 0;
     }
 
-float calcTargetCals(float bmr, int goal){
-        float tdee = bmr * 1.4;
-        
-        if(goal==2 || goal==3){
-            return tdee - 300;
-        }
-        else if(goal==1){
-            return tdee + 300;
-        }
-        else{
-            return tdee;
-        }
-    }
+
+
+int calculateCaloriesPerDay(User user) {
     
-HashMap<String, Float> calcMacros(float cals, int goal) {
+    int daysRemaining = user.diet.numDays - user.diet.daysPassed;
+    float weightDif = user.weight - user.diet.targetWeight;
+    float weightPerDay = weightDif / daysRemaining;
+    float additionalCals = 0;
+    if (weightDif > 0) {
+        // muscle is ~2800 cals gained for 1 lbs which is ~6160 cals for 1 kg
+        additionalCals = weightPerDay * 6160;
+    }
+    else {
+        // fat is ~3500 cals per 1 lbs which is ~7700 cals for 1 kg
+        additionalCals = weightPerDay * 7700;
+    }
+
+    int dailyCals = int(calculateBMR(user) + additionalCals);
+    return dailyCals;
+}
+    
+HashMap<String, Float> calcMacros(User user) {
         HashMap<String, Float> macros = new HashMap<String, Float>();
     
-    float proteinPercent;
-    float carbsPercent;
-    float fatPercent;
-
-    if (goal == 1) {
-        proteinPercent = 0.25f;
-        carbsPercent = 0.40f;
-        fatPercent = 0.30f;
-    } else if (goal == 2 || goal == 3) {
-        proteinPercent = 0.30f;
-        carbsPercent = 0.40f;
-        fatPercent = 0.30f;
-    } else {
-        proteinPercent = 0.20f;
-        carbsPercent = 0.50f;
-        fatPercent = 0.30f;
-    }
-    
-    macros.put("protein", (cals * proteinPercent) / 4);
-    macros.put("carbs", (cals * carbsPercent) / 4);
-    macros.put("fat", (cals * fatPercent) / 9);
+    macros.put("protein", (calculateCaloriesPerDay(user) * user.diet.proteinPercent) / 4);
+    macros.put("carbs", (calculateCaloriesPerDay(user) * user.diet.carbsPercent) / 4);
+    macros.put("fat", (calculateCaloriesPerDay(user) * user.diet.fatPercent) / 9);
 
     return macros;
     }
@@ -66,6 +55,14 @@ boolean isPlanSafe(User user, float cals){
     }
 }
 
+// Diet[] createBaseDiets() {
+//     int numBaseDiets = 4;
+//     Diet[] baseDiets = new Diet[numBaseDiets];
+
+//     baseDiets[1] = 
+
+// }
+
     /*  
 
         filterDB(Array[Food] db, Array[String] restrictions){
@@ -78,4 +75,33 @@ boolean isPlanSafe(User user, float cals){
         allowedFoods }
         }
         */
+
+
+
+// Food[] dailyFoodRecommendation(User user, ) {
+//     //general sudocode for what we want to happen
+    
+//     // int planLength = user.plan.length
+//     // int daysPassed = user..plan.daysPassed
+//     // int daysRemaining = planLength - daysPassed
+
+// }
+
+
+
+
+
+// old formulas
+// float calcTargetCals(float bmr, int goal){
+//         float calsBurnedDaily = bmr * 1.4; // basal rate + some activity
         
+//         if(goal==2 || goal==3){
+//             return calsBurnedDaily - 300;
+//         }
+//         else if(goal==1){
+//             return calsBurnedDaily + 300;
+//         }
+//         else{
+//             return calsBurnedDaily;
+//         }
+//     }
