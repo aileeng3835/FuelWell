@@ -46,6 +46,18 @@ public void userInfoTab2_click(GButton source, GEvent event) { //_CODE_:userInfo
   println("button1 - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:userInfoTab2:548673:
 
+public void createNewDietButton_click(GButton source, GEvent event) { //_CODE_:createNewDietButton:870621:
+  println("button1 - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:createNewDietButton:870621:
+
+public void loadDietButton_click(GButton source, GEvent event) { //_CODE_:loadDietButton:393712:
+  println("button1 - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:loadDietButton:393712:
+
+public void resetDietButton_click(GButton source, GEvent event) { //_CODE_:resetDietButton:694177:
+  println("button1 - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:resetDietButton:694177:
+
 synchronized public void dailyFoodRecsTab_draw(PApplet appc, GWinData data) { //_CODE_:dailyFoodRecsTab:661177:
   appc.background(230);
 } //_CODE_:dailyFoodRecsTab:661177:
@@ -62,6 +74,10 @@ public void userInfoTab3_click(GButton source, GEvent event) { //_CODE_:userInfo
   println("button1 - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:userInfoTab3:760193:
 
+public void dayPassedButton_click(GButton source, GEvent event) { //_CODE_:dayPassedButton:264647:
+  println("dayPassedButton - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:dayPassedButton:264647:
+
 synchronized public void userInfoTab_draw(PApplet appc, GWinData data) { //_CODE_:userInfoTab:277410:
   appc.background(230);
 } //_CODE_:userInfoTab:277410:
@@ -77,6 +93,30 @@ public void dailyFoodRecsTab4_click(GButton source, GEvent event) { //_CODE_:dai
 public void userInfoTab4_click(GButton source, GEvent event) { //_CODE_:userInfoTab4:550522:
   println("userInfoTab4 - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:userInfoTab4:550522:
+
+public void ageField_type(GTextField source, GEvent event) { //_CODE_:ageField:391582:
+  println("ageField - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:ageField:391582:
+
+public void userHeightField_type(GTextField source, GEvent event) { //_CODE_:userHeightField:796273:
+  println("userHeightField - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:userHeightField:796273:
+
+public void userWeightField_type(GTextField source, GEvent event) { //_CODE_:userWeightField:689910:
+  println("userWeightField - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:userWeightField:689910:
+
+public void sexField_click(GDropList source, GEvent event) { //_CODE_:sexField:731036:
+  println("sexField - GDropList >> GEvent." + event + " @ " + millis());
+} //_CODE_:sexField:731036:
+
+public void saveUserInfoButton_click(GButton source, GEvent event) { //_CODE_:saveUserInfoButton:890613:
+  println("saveUserInfoButton - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:saveUserInfoButton:890613:
+
+public void resetUserInfoButton_click(GButton source, GEvent event) { //_CODE_:resetUserInfoButton:534489:
+  println("resetUserInfoButton - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:resetUserInfoButton:534489:
 
 
 
@@ -100,6 +140,10 @@ public void createGUI(){
   userInfoTab1 = new GButton(dashboard, 270, 20, 120, 30);
   userInfoTab1.setText("User Info");
   userInfoTab1.addEventHandler(this, "userInfoTab1_click");
+  welcomeMessage = new GLabel(dashboard, 50, 140, 300, 20);
+  welcomeMessage.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  welcomeMessage.setText("Welcome to FuelWell. Select a tab to get started.");
+  welcomeMessage.setOpaque(false);
   dietTab = GWindow.getWindow(this, "Diet Tab", 0, 0, 400, 300, JAVA2D);
   dietTab.noLoop();
   dietTab.setActionOnClose(G4P.KEEP_OPEN);
@@ -113,6 +157,39 @@ public void createGUI(){
   userInfoTab2 = new GButton(dietTab, 270, 20, 120, 30);
   userInfoTab2.setText("User Info");
   userInfoTab2.addEventHandler(this, "userInfoTab2_click");
+  dietNameLabel = new GLabel(dietTab, 10, 75, 80, 20);
+  dietNameLabel.setText("Diet Name:");
+  dietNameLabel.setOpaque(false);
+  daysPlannedLabel = new GLabel(dietTab, 10, 113, 120, 20);
+  daysPlannedLabel.setText("Days Planned:");
+  daysPlannedLabel.setOpaque(false);
+  daysElapsedLabel = new GLabel(dietTab, 10, 135, 100, 20);
+  daysElapsedLabel.setText("Days Elapsed:");
+  daysElapsedLabel.setOpaque(false);
+  recCaloriesLabel = new GLabel(dietTab, 10, 160, 150, 20);
+  recCaloriesLabel.setText("Recommended Calories:");
+  recCaloriesLabel.setOpaque(false);
+  recCarbsLabel = new GLabel(dietTab, 10, 185, 150, 20);
+  recCarbsLabel.setText("Recommended Carbs:");
+  recCarbsLabel.setOpaque(false);
+  recFatsLabel = new GLabel(dietTab, 10, 210, 150, 20);
+  recFatsLabel.setText("Recommended Fats:");
+  recFatsLabel.setOpaque(false);
+  recProteinLabel = new GLabel(dietTab, 10, 230, 150, 20);
+  recProteinLabel.setText("Recommended Protein:");
+  recProteinLabel.setOpaque(false);
+  createNewDietButton = new GButton(dietTab, 247, 114, 120, 30);
+  createNewDietButton.setText("Create New Diet");
+  createNewDietButton.setLocalColorScheme(GCScheme.GREEN_SCHEME);
+  createNewDietButton.addEventHandler(this, "createNewDietButton_click");
+  loadDietButton = new GButton(dietTab, 246, 162, 120, 30);
+  loadDietButton.setText("Load Diet");
+  loadDietButton.setLocalColorScheme(GCScheme.GOLD_SCHEME);
+  loadDietButton.addEventHandler(this, "loadDietButton_click");
+  resetDietButton = new GButton(dietTab, 246, 208, 120, 30);
+  resetDietButton.setText("Reset Diet");
+  resetDietButton.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
+  resetDietButton.addEventHandler(this, "resetDietButton_click");
   dailyFoodRecsTab = GWindow.getWindow(this, "Daily Food Recs", 0, 0, 400, 300, JAVA2D);
   dailyFoodRecsTab.noLoop();
   dailyFoodRecsTab.setActionOnClose(G4P.KEEP_OPEN);
@@ -126,6 +203,17 @@ public void createGUI(){
   userInfoTab3 = new GButton(dailyFoodRecsTab, 270, 20, 120, 30);
   userInfoTab3.setText("User Info");
   userInfoTab3.addEventHandler(this, "userInfoTab3_click");
+  foodRecsLabel = new GLabel(dailyFoodRecsTab, 12, 70, 150, 20);
+  foodRecsLabel.setText("Food Recommendations:");
+  foodRecsLabel.setOpaque(false);
+  dayPassedButton = new GButton(dailyFoodRecsTab, 234, 238, 120, 30);
+  dayPassedButton.setText("Continue");
+  dayPassedButton.setLocalColorScheme(GCScheme.GREEN_SCHEME);
+  dayPassedButton.addEventHandler(this, "dayPassedButton_click");
+  dayPassedLabel = new GLabel(dailyFoodRecsTab, 234, 209, 120, 20);
+  dayPassedLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  dayPassedLabel.setText("Click if a day has passed:");
+  dayPassedLabel.setOpaque(false);
   userInfoTab = GWindow.getWindow(this, "userInfo", 0, 0, 400, 300, JAVA2D);
   userInfoTab.noLoop();
   userInfoTab.setActionOnClose(G4P.KEEP_OPEN);
@@ -139,6 +227,42 @@ public void createGUI(){
   userInfoTab4 = new GButton(userInfoTab, 270, 20, 120, 30);
   userInfoTab4.setText("User Info");
   userInfoTab4.addEventHandler(this, "userInfoTab4_click");
+  ageLabel = new GLabel(userInfoTab, 12, 79, 80, 20);
+  ageLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
+  ageLabel.setText("Age:");
+  ageLabel.setOpaque(false);
+  sexLabel = new GLabel(userInfoTab, 11, 104, 80, 20);
+  sexLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
+  sexLabel.setText("Sex:");
+  sexLabel.setOpaque(false);
+  userHeightLabel = new GLabel(userInfoTab, 13, 129, 80, 20);
+  userHeightLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
+  userHeightLabel.setText("Height (cm):");
+  userHeightLabel.setOpaque(false);
+  userWeightLabel = new GLabel(userInfoTab, 14, 153, 80, 20);
+  userWeightLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
+  userWeightLabel.setText("Weight (kg):");
+  userWeightLabel.setOpaque(false);
+  ageField = new GTextField(userInfoTab, 99, 79, 40, 20, G4P.SCROLLBARS_NONE);
+  ageField.setOpaque(true);
+  ageField.addEventHandler(this, "ageField_type");
+  userHeightField = new GTextField(userInfoTab, 99, 132, 60, 20, G4P.SCROLLBARS_NONE);
+  userHeightField.setOpaque(true);
+  userHeightField.addEventHandler(this, "userHeightField_type");
+  userWeightField = new GTextField(userInfoTab, 100, 156, 50, 20, G4P.SCROLLBARS_NONE);
+  userWeightField.setOpaque(true);
+  userWeightField.addEventHandler(this, "userWeightField_type");
+  sexField = new GDropList(userInfoTab, 98, 106, 70, 60, 2, 10);
+  sexField.setItems(loadStrings("list_731036"), 0);
+  sexField.addEventHandler(this, "sexField_click");
+  saveUserInfoButton = new GButton(userInfoTab, 17, 206, 120, 30);
+  saveUserInfoButton.setText("Save User Info");
+  saveUserInfoButton.setLocalColorScheme(GCScheme.GREEN_SCHEME);
+  saveUserInfoButton.addEventHandler(this, "saveUserInfoButton_click");
+  resetUserInfoButton = new GButton(userInfoTab, 146, 205, 120, 30);
+  resetUserInfoButton.setText("Reset User Info");
+  resetUserInfoButton.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
+  resetUserInfoButton.addEventHandler(this, "resetUserInfoButton_click");
   dashboard.loop();
   dietTab.loop();
   dailyFoodRecsTab.loop();
@@ -151,15 +275,39 @@ GWindow dashboard;
 GButton dietTab1; 
 GButton dailyFoodRecsTab1; 
 GButton userInfoTab1; 
+GLabel welcomeMessage; 
 GWindow dietTab;
 GButton dietTab2; 
 GButton dailyFoodRecsTab2; 
 GButton userInfoTab2; 
+GLabel dietNameLabel; 
+GLabel daysPlannedLabel; 
+GLabel daysElapsedLabel; 
+GLabel recCaloriesLabel; 
+GLabel recCarbsLabel; 
+GLabel recFatsLabel; 
+GLabel recProteinLabel; 
+GButton createNewDietButton; 
+GButton loadDietButton; 
+GButton resetDietButton; 
 GWindow dailyFoodRecsTab;
 GButton dietTab3; 
 GButton dailyFoodRecsTab3; 
 GButton userInfoTab3; 
+GLabel foodRecsLabel; 
+GButton dayPassedButton; 
+GLabel dayPassedLabel; 
 GWindow userInfoTab;
 GButton dietTab4; 
 GButton dailyFoodRecsTab4; 
 GButton userInfoTab4; 
+GLabel ageLabel; 
+GLabel sexLabel; 
+GLabel userHeightLabel; 
+GLabel userWeightLabel; 
+GTextField ageField; 
+GTextField userHeightField; 
+GTextField userWeightField; 
+GDropList sexField; 
+GButton saveUserInfoButton; 
+GButton resetUserInfoButton; 
