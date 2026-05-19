@@ -8,6 +8,8 @@ class User {
   Diet diet; 
     //0 is maintain, 1 is bulk, 2 is cut, 3 is lose weight
   
-  User() {  }
+  User() {  
+    resetUser(this);
+  }
   
 }

@@ -1,4 +1,5 @@
 import g4p_controls.*;
+User mainUser = new User();
 // User user = new User();
 // Diet diet = new Diet();
 
