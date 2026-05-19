@@ -5,10 +5,10 @@ User mainUser = new User();
 
 // boolean SubmitClicked = true;
 
-// void setup() {
-//   size(400, 600);
-//   createGUI();
-// }
+void setup() {
+  size(400, 600);
+  createGUI();
+}
 
 // void draw() {
 //   background(20);
