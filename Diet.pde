@@ -1,9 +1,9 @@
 class Diet {
     //fields
-    // float calsCurrent;
-    // float proteiCnurrent;
-    // float carbsCurrent;
-    // float fatCurrent;
+    float calsCurrent;
+    float proteinCurrent;
+    float carbsCurrent;
+    float fatCurrent;
 
     // basically a type of diet
     // we can have it so that we have a list
