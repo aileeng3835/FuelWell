@@ -199,6 +199,14 @@ Diet fetchDietWithDietName(String dietName, ArrayList<Diet> dietsList) {
     
 }
 
+String[] fetchAllDietNames(ArrayList<Diet> dietsList) {
+    String[] dietNames = new String[dietList.size()];
+    for(int i = 0; i<dietList.size(); i++) {
+        dietNames[i] = dietList.get(i).dietName;
+    }
+    return dietNames;
+}
+
 // have a function to save current user and diet info to their respective jsons
 
 

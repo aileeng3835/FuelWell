@@ -154,7 +154,7 @@ public void createGUI(){
   goalLabel.setText("Goal:");
   goalLabel.setOpaque(false);
   goalList = new GDropList(userInfoTab, 259, 27, 90, 100, 4, 10);
-  goalList.setItems(loadStrings("list_466574"), 0);
+  goalList.setItems(fetchAllDietNames(dietList), 0);
   goalList.addEventHandler(this, "goalList_click");
   dietaryRestrictionsLabel = new GLabel(userInfoTab, 206, 55, 130, 20);
   dietaryRestrictionsLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
