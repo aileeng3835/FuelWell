@@ -1,9 +1,9 @@
 {
-    "name": "userTemplate",
+    "name": "John Doe",
     "age": 20,
     "sex": "male",
     "height": 170.5,
-    "weight": 70,
+    "weight": 70.0,
     "dietaryRestrictions": ["restriction1", "restriction2", "restriction3"],
-    "dietname": "nameOfDiet"
+    "dietname": "Bulk"
 }
