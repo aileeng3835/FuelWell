@@ -90,14 +90,10 @@ ArrayList<Food> loadFoods(){
         float protein = foodObj.getFloat("gramsProtein");
         float sugar = foodObj.getFloat("gramsSugar");
 
-        JSONArray restrictionsJSON =
-            foodObj.getJSONArray("restrictions");
-
-        JSONArray categoriesJSON =
-            foodObj.getJSONArray("otherCategories");
+        JSONArray restrictionsJSON = foodObj.getJSONArray("restrictions");
+        JSONArray categoriesJSON = foodObj.getJSONArray("otherCategories");
 
         String[] restrictions = new String[restrictionsJSON.size()];
-
         String[] categories = new String[categoriesJSON.size()];
 
         for (int j = 0; j < restrictions.length; j++) {
