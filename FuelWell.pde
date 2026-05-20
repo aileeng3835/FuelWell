@@ -1,12 +1,19 @@
 import g4p_controls.*;
-User mainUser = new User();
-User user = new User();
-Diet diet = new Diet();
+// User mainUser = new User(); //isn't used anywhere
+User user;
+ArrayList<Diet> dietList = new ArrayList<Diet>();
+// Diet diet = new Diet();
 
 boolean SubmitClicked = true;
 
 void setup() {
   size(700, 600);
+  
+  dietList = createDietsFromJson();
+  user = createUserFromJson(dietList);
+  // user.diet = dietList.get(1); // hardcoded for testing (bulk)
+  user.diet.storeInfoPerDay(user);
+
   createGUI();
 }
 
@@ -39,14 +46,14 @@ void draw() {
 
     textSize(36);
     fill(57, 255, 94);
-    text(round(diet.calsCurrent), 250, 153);
+    text(round(user.diet.calsPerDay), 250, 153);
 
     fill(255);
     textSize(24);
 
-    text("Protein: " + round(diet.proteinCurrent) + " g", 70, 220);
-    text("Carbohydrates: " + round(diet.carbsCurrent) + " g", 70, 280);
-    text("Fats: " + round(diet.fatCurrent) + " g", 70, 340);
+    text("Protein: " + round(user.diet.proteinPerDay) + " g", 70, 220);
+    text("Carbohydrates: " + round(user.diet.carbsPerDay) + " g", 70, 280);
+    text("Fats: " + round(user.diet.fatPerDay) + " g", 70, 340);
     text("Food Recommendations:", 300, 150);
 
     // if (!isPlanSafe(user, diet.cals)) {

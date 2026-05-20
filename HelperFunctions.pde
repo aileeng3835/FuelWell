@@ -70,6 +70,50 @@ void resetUser(User user) {
     user.diet = null;
 }
 
+ArrayList<Diet> createDietsFromJson() {
+    JSONObject jsonData = loadJSONObject("Diets.json");
+    JSONArray jsonDietList = jsonData.getJSONArray("DietsList");
+    ArrayList<Diet> dietList = new ArrayList<Diet>();
+    for(int i=0; i<jsonDietList.size(); i++) {
+        JSONObject currentDiet = jsonDietList.getJSONObject(i);
+        String name = currentDiet.getString("name");
+        float proteinPercent = currentDiet.getFloat("proteinPercent");
+        float carbsPercent = currentDiet.getFloat("carbsPercent");
+        float fatPercent = currentDiet.getFloat("fatPercent");
+        boolean isMaintain = currentDiet.getBoolean("isMaintain");
+        boolean isLoseWeight = currentDiet.getBoolean("isLoseWeight");
+        dietList.add(new Diet(name, proteinPercent, carbsPercent, fatPercent, isMaintain, isLoseWeight));
+    }
+    return dietList;
+}
+
+User createUserFromJson(ArrayList<Diet> dietList) {
+    JSONObject jsonUser = loadJSONObject("User.json");
+    String name = jsonUser.getString("name");
+    int age = jsonUser.getInt("age");
+    String sex = jsonUser.getString("sex");
+    float userHeight = jsonUser.getFloat("height");
+    float weight = jsonUser.getFloat("weight");
+    String[] tempDietRestrictions = jsonUser.getStringList("dietaryRestrictions").array();
+    ArrayList<String> dietaryRestrictions = new ArrayList<String>();
+    for(int i=0; i<tempDietRestrictions.length; i++) {
+        dietaryRestrictions.add(tempDietRestrictions[i]);
+    }
+    String dietname = jsonUser.getString("dietname");
+    return new User(name, age, sex, userHeight, weight, dietaryRestrictions, dietname, dietList);  
+}
+
+Diet fetchDietWithDietName(String dietName, ArrayList<Diet> dietsList) {
+    for(int i = 0; i<dietList.size(); i++) {
+        if (dietList.get(i).dietName.equals(dietName)) {
+            return dietList.get(i);
+        }
+        
+    }
+    return null;
+    
+}
+
 // have a function to save current user and diet info to their respective jsons
 
 

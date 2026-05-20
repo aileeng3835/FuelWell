@@ -17,7 +17,7 @@
             "fatPercent": 0.30,
             "isMaintain": false,
             "isLoseWeight": false,
-            "totalDays": 0,
+            "totalDays": 30,
             "daysPassed": 0
         },
         {
