@@ -82,17 +82,9 @@ synchronized public void userInfoTab_draw(PApplet appc, GWinData data) { //_CODE
   appc.background(230);
 } //_CODE_:userInfoTab:277410:
 
-public void dietTab4_click(GButton source, GEvent event) { //_CODE_:dietTab4:226840:
-  println("dietTab4 - GButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:dietTab4:226840:
-
-public void dailyFoodRecsTab4_click(GButton source, GEvent event) { //_CODE_:dailyFoodRecsTab4:894616:
-  println("dailyFoodRecsTab4 - GButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:dailyFoodRecsTab4:894616:
-
-public void userInfoTab4_click(GButton source, GEvent event) { //_CODE_:userInfoTab4:550522:
+public void toDashboardButton_click(GButton source, GEvent event) { //_CODE_:toDashboardButton:550522:
   println("userInfoTab4 - GButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:userInfoTab4:550522:
+} //_CODE_:toDashboardButton:550522:
 
 public void ageField_type(GTextField source, GEvent event) { //_CODE_:ageField:391582:
   println("ageField - GTextField >> GEvent." + event + " @ " + millis());
@@ -117,6 +109,38 @@ public void saveUserInfoButton_click(GButton source, GEvent event) { //_CODE_:sa
 public void resetUserInfoButton_click(GButton source, GEvent event) { //_CODE_:resetUserInfoButton:534489:
   println("resetUserInfoButton - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:resetUserInfoButton:534489:
+
+public void goalList_click(GDropList source, GEvent event) { //_CODE_:goalList:466574:
+  println("goalList - GDropList >> GEvent." + event + " @ " + millis());
+} //_CODE_:goalList:466574:
+
+public void isVegetarian_click(GCheckbox source, GEvent event) { //_CODE_:isVegetarian:287580:
+  println("checkbox1 - GCheckbox >> GEvent." + event + " @ " + millis());
+} //_CODE_:isVegetarian:287580:
+
+public void isVegan_click(GCheckbox source, GEvent event) { //_CODE_:isVegan:968256:
+  println("checkbox1 - GCheckbox >> GEvent." + event + " @ " + millis());
+} //_CODE_:isVegan:968256:
+
+public void isHalal_click(GCheckbox source, GEvent event) { //_CODE_:isHalal:254714:
+  println("checkbox1 - GCheckbox >> GEvent." + event + " @ " + millis());
+} //_CODE_:isHalal:254714:
+
+public void isPescetarian_click(GCheckbox source, GEvent event) { //_CODE_:isPescetarian:998524:
+  println("checkbox1 - GCheckbox >> GEvent." + event + " @ " + millis());
+} //_CODE_:isPescetarian:998524:
+
+public void isGlutenFree_click(GCheckbox source, GEvent event) { //_CODE_:isGlutenFree:368552:
+  println("checkbox1 - GCheckbox >> GEvent." + event + " @ " + millis());
+} //_CODE_:isGlutenFree:368552:
+
+public void isNutAllergy_click(GCheckbox source, GEvent event) { //_CODE_:isNutAllergy:563699:
+  println("checkbox1 - GCheckbox >> GEvent." + event + " @ " + millis());
+} //_CODE_:isNutAllergy:563699:
+
+public void isLactoseIntolerant_click(GCheckbox source, GEvent event) { //_CODE_:isLactoseIntolerant:504553:
+  println("checkbox1 - GCheckbox >> GEvent." + event + " @ " + millis());
+} //_CODE_:isLactoseIntolerant:504553:
 
 
 
@@ -199,6 +223,7 @@ public void createGUI(){
   dietTab3.addEventHandler(this, "dietTab3_click");
   dailyFoodRecsTab3 = new GButton(dailyFoodRecsTab, 140, 20, 120, 30);
   dailyFoodRecsTab3.setText("Daily Food Recs");
+  dailyFoodRecsTab3.setLocalColorScheme(GCScheme.GREEN_SCHEME);
   dailyFoodRecsTab3.addEventHandler(this, "dailyFoodRecsTab3_click");
   userInfoTab3 = new GButton(dailyFoodRecsTab, 270, 20, 120, 30);
   userInfoTab3.setText("User Info");
@@ -218,15 +243,9 @@ public void createGUI(){
   userInfoTab.noLoop();
   userInfoTab.setActionOnClose(G4P.KEEP_OPEN);
   userInfoTab.addDrawHandler(this, "userInfoTab_draw");
-  dietTab4 = new GButton(userInfoTab, 10, 20, 120, 30);
-  dietTab4.setText("Diet");
-  dietTab4.addEventHandler(this, "dietTab4_click");
-  dailyFoodRecsTab4 = new GButton(userInfoTab, 140, 20, 120, 30);
-  dailyFoodRecsTab4.setText("Daily Food Recs");
-  dailyFoodRecsTab4.addEventHandler(this, "dailyFoodRecsTab4_click");
-  userInfoTab4 = new GButton(userInfoTab, 270, 20, 120, 30);
-  userInfoTab4.setText("User Info");
-  userInfoTab4.addEventHandler(this, "userInfoTab4_click");
+  toDashboardButton = new GButton(userInfoTab, 11, 12, 140, 30);
+  toDashboardButton.setText("< Back to Dashboard");
+  toDashboardButton.addEventHandler(this, "toDashboardButton_click");
   ageLabel = new GLabel(userInfoTab, 12, 79, 80, 20);
   ageLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
   ageLabel.setText("Age:");
@@ -255,14 +274,60 @@ public void createGUI(){
   sexField = new GDropList(userInfoTab, 98, 106, 70, 60, 2, 10);
   sexField.setItems(loadStrings("list_731036"), 0);
   sexField.addEventHandler(this, "sexField_click");
-  saveUserInfoButton = new GButton(userInfoTab, 17, 206, 120, 30);
+  saveUserInfoButton = new GButton(userInfoTab, 206, 246, 120, 30);
   saveUserInfoButton.setText("Save User Info");
   saveUserInfoButton.setLocalColorScheme(GCScheme.GREEN_SCHEME);
   saveUserInfoButton.addEventHandler(this, "saveUserInfoButton_click");
-  resetUserInfoButton = new GButton(userInfoTab, 146, 205, 120, 30);
+  resetUserInfoButton = new GButton(userInfoTab, 64, 246, 120, 30);
   resetUserInfoButton.setText("Reset User Info");
-  resetUserInfoButton.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
+  resetUserInfoButton.setLocalColorScheme(GCScheme.RED_SCHEME);
   resetUserInfoButton.addEventHandler(this, "resetUserInfoButton_click");
+  goalLabel = new GLabel(userInfoTab, 208, 25, 50, 20);
+  goalLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
+  goalLabel.setText("Goal:");
+  goalLabel.setOpaque(false);
+  goalList = new GDropList(userInfoTab, 259, 27, 90, 100, 4, 10);
+  goalList.setItems(loadStrings("list_466574"), 0);
+  goalList.addEventHandler(this, "goalList_click");
+  dietaryRestrictionsLabel = new GLabel(userInfoTab, 206, 55, 130, 20);
+  dietaryRestrictionsLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  dietaryRestrictionsLabel.setText("Dietary Restrictions:");
+  dietaryRestrictionsLabel.setOpaque(false);
+  isVegetarian = new GCheckbox(userInfoTab, 213, 78, 120, 20);
+  isVegetarian.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  isVegetarian.setText("Vegetarian");
+  isVegetarian.setOpaque(false);
+  isVegetarian.addEventHandler(this, "isVegetarian_click");
+  isVegan = new GCheckbox(userInfoTab, 213, 98, 120, 20);
+  isVegan.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  isVegan.setText("Vegan");
+  isVegan.setOpaque(false);
+  isVegan.addEventHandler(this, "isVegan_click");
+  isHalal = new GCheckbox(userInfoTab, 213, 119, 120, 20);
+  isHalal.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  isHalal.setText("Halal");
+  isHalal.setOpaque(false);
+  isHalal.addEventHandler(this, "isHalal_click");
+  isPescetarian = new GCheckbox(userInfoTab, 212, 140, 120, 20);
+  isPescetarian.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  isPescetarian.setText("Pescetarian");
+  isPescetarian.setOpaque(false);
+  isPescetarian.addEventHandler(this, "isPescetarian_click");
+  isGlutenFree = new GCheckbox(userInfoTab, 212, 161, 120, 20);
+  isGlutenFree.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  isGlutenFree.setText("Gluten Free");
+  isGlutenFree.setOpaque(false);
+  isGlutenFree.addEventHandler(this, "isGlutenFree_click");
+  isNutAllergy = new GCheckbox(userInfoTab, 213, 182, 120, 20);
+  isNutAllergy.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  isNutAllergy.setText("Nut Allergy");
+  isNutAllergy.setOpaque(false);
+  isNutAllergy.addEventHandler(this, "isNutAllergy_click");
+  isLactoseIntolerant = new GCheckbox(userInfoTab, 211, 202, 120, 20);
+  isLactoseIntolerant.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  isLactoseIntolerant.setText("Lactose Intolerant");
+  isLactoseIntolerant.setOpaque(false);
+  isLactoseIntolerant.addEventHandler(this, "isLactoseIntolerant_click");
   dashboard.loop();
   dietTab.loop();
   dailyFoodRecsTab.loop();
@@ -298,9 +363,7 @@ GLabel foodRecsLabel;
 GButton dayPassedButton; 
 GLabel dayPassedLabel; 
 GWindow userInfoTab;
-GButton dietTab4; 
-GButton dailyFoodRecsTab4; 
-GButton userInfoTab4; 
+GButton toDashboardButton; 
 GLabel ageLabel; 
 GLabel sexLabel; 
 GLabel userHeightLabel; 
@@ -311,3 +374,13 @@ GTextField userWeightField;
 GDropList sexField; 
 GButton saveUserInfoButton; 
 GButton resetUserInfoButton; 
+GLabel goalLabel; 
+GDropList goalList; 
+GLabel dietaryRestrictionsLabel; 
+GCheckbox isVegetarian; 
+GCheckbox isVegan; 
+GCheckbox isHalal; 
+GCheckbox isPescetarian; 
+GCheckbox isGlutenFree; 
+GCheckbox isNutAllergy; 
+GCheckbox isLactoseIntolerant; 

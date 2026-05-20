@@ -6,7 +6,7 @@ class User {
   float userHeight, weight;
   ArrayList<String> dietaryRestrictions = new ArrayList<String>();
   Diet diet; 
-    //0 is maintain, 1 is bulk, 2 is cut, 3 is lose weight
+    //0 is stay healthy, 1 is lose weight, 2 is bulk, 3 is cut
   
   User() {  
     resetUser(this);
