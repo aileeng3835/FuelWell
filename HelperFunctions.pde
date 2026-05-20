@@ -188,10 +188,14 @@ User createUserFromJson(ArrayList<Diet> dietList) {
     return new User(name, age, sex, userHeight, weight, dietaryRestrictions, dietname, dietList);  
 }
 
+void saveAllDiets(ArrayList<Diet> dietsList) {
+
+}
+
 Diet fetchDietWithDietName(String dietName, ArrayList<Diet> dietsList) {
-    for(int i = 0; i<dietList.size(); i++) {
-        if (dietList.get(i).dietName.equals(dietName)) {
-            return dietList.get(i);
+    for(int i = 0; i<dietsList.size(); i++) {
+        if (dietsList.get(i).dietName.equals(dietName)) {
+            return dietsList.get(i);
         }
         
     }
@@ -200,9 +204,9 @@ Diet fetchDietWithDietName(String dietName, ArrayList<Diet> dietsList) {
 }
 
 String[] fetchAllDietNames(ArrayList<Diet> dietsList) {
-    String[] dietNames = new String[dietList.size()];
-    for(int i = 0; i<dietList.size(); i++) {
-        dietNames[i] = dietList.get(i).dietName;
+    String[] dietNames = new String[dietsList.size()];
+    for(int i = 0; i<dietsList.size(); i++) {
+        dietNames[i] = dietsList.get(i).dietName;
     }
     return dietNames;
 }
