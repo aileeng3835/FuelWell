@@ -4,7 +4,7 @@ User user;
 ArrayList<Diet> dietList = new ArrayList<Diet>();
 // Diet diet = new Diet();
 
-boolean SubmitClicked = false;
+boolean SubmitClicked = true; // true for testing purposes
 
 ArrayList<Food> foodDB;
 ArrayList<Food> recommendations;
@@ -14,13 +14,16 @@ void setup() {
   
   dietList = createDietsFromJson();
   user = createUserFromJson(dietList);
-  // user.diet = dietList.get(1); // hardcoded for testing (bulk)
+  user.diet.numDays = 100; // hardcoded for testing
+  user.diet.targetWeight = 80; // hardcoded for testing
   user.diet.storeInfoPerDay(user);
 
-  createGUI();
+  
 
   foodDB = loadFoods();
   recommendations = new ArrayList<Food>();
+  createGUI();
+  
 }
 
 void draw() {
@@ -65,10 +68,10 @@ void draw() {
     text("Food Recommendations:", 380, 140);
 
     textSize(16);
-    for (int i = 0; i < recommendations.size(); i++) {
-      Food food = recommendations.get(i);
+    // for (int i = 0; i < recommendations.size(); i++) {
+    //   Food food = recommendations.get(i); // you get a java.util.ConcurrentModificationException if this is in
 
-      //text(food.name + " - " + getServingSuggestion(food, 25), 380, 190 + (i * 30));
-    }
+    //   //text(food.name + " - " + getServingSuggestion(food, 25), 380, 190 + (i * 30));
+    // }
   }
 }

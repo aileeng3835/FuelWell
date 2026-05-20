@@ -13,9 +13,12 @@ float calculateBMR(User user) {
 int calculateCaloriesPerDay(User user) {
     
     int daysRemaining = user.diet.numDays - user.diet.daysPassed;
-    float weightDif = user.weight - user.diet.targetWeight;
+    float weightDif = user.diet.targetWeight - user.weight;
     float weightPerDay = weightDif / daysRemaining;
     float additionalCals = 0;
+    println(daysRemaining, "daysRemaining");
+    println(weightDif, "weightDif");
+    println(weightPerDay, "weightPerDay");
     if (weightDif > 0) {
         // muscle is ~2800 cals gained for 1 lbs which is ~6160 cals for 1 kg
         additionalCals = weightPerDay * 6160;
