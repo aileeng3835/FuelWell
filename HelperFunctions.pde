@@ -63,12 +63,98 @@ void resetDiet(Diet diet) {
 void resetUser(User user) {
     user.name = "name";
     user.age = 0;
-    user.sex = null;
+    user.sex = "";
     user.userHeight = 0;
     user.weight = 0;
-    user.dietaryRestrictions = null;
-    user.diet = null;
+    user.dietaryRestrictions = new ArrayList<String>();
+    user.diet = new Diet();
 }
+
+ArrayList<Food> loadFoods(){
+    ArrayList<Food> foods = new ArrayList<Food>();
+
+    JSONObject json = loadJSONObject("FoodData.json");
+    JSONArray foodList = json.getJSONArray("FoodList");
+
+    for (int i = 0; i < foodList.size(); i++){
+        JSONObject foodObj = foodList.getJSONObject(i);
+
+        String name = foodObj.getString("name");
+
+        if (name.equals("foodTemplate")) {
+            continue;
+        }
+
+        float fat = foodObj.getFloat("gramsFat");
+        float carbs = foodObj.getFloat("gramsCarbs");
+        float protein = foodObj.getFloat("gramsProtein");
+        float sugar = foodObj.getFloat("gramsSugar");
+
+        JSONArray restrictionsJSON =
+            foodObj.getJSONArray("restrictions");
+
+        JSONArray categoriesJSON =
+            foodObj.getJSONArray("otherCategories");
+
+        String[] restrictions = new String[restrictionsJSON.size()];
+
+        String[] categories = new String[categoriesJSON.size()];
+
+        for (int j = 0; j < restrictions.length; j++) {
+            restrictions[j] = restrictionsJSON.getString(j);
+        }
+
+        for (int j = 0; j < categories.length; j++) {
+            categories[j] = categoriesJSON.getString(j);
+        }
+
+        Food food = new Food(name, fat, carbs, protein, sugar, restrictions, categories);
+        foods.add(food);
+    }
+    return foods;
+}
+
+ArrayList<Food> recommendFoods(User user) {
+    ArrayList<Food> recs = new ArrayList<Food>();
+
+    float proteinNeeded = user.diet.proteinCurrent;
+    float carbsNeeded = user.diet.carbsCurrent;
+    float fatNeeded = user.diet.fatCurrent;
+
+    for (Food food : foodDB) {
+        boolean goodProtein = food.gramsProtein >= 15;
+        boolean goodCarbs = food.gramsCarbs >= 15;
+        boolean goodFat = food.gramsFat >= 10;
+
+        if (proteinNeeded > carbsNeeded && proteinNeeded > fatNeeded && goodProtein) {
+            recs.add(food);
+        }
+        else if (carbsNeeded > fatNeeded && goodCarbs) {
+            recs.add(food);
+        }
+        else if (goodFat) {
+            recs.add(food);
+        }
+
+        if (recs.size() >= 6) {
+            break;
+        }
+    }
+    return recs;
+}
+
+
+// Just testing for later ignore for now.
+// String getServingSuggestion(Food food, float targetProtein){
+//     if (food.gramsProtein <= 0) {
+//         return "100g";
+//     }
+
+//     float gramsNeeded = (targetProtein / food.gramsProtein) * 100;
+
+//     gramsNeeded = round(gramsNeeded);
+//     return gramsNeeded + "g";
+// }
 
 // have a function to save current user and diet info to their respective jsons
 
