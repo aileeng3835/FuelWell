@@ -1,21 +1,26 @@
 class Food {
     //Fields
     String name;
+
     float gramsFat;
     float gramsCarbs;
     float gramsProtein;
     float gramsSugar; // sugar is a type of carb
+    
     String[] restrictionCategories;
+    String[] otherCategories; // i'm assuming this could be like high protein, low carbs, ...
 
     //Constructor
-    Food(String name, float gramsFat, float gramsCarbs, float gramsProtein, float gramsSugar, String[] restrictionCategories) {
+    Food(String name, float gramsFat, float gramsCarbs, float gramsProtein, float gramsSugar, String[] restrictionCategories, String[] otherCategories){
         this.name = name;
+
         this.gramsFat = gramsFat;
         this.gramsCarbs = gramsCarbs;
         this.gramsProtein = gramsProtein;
         this.gramsSugar = gramsSugar;
-        this.restrictionCategories = restrictionCategories;
 
+        this.restrictionCategories = restrictionCategories;
+        this.otherCategories = otherCategories;
     }
 
     //Methods
