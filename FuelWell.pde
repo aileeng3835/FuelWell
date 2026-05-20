@@ -4,7 +4,7 @@ User user;
 ArrayList<Diet> dietList = new ArrayList<Diet>();
 // Diet diet = new Diet();
 
-boolean SubmitClicked = true; // true for testing purposes
+boolean SubmitClicked = false; // true for testing purposes
 
 ArrayList<Food> foodDB;
 ArrayList<Food> recommendations;
@@ -21,7 +21,7 @@ void setup() {
   
 
   foodDB = loadFoods();
-  recommendations = new ArrayList<Food>();
+  recommendations = recommendFoods(user);
   createGUI();
   
 }
@@ -68,10 +68,9 @@ void draw() {
     text("Food Recommendations:", 380, 140);
 
     textSize(16);
-    // for (int i = 0; i < recommendations.size(); i++) {
-    //   Food food = recommendations.get(i); // you get a java.util.ConcurrentModificationException if this is in
-
-    //   //text(food.name + " - " + getServingSuggestion(food, 25), 380, 190 + (i * 30));
-    // }
+    for (int i = 0; i < recommendations.size(); i++) {
+      Food f = recommendations.get(i);
+      text(f.name, 380, 190 + (i * 25));
+    }
   }
 }

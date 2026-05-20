@@ -11,7 +11,6 @@ float calculateBMR(User user) {
 
 
 int calculateCaloriesPerDay(User user) {
-    
     int daysRemaining = user.diet.numDays - user.diet.daysPassed;
     float weightDif = user.diet.targetWeight - user.weight;
     float weightPerDay = weightDif / daysRemaining;
@@ -113,6 +112,24 @@ ArrayList<Food> loadFoods(){
     return foods;
 }
 
+boolean foodMatchesRestrictions(Food food, User user) {
+    for (String restriction : user.dietaryRestrictions) {
+        boolean found = false;
+
+        for (String category : food.restrictionCategories) {
+            if (restriction.equalsIgnoreCase(category)) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
 ArrayList<Food> recommendFoods(User user) {
     ArrayList<Food> recs = new ArrayList<Food>();
 
@@ -142,18 +159,26 @@ ArrayList<Food> recommendFoods(User user) {
     return recs;
 }
 
+String getServingSuggestion(Food food, String macroType, float targetAmount) {
+    float gramsPer100 = 0;
 
-// Just testing for later ignore for now.
-// String getServingSuggestion(Food food, float targetProtein){
-//     if (food.gramsProtein <= 0) {
-//         return "100g";
-//     }
+    if (macroType.equalsIgnoreCase("protein")) {
+        gramsPer100 = food.gramsProtein;
+    }
+    else if (macroType.equalsIgnoreCase("carbs")) {
+        gramsPer100 = food.gramsCarbs;
+    }
+    else if (macroType.equalsIgnoreCase("fat")) {
+        gramsPer100 = food.gramsFat;
+    }
+    if (gramsPer100 <= 0) {
+        return "100g";
+    }
 
-//     float gramsNeeded = (targetProtein / food.gramsProtein) * 100;
-
-//     gramsNeeded = round(gramsNeeded);
-//     return gramsNeeded + "g";
-// }
+    float gramsNeeded = (targetAmount / gramsPer100) * 100;
+    gramsNeeded = round(gramsNeeded);
+    return gramsNeeded + "g";
+}
 
 ArrayList<Diet> createDietsFromJson() {
     JSONObject jsonData = loadJSONObject("Diets.json");
@@ -193,7 +218,6 @@ Diet fetchDietWithDietName(String dietName, ArrayList<Diet> dietsList) {
         if (dietList.get(i).dietName.equals(dietName)) {
             return dietList.get(i);
         }
-        
     }
     return null;
     

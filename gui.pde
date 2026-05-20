@@ -31,23 +31,23 @@ public void toDashboardButton_click(GButton source, GEvent event) { //_CODE_:toD
 } //_CODE_:toDashboardButton:550522:
 
 public void ageField_type(GTextField source, GEvent event) { //_CODE_:ageField:391582:
-  println("ageField - GTextField >> GEvent." + event + " @ " + millis());
+  user.age = int(ageField.getText());
 } //_CODE_:ageField:391582:
 
 public void userHeightField_type(GTextField source, GEvent event) { //_CODE_:userHeightField:796273:
-  println("userHeightField - GTextField >> GEvent." + event + " @ " + millis());
+  user.userHeight = float(userHeightField.getText());
 } //_CODE_:userHeightField:796273:
 
 public void userWeightField_type(GTextField source, GEvent event) { //_CODE_:userWeightField:689910:
-  println("userWeightField - GTextField >> GEvent." + event + " @ " + millis());
+  user.weight = float(userWeightField.getText());
 } //_CODE_:userWeightField:689910:
 
 public void sexField_click(GDropList source, GEvent event) { //_CODE_:sexField:731036:
-  println("sexField - GDropList >> GEvent." + event + " @ " + millis());
+  user.sex = sexField.getSelectedText();
 } //_CODE_:sexField:731036:
 
 public void saveUserInfoButton_click(GButton source, GEvent event) { //_CODE_:saveUserInfoButton:890613:
-  println("saveUserInfoButton - GButton >> GEvent." + event + " @ " + millis());
+  SubmitClicked = true;
 } //_CODE_:saveUserInfoButton:890613:
 
 public void resetUserInfoButton_click(GButton source, GEvent event) { //_CODE_:resetUserInfoButton:534489:
@@ -154,7 +154,7 @@ public void createGUI(){
   goalLabel.setText("Goal:");
   goalLabel.setOpaque(false);
   goalList = new GDropList(userInfoTab, 259, 27, 90, 100, 4, 10);
-  goalList.setItems(fetchAllDietNames(dietList), 0);
+  goalList.setItems(loadStrings("list_466574"), 0);
   goalList.addEventHandler(this, "goalList_click");
   dietaryRestrictionsLabel = new GLabel(userInfoTab, 206, 55, 130, 20);
   dietaryRestrictionsLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
@@ -175,12 +175,12 @@ public void createGUI(){
   isHalal.setText("Halal");
   isHalal.setOpaque(false);
   isHalal.addEventHandler(this, "isHalal_click");
-  isPescetarian = new GCheckbox(userInfoTab, 212, 140, 120, 20);
+  isPescetarian = new GCheckbox(userInfoTab, 213, 140, 120, 20);
   isPescetarian.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   isPescetarian.setText("Pescetarian");
   isPescetarian.setOpaque(false);
   isPescetarian.addEventHandler(this, "isPescetarian_click");
-  isGlutenFree = new GCheckbox(userInfoTab, 212, 161, 120, 20);
+  isGlutenFree = new GCheckbox(userInfoTab, 213, 161, 120, 20);
   isGlutenFree.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   isGlutenFree.setText("Gluten Free");
   isGlutenFree.setOpaque(false);
@@ -190,7 +190,7 @@ public void createGUI(){
   isNutAllergy.setText("Nut Allergy");
   isNutAllergy.setOpaque(false);
   isNutAllergy.addEventHandler(this, "isNutAllergy_click");
-  isLactoseIntolerant = new GCheckbox(userInfoTab, 211, 202, 120, 20);
+  isLactoseIntolerant = new GCheckbox(userInfoTab, 213, 202, 120, 20);
   isLactoseIntolerant.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   isLactoseIntolerant.setText("Lactose Intolerant");
   isLactoseIntolerant.setOpaque(false);
