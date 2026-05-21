@@ -14,12 +14,12 @@ class Diet {
   public boolean isMaintain; 
   public boolean isLoseWeight; 
 
-  Diet(String dietName, float protein, float carbs, float fat, int totalDays, int daysPassed, boolean isMaintain, boolean isLoseWeight) {
+  Diet(String dietName, float protein, float carbs, float fat, int totalDays, int daysPassed, boolean isMaintain, boolean isLoseWeight, float targetWeight) {
     this.dietName = dietName;
     this.proteinPercent = protein;
     this.carbsPercent = carbs;
     this.fatPercent = fat;
-    this.targetWeight = 0; 
+    this.targetWeight = targetWeight; 
     this.numDays = totalDays;
     this.daysPassed = daysPassed;
     this.isMaintain = isMaintain;

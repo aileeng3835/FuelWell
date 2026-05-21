@@ -18,7 +18,9 @@
             "isMaintain": false,
             "isLoseWeight": false,
             "totalDays": 30,
-            "daysPassed": 0
+            "daysPassed": 0,
+            "targetWeight": 0
+            
         },
         {
             "name": "Cut",
@@ -28,7 +30,9 @@
             "isMaintain": false,
             "isLoseWeight": true,
             "totalDays": 0,
-            "daysPassed": 0
+            "daysPassed": 0,
+            "targetWeight": 0
+            
         },
         {
             "name": "Lose Weight",
@@ -38,7 +42,8 @@
             "isMaintain": false,
             "isLoseWeight": true,
             "totalDays": 0,
-            "daysPassed": 0
+            "daysPassed": 0,
+            "targetWeight": 0
         },
         {
             "name": "MaintainHealth",
@@ -48,7 +53,8 @@
             "isMaintain": false,
             "isLoseWeight": true,
             "totalDays": 0,
-            "daysPassed": 0
+            "daysPassed": 0,
+            "targetWeight": 0
         }
     ]
 }

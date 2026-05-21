@@ -184,7 +184,8 @@ ArrayList<Diet> createDietsFromJson() {
         int daysPassed = currentDiet.getInt("daysPassed");
         boolean isMaintain = currentDiet.getBoolean("isMaintain");
         boolean isLoseWeight = currentDiet.getBoolean("isLoseWeight");
-        list.add(new Diet(name, proteinPercent, carbsPercent, fatPercent, totalDays, daysPassed, isMaintain, isLoseWeight));
+        float targetWeight = currentDiet.getFloat("targetWeight");
+        list.add(new Diet(name, proteinPercent, carbsPercent, fatPercent, totalDays, daysPassed, isMaintain, isLoseWeight, targetWeight));
     }
     return list;
 }
@@ -265,8 +266,8 @@ String[] fetchAllDietNames(ArrayList<Diet> dietsList) {
     return dietNames;
 }
 
-void addDiet(String name, float protein, float carbs, float fat, int days, int totalDays, boolean maintain, boolean loseWeight) {
-    Diet newDiet = new Diet(name, protein, carbs, fat, totalDays, days, maintain, loseWeight);
+void addDiet(String name, float protein, float carbs, float fat, int days, int totalDays, boolean maintain, boolean loseWeight, float targetWeight) {
+    Diet newDiet = new Diet(name, protein, carbs, fat, totalDays, days, maintain, loseWeight, targetWeight);
     dietList.add(newDiet);
     saveAllDiets(dietList);
 }
