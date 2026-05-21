@@ -6,10 +6,9 @@
             "gramsCarbs": 26.4,
             "gramsProtein": 0.851,
             "gramsSugar": 18.2,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/1105314/nutrients"
-
         },
         {
             "name": "Strawberries (100g)",
@@ -17,10 +16,9 @@
             "gramsCarbs": 7.96,
             "gramsProtein": 0.64,
             "gramsSugar": 4.86,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2346409/nutrients"
-
         },
         {
             "name": "Ground Beef (100g)",
@@ -28,10 +26,9 @@
             "gramsCarbs": 0,
             "gramsProtein": 17.5,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Vegetarian", "Vegan", "Pescetarian"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2514744/nutrients"
-
         },
         {
             "name": "Beetroots",
@@ -39,10 +36,9 @@
             "gramsCarbs": 8.79,
             "gramsProtein": 1.69,
             "gramsSugar": 5.1,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2685576/nutrients"
-
         },
         {
             "name": "Blueberries (100g)",
@@ -50,10 +46,9 @@
             "gramsCarbs": 14.6,
             "gramsProtein": 0.7,
             "gramsSugar": 9.36,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2346411/nutrients"
-
         },
         {
             "name": "Broccoli (100g)",
@@ -61,10 +56,9 @@
             "gramsCarbs": 6.27,
             "gramsProtein": 2.57,
             "gramsSugar": 1.4,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/747447/nutrients"
-
         },
         {
             "name": "Butter (100g) (incomplete data)",
@@ -72,10 +66,9 @@
             "gramsCarbs": 0.58,
             "gramsProtein": 0,
             "gramsSugar": 0.58,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Vegan", "Lactose Intolerant"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/790508/nutrients"
-
         },
         {
             "name": "Cabbage (100g) (doesn't say about sugar)",
@@ -83,7 +76,7 @@
             "gramsCarbs": 6.38,
             "gramsProtein": 0.96,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2346407/nutrients"
         },
@@ -93,10 +86,9 @@
             "gramsCarbs": 4.72,
             "gramsProtein": 1.64,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2685573/nutrients"
-
         },
         {
             "name": "Cheddar Cheese (100g)",
@@ -104,10 +96,9 @@
             "gramsCarbs": 2.44,
             "gramsProtein": 23.3,
             "gramsSugar": 0.33,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Vegan", "Lactose Intolerant"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/328637/nutrients"
-
         },
         {
             "name": "Chicken Breast (100g)",
@@ -115,10 +106,9 @@
             "gramsCarbs": 0,
             "gramsProtein": 22.5,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Vegetarian", "Vegan", "Pescetarian"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2646170/nutrients"
-
         },
         {
             "name": "Chicken Drumstick (100g)",
@@ -126,10 +116,9 @@
             "gramsCarbs": 0,
             "gramsProtein": 18.4,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Vegetarian", "Vegan", "Pescetarian"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2727566/nutrients"
-
         },
         {
             "name": "Chicken Thigh (100g)",
@@ -137,10 +126,9 @@
             "gramsCarbs": 0,
             "gramsProtein": 18.6,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Vegetarian", "Vegan", "Pescetarian"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2646171/nutrients"
-
         },
         {
             "name": "Chicken Wing (100g)",
@@ -148,10 +136,9 @@
             "gramsCarbs": 0,
             "gramsProtein": 18.4,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Vegetarian", "Vegan", "Pescetarian"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2727568/nutrients"
-
         },
         {
             "name": "Chickpeas (100g) (doesn't say for sugar)",
@@ -159,10 +146,9 @@
             "gramsCarbs": 60.4,
             "gramsProtein": 21.3,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2644282/nutrients"
-
         },
         {
             "name": "Cod (100g) (doesn't say for sugar)",
@@ -170,10 +156,9 @@
             "gramsCarbs": 0.52,
             "gramsProtein": 14.2,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Vegetarian", "Vegan"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2747654/nutrients"
-
         },
         {
             "name": "Corn (100g)",
@@ -181,10 +166,9 @@
             "gramsCarbs": 14.7,
             "gramsProtein": 2.79,
             "gramsSugar": 7.37,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2710826/nutrients"
-
         },
         {
             "name": "Cucumber (100g) (doesn't say for sugar)",
@@ -192,10 +176,9 @@
             "gramsCarbs": 2.95,
             "gramsProtein": 0.62,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2346406/nutrients"
-
         },
         {
             "name": "Shrimp (100g) (doesn't say for sugar)",
@@ -203,10 +186,9 @@
             "gramsCarbs": 0.48,
             "gramsProtein": 15.6,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Vegetarian", "Vegan"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2684443/nutrients"
-
         },
         {
             "name": "Egg (100g) (doesn't say for sugar)",
@@ -214,10 +196,9 @@
             "gramsCarbs": 2.36,
             "gramsProtein": 10.7,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Vegan", "Pescetarian"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/747997/nutrients"
-
         },
         {
             "name": "Haddock (100g)",
@@ -225,10 +206,9 @@
             "gramsCarbs": 0,
             "gramsProtein": 16.3,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Vegetarian", "Vegan"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/333374/nutrients"
-
         },
         {
             "name": "Salmon (100g)",
@@ -236,10 +216,9 @@
             "gramsCarbs": 0,
             "gramsProtein": 20.3,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Vegetarian", "Vegan"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/333374/nutrients"
-
         },
         {
             "name": "Tilapia (100g)",
@@ -247,10 +226,9 @@
             "gramsCarbs": 0,
             "gramsProtein": 19,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Vegetarian", "Vegan"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2684442/nutrients"
-
         },
         {
             "name": "Brown Rice (100g) (doesn't say for sugar)",
@@ -258,10 +236,9 @@
             "gramsCarbs": 75.5,
             "gramsProtein": 7.19,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/1104812/nutrients"
-
         },
         {
             "name": "White Rice (100g) (doesn't say for sugar)",
@@ -269,10 +246,9 @@
             "gramsCarbs": 79.8,
             "gramsProtein": 6.94,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/790214/nutrients"
-
         },
         {
             "name": "Ground Lamb (100g)",
@@ -280,10 +256,9 @@
             "gramsCarbs": 0,
             "gramsProtein": 17.5,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Vegetarian", "Vegan", "Pescetarian"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2727570/nutrients"
-
         },
         {
             "name": "Mango (100g)",
@@ -291,10 +266,9 @@
             "gramsCarbs": 17.4,
             "gramsProtein": 0.69,
             "gramsSugar": 11.1,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2710834/nutrients"
-
         },
         {
             "name": "Whole Milk (100g)",
@@ -302,10 +276,9 @@
             "gramsCarbs": 4.81,
             "gramsProtein": 3.27,
             "gramsSugar": 4.81,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Vegan", "Lactose Intolerant"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/746782/nutrients"
-
         },
         {
             "name": "Almonds (100g) (doesn't say for sugar)",
@@ -313,10 +286,9 @@
             "gramsCarbs": 20,
             "gramsProtein": 21.4,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Nut Allergy"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2346393/nutrients"
-
         },
         {
             "name": "Cashews (100g) (doesn't say for sugar)",
@@ -324,10 +296,9 @@
             "gramsCarbs": 36.3,
             "gramsProtein": 17.4,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Nut Allergy"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2515374/nutrients"
-
         },
         {
             "name": "Walnuts (100g) (doesn't say for sugar)",
@@ -335,10 +306,9 @@
             "gramsCarbs": 10.9,
             "gramsProtein": 14.6,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Nut Allergy"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2346394/nutrients"
-
         },
         {
             "name": "Peaches (100g)",
@@ -346,10 +316,9 @@
             "gramsCarbs": 10.1,
             "gramsProtein": 0.91,
             "gramsSugar": 8.39,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/325430/nutrients"
-
         },
         {
             "name": "Peanuts (100g) (doesn't say for sugar)",
@@ -357,10 +326,9 @@
             "gramsCarbs": 26.5,
             "gramsProtein": 23.2,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Nut Allergy"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2515376/nutrients"
-
         },
         {
             "name": "Pineapple (100g)",
@@ -368,10 +336,9 @@
             "gramsCarbs": 14.1,
             "gramsProtein": 0.46,
             "gramsSugar": 11.4,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2346398/nutrients"
-
         },
         {
             "name": "Pork Chop (100g)",
@@ -379,10 +346,9 @@
             "gramsCarbs": 0,
             "gramsProtein": 22.8,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Vegetarian", "Vegan", "Halal", "Pescetarian"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2727575/nutrients"
-
         },
         {
             "name": "Raspberries (100g)",
@@ -390,10 +356,9 @@
             "gramsCarbs": 12.9,
             "gramsProtein": 1.01,
             "gramsSugar": 2.68,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2346410/nutrients"
-
         },
         {
             "name": "Potatos (100g)",
@@ -401,10 +366,9 @@
             "gramsCarbs": 16,
             "gramsProtein": 1.81,
             "gramsSugar": 0.65,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2346403/nutrients"
-
         },
         {
             "name": "White Rice (100g) (doesn't say for sugar)",
@@ -412,10 +376,9 @@
             "gramsCarbs": 80.3,
             "gramsProtein": 7.04,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2512381/nutrients"
-
         },
         {
             "name": "Italian Pork Sausage (100g)",
@@ -423,10 +386,9 @@
             "gramsCarbs": 2.15,
             "gramsProtein": 18.2,
             "gramsSugar": 1.46,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Vegetarian", "Vegan", "Halal", "Pescetarian"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/746780/nutrients"
-
         },
         {
             "name": "Watermelon (100g)",
@@ -434,10 +396,9 @@
             "gramsCarbs": 0,
             "gramsProtein": 0,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "linkhere"
-
         },
         {
             "name": "Yogurt (100g)",
@@ -445,10 +406,9 @@
             "gramsCarbs": 5.57,
             "gramsProtein": 3.82,
             "gramsSugar": 4.09,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Vegan", "Lactose Intolerant"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2259793/nutrients"
-
         },
         {
             "name": "Apples (100g)",
@@ -456,10 +416,9 @@
             "gramsCarbs": 14.7,
             "gramsProtein": 0.1,
             "gramsSugar": 12.4,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/1750343/nutrients"
-
         },
         {
             "name": "Apricot (100g)",
@@ -467,10 +426,9 @@
             "gramsCarbs": 10.2,
             "gramsProtein": 0.96,
             "gramsSugar": 6.25,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2710815/nutrients"
-
         },
         {
             "name": "Asparagus (100g) (doesn't say for sugar)",
@@ -478,10 +436,9 @@
             "gramsCarbs": 5.1,
             "gramsProtein": 1.44,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2710823/nutrients"
-
         },
         {
             "name": "Avocado (100g) (doesn't say for sugar)",
@@ -489,10 +446,9 @@
             "gramsCarbs": 8.32,
             "gramsProtein": 1.81,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2710824/nutrients"
-
         },
         {
             "name": "Cottage Cheese (100g) (doesn't say for sugar)",
@@ -500,10 +456,9 @@
             "gramsCarbs": 4.6,
             "gramsProtein": 11.6,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Vegan", "Lactose Intolerant"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2346384/nutrients"
-
         },
         {
             "name": "Blackeye Peas (100g) (doesn't say for sugar)",
@@ -511,10 +466,9 @@
             "gramsCarbs": 61.8,
             "gramsProtein": 21.2,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2644284/nutrients"
-
         },
         {
             "name": "Chuck Beef (100g)",
@@ -522,10 +476,9 @@
             "gramsCarbs": 0,
             "gramsProtein": 18.4,
             "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": ["Vegetarian", "Vegan", "Pescetarian"],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2646174/nutrients"
-
         },
         {
             "name": "Mandarin Orange (100g)",
@@ -533,11 +486,9 @@
             "gramsCarbs": 13.4,
             "gramsProtein": 1.04,
             "gramsSugar": 9.12,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "restrictions": [],
             "otherCategories": ["cat1", "cat2", "cat3"],
             "SourceLink": "https://fdc.nal.usda.gov/food-details/2710832/nutrients"
-
         }
-        
     ]
 }
