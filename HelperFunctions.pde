@@ -1,75 +1,76 @@
 float calculateBMR(User user) {
     if (user.sex.equalsIgnoreCase("male")) {
         return (10 * user.weight) + (6.25 * user.userHeight) - (5 * user.age) + 5;
-    }
-    else if (user.sex.equalsIgnoreCase("female")) {
+    } else if (user.sex.equalsIgnoreCase("female")) {
         return (10 * user.weight) + (6.25 * user.userHeight) - (5 * user.age) - 161;
     }
     return 0;
-    }
-
-
+}
 
 int calculateCaloriesPerDay(User user) {
+    float bmr = calculateBMR(user);
+    float maintenance = bmr * 1.4;
+    
+    if (user.diet == null) {
+        return round(maintenance);
+    }
+
+    if (user.diet.isMaintain || user.diet.dietName.equalsIgnoreCase("MaintainHealth") || user.diet.dietName.equalsIgnoreCase("dietTemplate")) {
+        return round(maintenance);
+    }
+
     int daysRemaining = user.diet.numDays - user.diet.daysPassed;
+    if (daysRemaining <= 0) daysRemaining = 30;
+
+    if (user.diet.targetWeight <= 10) {
+        if (user.diet.isLoseWeight || user.diet.dietName.equalsIgnoreCase("Cut") || user.diet.dietName.equalsIgnoreCase("Lose Weight")) {
+            user.diet.targetWeight = user.weight - 4.0;
+        } else if (user.diet.dietName.equalsIgnoreCase("Bulk")) {
+            user.diet.targetWeight = user.weight + 4.0;
+        } else {
+            user.diet.targetWeight = user.weight;
+        }
+    }
+
     float weightDif = user.diet.targetWeight - user.weight;
     float weightPerDay = weightDif / daysRemaining;
     float additionalCals = 0;
-    println(daysRemaining, "daysRemaining");
-    println(weightDif, "weightDif");
-    println(weightPerDay, "weightPerDay");
+
     if (weightDif > 0) {
-        // muscle is ~2800 cals gained for 1 lbs which is ~6160 cals for 1 kg
-        additionalCals = weightPerDay * 6160;
-    }
-    else {
-        // fat is ~3500 cals per 1 lbs which is ~7700 cals for 1 kg
+        additionalCals = weightPerDay * 6160; 
+    } else {
         additionalCals = weightPerDay * 7700;
     }
 
-    int dailyCals = int(calculateBMR(user) + additionalCals);
-    return dailyCals;
+    float dailyCals = maintenance + additionalCals;
+    
+    if (user.sex.equalsIgnoreCase("female") && dailyCals < 1200) dailyCals = 1200;
+    if (user.sex.equalsIgnoreCase("male") && dailyCals < 1500) dailyCals = 1500;
+    
+    if (dailyCals > 5000) dailyCals = 5000;
+    
+    return round(dailyCals);
 }
     
-HashMap<String, Float> calcMacros(User user) {
-        HashMap<String, Float> macros = new HashMap<String, Float>();
-    
-    macros.put("protein", (calculateCaloriesPerDay(user) * user.diet.proteinPercent) / 4);
-    macros.put("carbs", (calculateCaloriesPerDay(user) * user.diet.carbsPercent) / 4);
-    macros.put("fat", (calculateCaloriesPerDay(user) * user.diet.fatPercent) / 9);
-
+HashMap<String, Float> calcMacros(User user, float calories) {
+    HashMap<String, Float> macros = new HashMap<String, Float>();
+    macros.put("protein", (calories * user.diet.proteinPercent) / 4);
+    macros.put("carbs", (calories * user.diet.carbsPercent) / 4);
+    macros.put("fat", (calories * user.diet.fatPercent) / 9);
     return macros;
-    }
-
-boolean isPlanSafe(User user, float cals){
-    if(user.sex == null){
-        return true;
-    }
-
-    if(user.sex.equalsIgnoreCase("female") && cals <= 1400){
-        return false;
-    }
-    else if(user.sex.equalsIgnoreCase("male") && cals <= 1600){
-        return false;
-    }
-    else{
-        return true;
-    }
-}
-void resetDiet(Diet diet) { 
-    diet.targetWeight = 0;
-    diet.numDays = 0;
-    diet.daysPassed = 0;
 }
 
 void resetUser(User user) {
-    user.name = "name";
+    user.name = "Guest";
     user.age = 0;
-    user.sex = "";
+    user.sex = "male";
     user.userHeight = 0;
     user.weight = 0;
-    user.dietaryRestrictions = new ArrayList<String>();
-    user.diet = null;
+    user.dietaryRestrictions.clear();
+    if(dietList.size() > 0) {
+        user.diet = dietList.get(0);
+        user.diet.targetWeight = 0;
+    }
 }
 
 ArrayList<Food> loadFoods(){
@@ -80,12 +81,9 @@ ArrayList<Food> loadFoods(){
 
     for (int i = 0; i < foodList.size(); i++){
         JSONObject foodObj = foodList.getJSONObject(i);
-
         String name = foodObj.getString("name");
 
-        if (name.equals("foodTemplate")) {
-            continue;
-        }
+        if (name.equals("foodTemplate")) continue;
 
         float fat = foodObj.getFloat("gramsFat");
         float carbs = foodObj.getFloat("gramsCarbs");
@@ -106,25 +104,23 @@ ArrayList<Food> loadFoods(){
             categories[j] = categoriesJSON.getString(j);
         }
 
-        Food food = new Food(name, fat, carbs, protein, sugar, restrictions, categories);
-        foods.add(food);
+        foods.add(new Food(name, fat, carbs, protein, sugar, restrictions, categories));
     }
     return foods;
 }
 
 boolean foodMatchesRestrictions(Food food, User user) {
+    if(user.dietaryRestrictions.size() == 0) return true;
+    
     for (String restriction : user.dietaryRestrictions) {
         boolean found = false;
-
         for (String category : food.restrictionCategories) {
             if (restriction.equalsIgnoreCase(category)) {
                 found = true;
                 break;
             }
         }
-        if (!found) {
-            return false;
-        }
+        if (!found) return false;
     }
     return true;
 }
@@ -132,69 +128,65 @@ boolean foodMatchesRestrictions(Food food, User user) {
 
 ArrayList<Food> recommendFoods(User user) {
     ArrayList<Food> recs = new ArrayList<Food>();
+    if(user.diet == null) return recs;
 
     float proteinNeeded = user.diet.proteinPerDay;
     float carbsNeeded = user.diet.carbsPerDay;
     float fatNeeded = user.diet.fatPerDay;
 
     for (Food food : foodDB) {
+        if (!foodMatchesRestrictions(food, user)) continue;
+        
         boolean goodProtein = food.gramsProtein >= 15;
         boolean goodCarbs = food.gramsCarbs >= 15;
         boolean goodFat = food.gramsFat >= 10;
 
         if (proteinNeeded > carbsNeeded && proteinNeeded > fatNeeded && goodProtein) {
             recs.add(food);
-        }
-        else if (carbsNeeded > fatNeeded && goodCarbs) {
+        } else if (carbsNeeded > fatNeeded && goodCarbs) {
             recs.add(food);
-        }
-        else if (goodFat) {
+        } else if (goodFat) {
             recs.add(food);
+        } else if (recs.size() < 3) {
+            recs.add(food); 
         }
 
-        if (recs.size() >= 6) {
-            break;
-        }
+        if (recs.size() >= 6) break;
     }
     return recs;
 }
 
 String getServingSuggestion(Food food, String macroType, float targetAmount) {
     float gramsPer100 = 0;
-
-    if (macroType.equalsIgnoreCase("protein")) {
-        gramsPer100 = food.gramsProtein;
-    }
-    else if (macroType.equalsIgnoreCase("carbs")) {
-        gramsPer100 = food.gramsCarbs;
-    }
-    else if (macroType.equalsIgnoreCase("fat")) {
-        gramsPer100 = food.gramsFat;
-    }
-    if (gramsPer100 <= 0) {
-        return "100g";
-    }
+    if (macroType.equalsIgnoreCase("protein")) gramsPer100 = food.gramsProtein;
+    else if (macroType.equalsIgnoreCase("carbs")) gramsPer100 = food.gramsCarbs;
+    else if (macroType.equalsIgnoreCase("fat")) gramsPer100 = food.gramsFat;
+    
+    if (gramsPer100 <= 0) return "100g";
 
     float gramsNeeded = (targetAmount / gramsPer100) * 100;
-    gramsNeeded = round(gramsNeeded);
-    return gramsNeeded + "g";
+    return round(gramsNeeded) + "g";
 }
 
 ArrayList<Diet> createDietsFromJson() {
     JSONObject jsonData = loadJSONObject("Diets.json");
     JSONArray jsonDietList = jsonData.getJSONArray("DietsList");
-    ArrayList<Diet> dietList = new ArrayList<Diet>();
+    ArrayList<Diet> list = new ArrayList<Diet>();
     for(int i=0; i<jsonDietList.size(); i++) {
         JSONObject currentDiet = jsonDietList.getJSONObject(i);
         String name = currentDiet.getString("name");
+        if(name.equals("dietTemplate")) continue;
+        
         float proteinPercent = currentDiet.getFloat("proteinPercent");
         float carbsPercent = currentDiet.getFloat("carbsPercent");
         float fatPercent = currentDiet.getFloat("fatPercent");
+        int totalDays = currentDiet.getInt("totalDays");
+        int daysPassed = currentDiet.getInt("daysPassed");
         boolean isMaintain = currentDiet.getBoolean("isMaintain");
         boolean isLoseWeight = currentDiet.getBoolean("isLoseWeight");
-        dietList.add(new Diet(name, proteinPercent, carbsPercent, fatPercent, isMaintain, isLoseWeight));
+        list.add(new Diet(name, proteinPercent, carbsPercent, fatPercent, totalDays, daysPassed, isMaintain, isLoseWeight));
     }
-    return dietList;
+    return list;
 }
 
 User createUserFromJson(ArrayList<Diet> dietList) {
@@ -204,17 +196,56 @@ User createUserFromJson(ArrayList<Diet> dietList) {
     String sex = jsonUser.getString("sex");
     float userHeight = jsonUser.getFloat("height");
     float weight = jsonUser.getFloat("weight");
-    String[] tempDietRestrictions = jsonUser.getStringList("dietaryRestrictions").array();
+    
+    JSONArray tempDietRestrictions = jsonUser.getJSONArray("dietaryRestrictions");
     ArrayList<String> dietaryRestrictions = new ArrayList<String>();
-    for(int i=0; i<tempDietRestrictions.length; i++) {
-        dietaryRestrictions.add(tempDietRestrictions[i]);
+    if(tempDietRestrictions != null) {
+        for(int i=0; i<tempDietRestrictions.size(); i++) {
+            dietaryRestrictions.add(tempDietRestrictions.getString(i));
+        }
     }
     String dietname = jsonUser.getString("dietname");
     return new User(name, age, sex, userHeight, weight, dietaryRestrictions, dietname, dietList);  
 }
 
-void saveAllDiets(ArrayList<Diet> dietsList) {
+void saveUserToJson(User user) {
+    JSONObject json = new JSONObject();
+    json.setString("name", user.name);
+    json.setInt("age", user.age);
+    json.setString("sex", user.sex);
+    json.setFloat("height", user.userHeight);
+    json.setFloat("weight", user.weight);
 
+    JSONArray restrictions = new JSONArray();
+    for(int i = 0; i < user.dietaryRestrictions.size(); i++) {
+        restrictions.setString(i, user.dietaryRestrictions.get(i));
+    }
+    json.setJSONArray("dietaryRestrictions", restrictions);
+
+    if(user.diet != null) {
+        json.setString("dietname", user.diet.dietName);
+    }
+    saveJSONObject(json, "data/User.json");
+}
+
+void saveAllDiets(ArrayList<Diet> dietsList) {
+    JSONObject root = new JSONObject();
+    JSONArray diets = new JSONArray();
+    for(int i = 0; i < dietsList.size(); i++) {
+        Diet d = dietsList.get(i);
+        JSONObject obj = new JSONObject();
+        obj.setString("name", d.dietName);
+        obj.setFloat("proteinPercent", d.proteinPercent);
+        obj.setFloat("carbsPercent", d.carbsPercent);
+        obj.setFloat("fatPercent", d.fatPercent);
+        obj.setBoolean("isMaintain", d.isMaintain);
+        obj.setBoolean("isLoseWeight", d.isLoseWeight);
+        obj.setInt("totalDays", d.numDays);
+        obj.setInt("daysPassed", d.daysPassed);
+        diets.setJSONObject(i, obj);
+    }
+    root.setJSONArray("DietsList", diets);
+    saveJSONObject(root, "data/Diets.json");
 }
 
 Diet fetchDietWithDietName(String dietName, ArrayList<Diet> dietsList) {
@@ -224,7 +255,6 @@ Diet fetchDietWithDietName(String dietName, ArrayList<Diet> dietsList) {
         }
     }
     return null;
-    
 }
 
 String[] fetchAllDietNames(ArrayList<Diet> dietsList) {
@@ -235,49 +265,18 @@ String[] fetchAllDietNames(ArrayList<Diet> dietsList) {
     return dietNames;
 }
 
-// have a function to save current user and diet info to their respective jsons
+void addDiet(String name, float protein, float carbs, float fat, int days, int totalDays, boolean maintain, boolean loseWeight) {
+    Diet newDiet = new Diet(name, protein, carbs, fat, totalDays, days, maintain, loseWeight);
+    dietList.add(newDiet);
+    saveAllDiets(dietList);
+}
 
-
-
-    /*  
-
-        filterDB(Array[Food] db, Array[String] restrictions){
-        Array[Food] allowedFoods = [] 
-        For food in db{ 
-        Boolean safe = True 
-        For req in restrictions{ If req NOT IN food.tags{safe = False; Break} }
-        If safe:True{allowedFoods.add(food)} 
-        }
-        allowedFoods }
-        }
-        */
-
-
-
-// Food[] dailyFoodRecommendation(User user, ) {
-//     //general sudocode for what we want to happen
-    
-//     // int planLength = user.plan.length
-//     // int daysPassed = user..plan.daysPassed
-//     // int daysRemaining = planLength - daysPassed
-
-// }
-
-
-
-
-
-// old formulas
-// float calcTargetCals(float bmr, int goal){
-//         float calsBurnedDaily = bmr * 1.4; // basal rate + some activity
-        
-//         if(goal==2 || goal==3){
-//             return calsBurnedDaily - 300;
-//         }
-//         else if(goal==1){
-//             return calsBurnedDaily + 300;
-//         }
-//         else{
-//             return calsBurnedDaily;
-//         }
-//     }
+void editDiet(String dietName, float protein, float carbs, float fat) {
+    Diet d = fetchDietWithDietName(dietName, dietList);
+    if(d != null) {
+        d.proteinPercent = protein;
+        d.carbsPercent = carbs;
+        d.fatPercent = fat;
+        saveAllDiets(dietList);
+    }
+}

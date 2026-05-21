@@ -1,9 +1,13 @@
 {
-    "name": "John Doe",
-    "age": 20,
-    "sex": "male",
-    "height": 170.5,
-    "weight": 70.0,
-    "dietaryRestrictions": ["restriction1", "restriction2", "restriction3"],
-    "dietname": "Bulk"
+  "dietaryRestrictions": [
+    "restriction1",
+    "restriction2",
+    "restriction3"
+  ],
+  "sex": "Male",
+  "name": "John Doe",
+  "weight": 73,
+  "dietname": "Bulk",
+  "age": 18,
+  "height": 169
 }

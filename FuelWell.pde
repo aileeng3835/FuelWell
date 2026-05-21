@@ -1,29 +1,30 @@
 import g4p_controls.*;
-// User mainUser = new User(); //isn't used anywhere
+
 User user;
 ArrayList<Diet> dietList = new ArrayList<Diet>();
-// Diet diet = new Diet();
-
-boolean SubmitClicked = false; // true for testing purposes
-
 ArrayList<Food> foodDB;
 ArrayList<Food> recommendations;
+
+boolean SubmitClicked = false; 
 
 void setup() {
   size(700, 600);
   
   dietList = createDietsFromJson();
   user = createUserFromJson(dietList);
-  user.diet.numDays = 100; // hardcoded for testing
-  user.diet.targetWeight = 80; // hardcoded for testing
-  user.diet.storeInfoPerDay(user);
-
   
-
+  if(user.diet != null) {
+      if(user.diet.targetWeight == 0) user.diet.targetWeight = user.weight; 
+      if(user.diet.numDays == 0) user.diet.numDays = 30; 
+  }
+  
   foodDB = loadFoods();
-  recommendations = recommendFoods(user);
+  recommendations = new ArrayList<Food>();
+  
   createGUI();
   
+  dashboard.setVisible(true);
+  userInfoTab.setVisible(false);
 }
 
 void draw() {
@@ -43,13 +44,14 @@ void draw() {
   fill(220);
   textSize(10);
   text(
-    "FuelWell provides estimated dietary, caloric and macronutrient recommendations based on general formulas and should not replace professional medical\n" + "or nutritional advice. Individual dietary needs may vary.",
-    30,540);
+    "FuelWell provides estimated dietary, caloric and macronutrient recommendations based on general formulas and should not replace professional medical\n" + 
+    "or nutritional advice. Individual dietary needs may vary.",
+    30, 540);
 
-    fill(255);
-    line(30, 90, 670, 90);
+  fill(255);
+  line(30, 90, 670, 90);
 
-  if (SubmitClicked) {
+  if (SubmitClicked && user.diet != null) {
     textSize(28);
     text("Daily Calories: ", 70, 150);
 
@@ -59,7 +61,6 @@ void draw() {
 
     fill(255);
     textSize(24);
-
     text("Protein: " + round(user.diet.proteinPerDay) + " g", 70, 220);
     text("Carbohydrates: " + round(user.diet.carbsPerDay) + " g", 70, 280);
     text("Fats: " + round(user.diet.fatPerDay) + " g", 70, 340);
@@ -68,9 +69,24 @@ void draw() {
     text("Food Recommendations:", 380, 140);
 
     textSize(16);
-    for (int i = 0; i < recommendations.size(); i++) {
-      Food f = recommendations.get(i);
-      text(f.name, 380, 190 + (i * 25));
+    if(recommendations.size() > 0) {
+        for (int i = 0; i < recommendations.size(); i++) {
+          Food f = recommendations.get(i);
+          text("- " + f.name, 380, 180 + (i * 30));
+          
+          String topMacro = "protein";
+          if(user.diet.carbsPerDay > user.diet.proteinPerDay) topMacro = "carbs";
+          if(user.diet.fatPerDay > user.diet.carbsPerDay && user.diet.fatPerDay > user.diet.proteinPerDay) topMacro = "fat";
+          
+          textSize(12);
+          fill(180);
+          text("   Suggest: " + getServingSuggestion(f, topMacro, 20.0) + " per meal", 380, 195 + (i * 30));
+          fill(255);
+          textSize(16);
+        }
+    } else {
+        fill(255, 100, 100);
+        text("No foods match your restrictions.", 380, 180);
     }
   }
 }

@@ -19,7 +19,8 @@ synchronized public void dashboard_draw(PApplet appc, GWinData data) { //_CODE_:
 } //_CODE_:dashboard:659053:
 
 public void toUserInfoTab_click(GButton source, GEvent event) { //_CODE_:toUserInfoTab:777504:
-  println("button1 - GButton >> GEvent." + event + " @ " + millis());
+  userInfoTab.setVisible(true);
+  dashboard.setVisible(false);
 } //_CODE_:toUserInfoTab:777504:
 
 synchronized public void userInfoTab_draw(PApplet appc, GWinData data) { //_CODE_:userInfoTab:277410:
@@ -27,7 +28,8 @@ synchronized public void userInfoTab_draw(PApplet appc, GWinData data) { //_CODE
 } //_CODE_:userInfoTab:277410:
 
 public void toDashboardButton_click(GButton source, GEvent event) { //_CODE_:toDashboardButton:550522:
-  println("userInfoTab4 - GButton >> GEvent." + event + " @ " + millis());
+  dashboard.setVisible(true);
+  userInfoTab.setVisible(false);
 } //_CODE_:toDashboardButton:550522:
 
 public void ageField_type(GTextField source, GEvent event) { //_CODE_:ageField:391582:
@@ -47,43 +49,75 @@ public void sexField_click(GDropList source, GEvent event) { //_CODE_:sexField:7
 } //_CODE_:sexField:731036:
 
 public void saveUserInfoButton_click(GButton source, GEvent event) { //_CODE_:saveUserInfoButton:890613:
-  SubmitClicked = true;
+  try {
+      if(!ageField.getText().equals("")) user.age = int(ageField.getText());
+      if(!userHeightField.getText().equals("")) user.userHeight = float(userHeightField.getText());
+      if(!userWeightField.getText().equals("")) user.weight = float(userWeightField.getText());
+      
+      if(!targetWeightField.getText().equals("") && user.diet != null) {
+          user.diet.targetWeight = float(targetWeightField.getText());
+      }
+  } catch (Exception e) {
+      println("Invalid input. Please ensure height, weight, and age are numbers.");
+      return; 
+  }
+  
+  if (user.diet != null) {
+      user.diet.storeInfoPerDay(user);
+      recommendations = recommendFoods(user);
+      saveUserToJson(user);
+      SubmitClicked = true;
+      println("User Profile and Recommendations Saved.");
+  }
 } //_CODE_:saveUserInfoButton:890613:
 
 public void resetUserInfoButton_click(GButton source, GEvent event) { //_CODE_:resetUserInfoButton:534489:
-  println("resetUserInfoButton - GButton >> GEvent." + event + " @ " + millis());
+  resetUser(user);
+  ageField.setText("");
+  userHeightField.setText("");
+  userWeightField.setText("");
+  targetWeightField.setText("");
+  SubmitClicked = false;
 } //_CODE_:resetUserInfoButton:534489:
 
 public void goalList_click(GDropList source, GEvent event) { //_CODE_:goalList:466574:
-  println("goalList - GDropList >> GEvent." + event + " @ " + millis());
+  String selectedDiet = goalList.getSelectedText();
+  user.diet = fetchDietWithDietName(selectedDiet, dietList);
 } //_CODE_:goalList:466574:
 
 public void isVegetarian_click(GCheckbox source, GEvent event) { //_CODE_:isVegetarian:287580:
-  println("checkbox1 - GCheckbox >> GEvent." + event + " @ " + millis());
+  if(source.isSelected()) user.dietaryRestrictions.add("vegetarian");
+  else user.dietaryRestrictions.remove("vegetarian");
 } //_CODE_:isVegetarian:287580:
 
 public void isVegan_click(GCheckbox source, GEvent event) { //_CODE_:isVegan:968256:
-  println("checkbox1 - GCheckbox >> GEvent." + event + " @ " + millis());
+  if(source.isSelected()) user.dietaryRestrictions.add("vegan");
+  else user.dietaryRestrictions.remove("vegan");
 } //_CODE_:isVegan:968256:
 
 public void isHalal_click(GCheckbox source, GEvent event) { //_CODE_:isHalal:254714:
-  println("checkbox1 - GCheckbox >> GEvent." + event + " @ " + millis());
+  if(source.isSelected()) user.dietaryRestrictions.add("halal");
+  else user.dietaryRestrictions.remove("halal");
 } //_CODE_:isHalal:254714:
 
 public void isPescetarian_click(GCheckbox source, GEvent event) { //_CODE_:isPescetarian:998524:
-  println("checkbox1 - GCheckbox >> GEvent." + event + " @ " + millis());
+  if(source.isSelected()) user.dietaryRestrictions.add("pescetarian");
+  else user.dietaryRestrictions.remove("pescetarian");
 } //_CODE_:isPescetarian:998524:
 
 public void isGlutenFree_click(GCheckbox source, GEvent event) { //_CODE_:isGlutenFree:368552:
-  println("checkbox1 - GCheckbox >> GEvent." + event + " @ " + millis());
+  if(source.isSelected()) user.dietaryRestrictions.add("glutenfree");
+  else user.dietaryRestrictions.remove("glutenfree");
 } //_CODE_:isGlutenFree:368552:
 
 public void isNutAllergy_click(GCheckbox source, GEvent event) { //_CODE_:isNutAllergy:563699:
-  println("checkbox1 - GCheckbox >> GEvent." + event + " @ " + millis());
+  if(source.isSelected()) user.dietaryRestrictions.add("nutallergy");
+  else user.dietaryRestrictions.remove("nutallergy");
 } //_CODE_:isNutAllergy:563699:
 
 public void isLactoseIntolerant_click(GCheckbox source, GEvent event) { //_CODE_:isLactoseIntolerant:504553:
-  println("checkbox1 - GCheckbox >> GEvent." + event + " @ " + millis());
+  if(source.isSelected()) user.dietaryRestrictions.add("lactoseintolerant");
+  else user.dietaryRestrictions.remove("lactoseintolerant");
 } //_CODE_:isLactoseIntolerant:504553:
 
 
@@ -129,17 +163,21 @@ public void createGUI(){
   userWeightLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
   userWeightLabel.setText("Weight (kg):");
   userWeightLabel.setOpaque(false);
+  targetWeightLabel = new GLabel(userInfoTab, 14, 178, 80, 20);
+  targetWeightLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
+  targetWeightLabel.setText("Target (kg):");
+  targetWeightLabel.setOpaque(false);
+  targetWeightField = new GTextField(userInfoTab, 100, 180, 50, 20, G4P.SCROLLBARS_NONE);
+  targetWeightField.setOpaque(true);
   ageField = new GTextField(userInfoTab, 99, 79, 40, 20, G4P.SCROLLBARS_NONE);
   ageField.setOpaque(true);
-  ageField.addEventHandler(this, "ageField_type");
   userHeightField = new GTextField(userInfoTab, 99, 132, 60, 20, G4P.SCROLLBARS_NONE);
   userHeightField.setOpaque(true);
-  userHeightField.addEventHandler(this, "userHeightField_type");
   userWeightField = new GTextField(userInfoTab, 100, 156, 50, 20, G4P.SCROLLBARS_NONE);
   userWeightField.setOpaque(true);
-  userWeightField.addEventHandler(this, "userWeightField_type");
   sexField = new GDropList(userInfoTab, 98, 106, 70, 60, 2, 10);
-  sexField.setItems(loadStrings("list_731036"), 0);
+  String[] tempSexList = {"male", "female"};
+  sexField.setItems(tempSexList, 0);
   sexField.addEventHandler(this, "sexField_click");
   saveUserInfoButton = new GButton(userInfoTab, 206, 246, 120, 30);
   saveUserInfoButton.setText("Save User Info");
@@ -154,7 +192,7 @@ public void createGUI(){
   goalLabel.setText("Goal:");
   goalLabel.setOpaque(false);
   goalList = new GDropList(userInfoTab, 259, 27, 90, 100, 4, 10);
-  goalList.setItems(loadStrings("list_466574"), 0);
+  goalList.setItems(fetchAllDietNames(dietList), 0);
   goalList.addEventHandler(this, "goalList_click");
   dietaryRestrictionsLabel = new GLabel(userInfoTab, 206, 55, 130, 20);
   dietaryRestrictionsLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
@@ -210,9 +248,11 @@ GLabel ageLabel;
 GLabel sexLabel; 
 GLabel userHeightLabel; 
 GLabel userWeightLabel; 
+GLabel targetWeightLabel; 
 GTextField ageField; 
 GTextField userHeightField; 
 GTextField userWeightField; 
+GTextField targetWeightField; 
 GDropList sexField; 
 GButton saveUserInfoButton; 
 GButton resetUserInfoButton; 

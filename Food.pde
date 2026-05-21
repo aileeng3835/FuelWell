@@ -1,16 +1,13 @@
 class Food {
-    //Fields
-    String name;
-
-    float gramsFat;
-    float gramsCarbs;
-    float gramsProtein;
-    float gramsSugar; // sugar is a type of carb
+    public String name;
+    public float gramsFat;
+    public float gramsCarbs;
+    public float gramsProtein;
+    public float gramsSugar; 
     
-    String[] restrictionCategories;
-    String[] otherCategories; // i'm assuming this could be like high protein, low carbs, ...
+    public String[] restrictionCategories;
+    public String[] otherCategories; 
 
-    //Constructor
     Food(String name, float gramsFat, float gramsCarbs, float gramsProtein, float gramsSugar, String[] restrictionCategories, String[] otherCategories){
         this.name = name;
 
@@ -18,7 +15,7 @@ class Food {
         this.gramsCarbs = gramsCarbs;
         this.gramsProtein = gramsProtein;
         this.gramsSugar = gramsSugar;
-
+        
         this.restrictionCategories = restrictionCategories;
         this.otherCategories = otherCategories;
     }
@@ -26,7 +23,6 @@ class Food {
     //Methods
     float getTotalCalories() {
         //9 calories per gram of fat, 4 for carbs, and 4 for protein
-        float totalCalories = (gramsFat *  9) + (gramsCarbs * 4) + (gramsProtein * 4);
-        return totalCalories;
+        return (gramsFat *  9) + (gramsCarbs * 4) + (gramsProtein * 4);
     }
 }
