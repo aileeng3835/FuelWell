@@ -125,7 +125,8 @@ public void targetWeightField_click(GTextField source, GEvent event) { //_CODE_:
 } //_CODE_:targetWeightField:785529:
 
 public void NumberofDaysTyped(GTextField source, GEvent event) { //_CODE_:NumberofDays:465733:
-  println("textfield1 - GTextField >> GEvent." + event + " @ " + millis());
+  // println("textfield1 - GTextField >> GEvent." + event + " @ " + millis());
+  user.diet.numDays = int(NumberofDays.getText());
 } //_CODE_:NumberofDays:465733:
 
 
