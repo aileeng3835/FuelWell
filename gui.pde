@@ -124,6 +124,10 @@ public void targetWeightField_click(GTextField source, GEvent event) { //_CODE_:
   user.diet.targetWeight = float(targetWeightField.getText());
 } //_CODE_:targetWeightField:785529:
 
+public void NumberofDaysTyped(GTextField source, GEvent event) { //_CODE_:NumberofDays:465733:
+  println("textfield1 - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:NumberofDays:465733:
+
 
 
 // Create all the GUI controls. 
@@ -192,7 +196,6 @@ public void createGUI(){
   goalLabel.setText("Goal:");
   goalLabel.setOpaque(false);
   goalList = new GDropList(userInfoTab, 259, 27, 90, 100, 4, 10);
-  goalList.setItems(fetchAllDietNames(dietList), 0);
   goalList.setItems(loadStrings("list_466574"), 0);
   goalList.addEventHandler(this, "goalList_click");
   dietaryRestrictionsLabel = new GLabel(userInfoTab, 206, 55, 130, 20);
@@ -214,7 +217,7 @@ public void createGUI(){
   isHalal.setText("Halal");
   isHalal.setOpaque(false);
   isHalal.addEventHandler(this, "isHalal_click");
-  isPescetarian = new GCheckbox(userInfoTab, 213, 140, 120, 20);
+  isPescetarian = new GCheckbox(userInfoTab, 212, 140, 120, 20);
   isPescetarian.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   isPescetarian.setText("Pescetarian");
   isPescetarian.setOpaque(false);
@@ -241,6 +244,13 @@ public void createGUI(){
   targetWeightField = new GTextField(userInfoTab, 100, 180, 50, 20, G4P.SCROLLBARS_NONE);
   targetWeightField.setOpaque(true);
   targetWeightField.addEventHandler(this, "targetWeightField_click");
+  label1 = new GLabel(userInfoTab, 14, 207, 80, 20);
+  label1.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label1.setText("Days:");
+  label1.setOpaque(false);
+  NumberofDays = new GTextField(userInfoTab, 100, 207, 50, 20, G4P.SCROLLBARS_NONE);
+  NumberofDays.setOpaque(true);
+  NumberofDays.addEventHandler(this, "NumberofDaysTyped");
   dashboard.loop();
   userInfoTab.loop();
 }
@@ -274,3 +284,5 @@ GCheckbox isNutAllergy;
 GCheckbox isLactoseIntolerant; 
 GLabel targetWeightLabel; 
 GTextField targetWeightField; 
+GLabel label1; 
+GTextField NumberofDays; 
