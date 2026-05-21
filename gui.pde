@@ -120,6 +120,10 @@ public void isLactoseIntolerant_click(GCheckbox source, GEvent event) { //_CODE_
   else user.dietaryRestrictions.remove("lactoseintolerant");
 } //_CODE_:isLactoseIntolerant:504553:
 
+public void targetWeightField_click(GTextField source, GEvent event) { //_CODE_:targetWeightField:785529:
+  user.diet.targetWeight = float(targetWeightField.getText());
+} //_CODE_:targetWeightField:785529:
+
 
 
 // Create all the GUI controls. 
@@ -163,21 +167,17 @@ public void createGUI(){
   userWeightLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
   userWeightLabel.setText("Weight (kg):");
   userWeightLabel.setOpaque(false);
-  targetWeightLabel = new GLabel(userInfoTab, 14, 178, 80, 20);
-  targetWeightLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
-  targetWeightLabel.setText("Target (kg):");
-  targetWeightLabel.setOpaque(false);
-  targetWeightField = new GTextField(userInfoTab, 100, 180, 50, 20, G4P.SCROLLBARS_NONE);
-  targetWeightField.setOpaque(true);
   ageField = new GTextField(userInfoTab, 99, 79, 40, 20, G4P.SCROLLBARS_NONE);
   ageField.setOpaque(true);
+  ageField.addEventHandler(this, "ageField_type");
   userHeightField = new GTextField(userInfoTab, 99, 132, 60, 20, G4P.SCROLLBARS_NONE);
   userHeightField.setOpaque(true);
+  userHeightField.addEventHandler(this, "userHeightField_type");
   userWeightField = new GTextField(userInfoTab, 100, 156, 50, 20, G4P.SCROLLBARS_NONE);
   userWeightField.setOpaque(true);
+  userWeightField.addEventHandler(this, "userWeightField_type");
   sexField = new GDropList(userInfoTab, 98, 106, 70, 60, 2, 10);
-  String[] tempSexList = {"male", "female"};
-  sexField.setItems(tempSexList, 0);
+  sexField.setItems(loadStrings("list_731036"), 0);
   sexField.addEventHandler(this, "sexField_click");
   saveUserInfoButton = new GButton(userInfoTab, 206, 246, 120, 30);
   saveUserInfoButton.setText("Save User Info");
@@ -193,6 +193,7 @@ public void createGUI(){
   goalLabel.setOpaque(false);
   goalList = new GDropList(userInfoTab, 259, 27, 90, 100, 4, 10);
   goalList.setItems(fetchAllDietNames(dietList), 0);
+  goalList.setItems(loadStrings("list_466574"), 0);
   goalList.addEventHandler(this, "goalList_click");
   dietaryRestrictionsLabel = new GLabel(userInfoTab, 206, 55, 130, 20);
   dietaryRestrictionsLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
@@ -233,6 +234,13 @@ public void createGUI(){
   isLactoseIntolerant.setText("Lactose Intolerant");
   isLactoseIntolerant.setOpaque(false);
   isLactoseIntolerant.addEventHandler(this, "isLactoseIntolerant_click");
+  targetWeightLabel = new GLabel(userInfoTab, 14, 180, 80, 20);
+  targetWeightLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
+  targetWeightLabel.setText("Target (kg):");
+  targetWeightLabel.setOpaque(false);
+  targetWeightField = new GTextField(userInfoTab, 100, 180, 50, 20, G4P.SCROLLBARS_NONE);
+  targetWeightField.setOpaque(true);
+  targetWeightField.addEventHandler(this, "targetWeightField_click");
   dashboard.loop();
   userInfoTab.loop();
 }
@@ -248,11 +256,9 @@ GLabel ageLabel;
 GLabel sexLabel; 
 GLabel userHeightLabel; 
 GLabel userWeightLabel; 
-GLabel targetWeightLabel; 
 GTextField ageField; 
 GTextField userHeightField; 
 GTextField userWeightField; 
-GTextField targetWeightField; 
 GDropList sexField; 
 GButton saveUserInfoButton; 
 GButton resetUserInfoButton; 
@@ -266,3 +272,5 @@ GCheckbox isPescetarian;
 GCheckbox isGlutenFree; 
 GCheckbox isNutAllergy; 
 GCheckbox isLactoseIntolerant; 
+GLabel targetWeightLabel; 
+GTextField targetWeightField; 
