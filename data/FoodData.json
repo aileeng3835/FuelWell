@@ -1,17 +1,6 @@
 {
     "FoodList": [
         {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
-            "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
-            "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
-
-        },
-        {
             "name": "Banana",
             "gramsFat": 0.33,
             "gramsCarbs": 26.4,
@@ -418,7 +407,29 @@
 
         },
         {
-            "name": "foodTemplate",
+            "name": "White Rice (100g) (doesn't say for sugar)",
+            "gramsFat": 1.03,
+            "gramsCarbs": 80.3,
+            "gramsProtein": 7.04,
+            "gramsSugar": 0,
+            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "otherCategories": ["cat1", "cat2", "cat3"],
+            "SourceLink": "https://fdc.nal.usda.gov/food-details/2512381/nutrients"
+
+        },
+        {
+            "name": "Italian Pork Sausage (100g)",
+            "gramsFat": 25.8,
+            "gramsCarbs": 2.15,
+            "gramsProtein": 18.2,
+            "gramsSugar": 1.46,
+            "restrictions": ["restriction1", "restriction2", "restriction3"],
+            "otherCategories": ["cat1", "cat2", "cat3"],
+            "SourceLink": "https://fdc.nal.usda.gov/food-details/746780/nutrients"
+
+        },
+        {
+            "name": "Watermelon (100g)",
             "gramsFat": 0,
             "gramsCarbs": 0,
             "gramsProtein": 0,
@@ -429,245 +440,102 @@
 
         },
         {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
-            "gramsSugar": 0,
+            "name": "Yogurt (100g)",
+            "gramsFat": 4.48,
+            "gramsCarbs": 5.57,
+            "gramsProtein": 3.82,
+            "gramsSugar": 4.09,
             "restrictions": ["restriction1", "restriction2", "restriction3"],
             "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
+            "SourceLink": "https://fdc.nal.usda.gov/food-details/2259793/nutrients"
 
         },
         {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
-            "gramsSugar": 0,
+            "name": "Apples (100g)",
+            "gramsFat": 0.1,
+            "gramsCarbs": 14.7,
+            "gramsProtein": 0.1,
+            "gramsSugar": 12.4,
             "restrictions": ["restriction1", "restriction2", "restriction3"],
             "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
+            "SourceLink": "https://fdc.nal.usda.gov/food-details/1750343/nutrients"
 
         },
         {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
-            "gramsSugar": 0,
+            "name": "Apricot (100g)",
+            "gramsFat": 0.4,
+            "gramsCarbs": 10.2,
+            "gramsProtein": 0.96,
+            "gramsSugar": 6.25,
             "restrictions": ["restriction1", "restriction2", "restriction3"],
             "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
+            "SourceLink": "https://fdc.nal.usda.gov/food-details/2710815/nutrients"
 
         },
         {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
+            "name": "Asparagus (100g) (doesn't say for sugar)",
+            "gramsFat": 0.22,
+            "gramsCarbs": 5.1,
+            "gramsProtein": 1.44,
             "gramsSugar": 0,
             "restrictions": ["restriction1", "restriction2", "restriction3"],
             "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
+            "SourceLink": "https://fdc.nal.usda.gov/food-details/2710823/nutrients"
 
         },
         {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
+            "name": "Avocado (100g) (doesn't say for sugar)",
+            "gramsFat": 20.3,
+            "gramsCarbs": 8.32,
+            "gramsProtein": 1.81,
             "gramsSugar": 0,
             "restrictions": ["restriction1", "restriction2", "restriction3"],
             "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
+            "SourceLink": "https://fdc.nal.usda.gov/food-details/2710824/nutrients"
 
         },
         {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
+            "name": "Cottage Cheese (100g) (doesn't say for sugar)",
+            "gramsFat": 4.22,
+            "gramsCarbs": 4.6,
+            "gramsProtein": 11.6,
             "gramsSugar": 0,
             "restrictions": ["restriction1", "restriction2", "restriction3"],
             "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
+            "SourceLink": "https://fdc.nal.usda.gov/food-details/2346384/nutrients"
 
         },
         {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
+            "name": "Blackeye Peas (100g) (doesn't say for sugar)",
+            "gramsFat": 2.42,
+            "gramsCarbs": 61.8,
+            "gramsProtein": 21.2,
             "gramsSugar": 0,
             "restrictions": ["restriction1", "restriction2", "restriction3"],
             "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
+            "SourceLink": "https://fdc.nal.usda.gov/food-details/2644284/nutrients"
 
         },
         {
-            "name": "foodTemplate",
-            "gramsFat": 0,
+            "name": "Chuck Beef (100g)",
+            "gramsFat": 17.8,
             "gramsCarbs": 0,
-            "gramsProtein": 0,
+            "gramsProtein": 18.4,
             "gramsSugar": 0,
             "restrictions": ["restriction1", "restriction2", "restriction3"],
             "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
+            "SourceLink": "https://fdc.nal.usda.gov/food-details/2646174/nutrients"
 
         },
         {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
-            "gramsSugar": 0,
+            "name": "Mandarin Orange (100g)",
+            "gramsFat": 0.46,
+            "gramsCarbs": 13.4,
+            "gramsProtein": 1.04,
+            "gramsSugar": 9.12,
             "restrictions": ["restriction1", "restriction2", "restriction3"],
             "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
-
-        },
-        {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
-            "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
-            "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
-
-        },
-        {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
-            "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
-            "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
-
-        },
-        {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
-            "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
-            "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
-
-        },
-        {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
-            "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
-            "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
-
-        },
-        {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
-            "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
-            "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
-
-        },
-        {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
-            "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
-            "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
-
-        },
-        {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
-            "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
-            "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
-
-        },
-        {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
-            "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
-            "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
-
-        },
-        {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
-            "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
-            "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
-
-        },
-        {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
-            "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
-            "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
-
-        },
-        {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
-            "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
-            "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
-
-        },
-        {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
-            "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
-            "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
-
-        },
-        {
-            "name": "foodTemplate",
-            "gramsFat": 0,
-            "gramsCarbs": 0,
-            "gramsProtein": 0,
-            "gramsSugar": 0,
-            "restrictions": ["restriction1", "restriction2", "restriction3"],
-            "otherCategories": ["cat1", "cat2", "cat3"],
-            "SourceLink": "linkhere"
+            "SourceLink": "https://fdc.nal.usda.gov/food-details/2710832/nutrients"
 
         }
         
