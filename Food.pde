@@ -6,9 +6,8 @@ class Food {
     public float gramsSugar; 
     
     public String[] restrictionCategories;
-    public String[] otherCategories; 
 
-    Food(String name, float gramsFat, float gramsCarbs, float gramsProtein, float gramsSugar, String[] restrictionCategories, String[] otherCategories){
+    Food(String name, float gramsFat, float gramsCarbs, float gramsProtein, float gramsSugar, String[] restrictionCategories){
         this.name = name;
 
         this.gramsFat = gramsFat;
@@ -17,7 +16,6 @@ class Food {
         this.gramsSugar = gramsSugar;
         
         this.restrictionCategories = restrictionCategories;
-        this.otherCategories = otherCategories;
     }
 
     //Methods
