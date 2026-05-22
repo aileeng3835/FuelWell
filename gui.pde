@@ -21,14 +21,25 @@ synchronized public void dashboard_draw(PApplet appc, GWinData data) { //_CODE_:
 public void toUserInfoTab_click(GButton source, GEvent event) { //_CODE_:toUserInfoTab:777504:
   userInfoTab.setVisible(true);
   dashboard.setVisible(false);
+  deletePlanTab.setVisible(false);
+  customPlanTab.setVisible(false);
+  
 } //_CODE_:toUserInfoTab:777504:
 
 public void toCustomPlanTab_clicked(GButton source, GEvent event) { //_CODE_:toCustomPlanTab:959556:
-  println("button1 - GButton >> GEvent." + event + " @ " + millis());
+  // println("button1 - GButton >> GEvent." + event + " @ " + millis());
+  userInfoTab.setVisible(false);
+  dashboard.setVisible(false);
+  deletePlanTab.setVisible(false);
+  customPlanTab.setVisible(true);
 } //_CODE_:toCustomPlanTab:959556:
 
 public void toDeletePlanTab_click(GButton source, GEvent event) { //_CODE_:toDeletePlanTab:716853:
-  println("toDeletePlanTab - GButton >> GEvent." + event + " @ " + millis());
+  // println("toDeletePlanTab - GButton >> GEvent." + event + " @ " + millis());
+  userInfoTab.setVisible(false);
+  dashboard.setVisible(false);
+  deletePlanTab.setVisible(true);
+  customPlanTab.setVisible(false);
 } //_CODE_:toDeletePlanTab:716853:
 
 synchronized public void userInfoTab_draw(PApplet appc, GWinData data) { //_CODE_:userInfoTab:277410:
@@ -38,6 +49,8 @@ synchronized public void userInfoTab_draw(PApplet appc, GWinData data) { //_CODE
 public void toDashboardButton_click(GButton source, GEvent event) { //_CODE_:toDashboardButton:550522:
   dashboard.setVisible(true);
   userInfoTab.setVisible(false);
+  deletePlanTab.setVisible(false);
+  customPlanTab.setVisible(false);
 } //_CODE_:toDashboardButton:550522:
 
 public void ageField_type(GTextField source, GEvent event) { //_CODE_:ageField:391582:
@@ -144,7 +157,11 @@ synchronized public void customPlanTab_draw(PApplet appc, GWinData data) { //_CO
 } //_CODE_:customPlanTab:742484:
 
 public void toDashboardButton2_clicked(GButton source, GEvent event) { //_CODE_:toDashboardButton2:346182:
-  println("toDashboardButton2 - GButton >> GEvent." + event + " @ " + millis());
+  // println("toDashboardButton2 - GButton >> GEvent." + event + " @ " + millis());
+  userInfoTab.setVisible(false);
+  dashboard.setVisible(true);
+  deletePlanTab.setVisible(false);
+  customPlanTab.setVisible(false);
 } //_CODE_:toDashboardButton2:346182:
 
 public void customNameField_type(GTextField source, GEvent event) { //_CODE_:customNameField:605669:
@@ -180,7 +197,11 @@ synchronized public void deletePlanTab_draw(PApplet appc, GWinData data) { //_CO
 } //_CODE_:deletePlanTab:428170:
 
 public void toDashboardButton3_click(GButton source, GEvent event) { //_CODE_:toDashboardButton3:523269:
-  println("toDashboardButton3 - GButton >> GEvent." + event + " @ " + millis());
+  // println("toDashboardButton3 - GButton >> GEvent." + event + " @ " + millis());
+  userInfoTab.setVisible(false);
+  dashboard.setVisible(true);
+  deletePlanTab.setVisible(false);
+  customPlanTab.setVisible(false);
 } //_CODE_:toDashboardButton3:523269:
 
 public void planToDeleteField_type(GTextField source, GEvent event) { //_CODE_:planToDeleteField:866039:

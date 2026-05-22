@@ -27,6 +27,8 @@ void setup() {
   
   dashboard.setVisible(true);
   userInfoTab.setVisible(false);
+  deletePlanTab.setVisible(false);
+  customPlanTab.setVisible(false);
 }
 
 void draw() {

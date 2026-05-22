@@ -125,7 +125,6 @@ boolean foodMatchesRestrictions(Food food, User user) {
 
 
 HashMap<String, Float> recommendFoods(User user, ArrayList<Food> foodData) {
-    // ArrayList<Food> finalRecommentations = new ArrayList<Food>(); // final recs food list
     float totalFoodGrams = 0;
     HashMap<String, Float> recommendedFoodGrams = new HashMap<String, Float>();
 
