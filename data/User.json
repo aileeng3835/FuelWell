@@ -1,13 +1,9 @@
 {
-  "dietaryRestrictions": [
-    "restriction1",
-    "restriction2",
-    "restriction3"
-  ],
-  "sex": "Male",
-  "name": "John Doe",
-  "weight": 73,
+  "dietaryRestrictions": [],
+  "sex": "male",
+  "name": "Guest",
+  "weight": 0,
   "dietname": "Bulk",
-  "age": 18,
-  "height": 169
+  "age": 0,
+  "height": 0
 }

@@ -80,7 +80,7 @@ void draw() {
           
           textSize(12);
           fill(180);
-          text("   Suggest: " + round(recommendations.get(recommendationsKeys.get(i))) + " grams per day", 380, 195 + (i * 30));
+          text("   Suggestion: " + round(recommendations.get(recommendationsKeys.get(i))) + " grams per day", 380, 195 + (i * 30));
           fill(255);
           textSize(16);
         }

@@ -1,60 +1,46 @@
-{
-    "DietsList":[
-        {
-            "name": "dietTemplate",
-            "proteinPercent": 0.0,
-            "carbsPercent": 0.0,
-            "fatPercent": 0.0,
-            "isMaintain": false,
-            "isLoseWeight": false,
-            "totalDays": 0,
-            "daysPassed": 0
-        },
-        {
-            "name": "Bulk",
-            "proteinPercent": 0.35,
-            "carbsPercent": 0.35,
-            "fatPercent": 0.30,
-            "isMaintain": false,
-            "isLoseWeight": false,
-            "totalDays": 30,
-            "daysPassed": 0,
-            "targetWeight": 0
-            
-        },
-        {
-            "name": "Cut",
-            "proteinPercent": 0.30,
-            "carbsPercent": 0.40,
-            "fatPercent": 0.30,
-            "isMaintain": false,
-            "isLoseWeight": true,
-            "totalDays": 0,
-            "daysPassed": 0,
-            "targetWeight": 0
-            
-        },
-        {
-            "name": "Lose Weight",
-            "proteinPercent": 0.25,
-            "carbsPercent": 0.45,
-            "fatPercent": 0.30,
-            "isMaintain": false,
-            "isLoseWeight": true,
-            "totalDays": 0,
-            "daysPassed": 0,
-            "targetWeight": 0
-        },
-        {
-            "name": "MaintainHealth",
-            "proteinPercent": 0.20,
-            "carbsPercent": 0.50,
-            "fatPercent": 0.30,
-            "isMaintain": false,
-            "isLoseWeight": true,
-            "totalDays": 0,
-            "daysPassed": 0,
-            "targetWeight": 0
-        }
-    ]
-}
+{"DietsList": [
+  {
+    "isMaintain": false,
+    "isLoseWeight": false,
+    "proteinPercent": 0.3499999940395355,
+    "totalDays": 30,
+    "fatPercent": 0.30000001192092896,
+    "name": "Bulk",
+    "carbsPercent": 0.3499999940395355,
+    "targetWeight": 4,
+    "daysPassed": 0
+  },
+  {
+    "isMaintain": false,
+    "isLoseWeight": true,
+    "proteinPercent": 0.30000001192092896,
+    "totalDays": 0,
+    "fatPercent": 0.30000001192092896,
+    "name": "Cut",
+    "carbsPercent": 0.4000000059604645,
+    "targetWeight": 0,
+    "daysPassed": 0
+  },
+  {
+    "isMaintain": false,
+    "isLoseWeight": true,
+    "proteinPercent": 0.25,
+    "totalDays": 0,
+    "fatPercent": 0.30000001192092896,
+    "name": "Lose Weight",
+    "carbsPercent": 0.44999998807907104,
+    "targetWeight": 0,
+    "daysPassed": 0
+  },
+  {
+    "isMaintain": false,
+    "isLoseWeight": true,
+    "proteinPercent": 0.20000000298023224,
+    "totalDays": 0,
+    "fatPercent": 0.30000001192092896,
+    "name": "MaintainHealth",
+    "carbsPercent": 0.5,
+    "targetWeight": 0,
+    "daysPassed": 0
+  }
+]}
