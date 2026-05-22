@@ -193,7 +193,35 @@ public void customDaysField_type(GTextField source, GEvent event) { //_CODE_:cus
 } //_CODE_:customDaysField:318736:
 
 public void addPlanButton_click1(GButton source, GEvent event) { //_CODE_:addPlanButton:244947:
-  println("addPlanButton - GButton >> GEvent." + event + " @ " + millis());
+  // println("addPlanButton - GButton >> GEvent." + event + " @ " + millis());
+  try {
+      String newDietName = "";
+      float newProteinPercent = 0.0;
+      float newCarbsPercent = 0.0;
+      float newFatPercent = 0.0;
+      float newTargetWeight = 0.0;
+      int newNumDays = 0;
+      boolean newIsMaintain = false;
+      boolean newIsLoseWeight = false;
+      
+      if(!customNameField.getText().equals("")) newDietName = (customNameField.getText());
+      if(!proteinPercentField.getText().equals("")) newProteinPercent = float(proteinPercentField.getText());
+      if(!carbPercentField.getText().equals("")) newCarbsPercent = float(carbPercentField.getText());
+      if(!fatPercentField.getText().equals("")) newFatPercent = float(fatPercentField.getText());
+      newTargetWeight = user.weight; //placeholder so things don't break (the user can get a new target weight in modify user info)
+      newIsMaintain = isMaintainBox.isSelected();
+      newIsLoseWeight = isLoseBox.isSelected();
+      if(!customDaysField.getText().equals("")) newNumDays = int(customDaysField.getText());
+      addDiet(newDietName, newProteinPercent / 100.0, newCarbsPercent / 100.0, newFatPercent / 100.0, newNumDays, 0, newIsMaintain, newIsLoseWeight, newTargetWeight);
+
+  } catch (Exception e) {
+      println("Invalid input. Please make sure you have inputted all relevant information.");
+      return; 
+  }
+  userInfoTab.setVisible(false);
+  dashboard.setVisible(true);
+  deletePlanTab.setVisible(false);
+  customPlanTab.setVisible(false);
 } //_CODE_:addPlanButton:244947:
 
 synchronized public void deletePlanTab_draw(PApplet appc, GWinData data) { //_CODE_:deletePlanTab:428170:

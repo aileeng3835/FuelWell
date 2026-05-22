@@ -359,7 +359,7 @@ String[] fetchAllDietNames(ArrayList<Diet> dietsList) {
     return dietNames;
 }
 
-void addDiet(String name, float protein, float carbs, float fat, int days, int totalDays, boolean maintain, boolean loseWeight, float targetWeight) {
+void addDiet(String name, float protein, float carbs, float fat, int totalDays, int days, boolean maintain, boolean loseWeight, float targetWeight) {
     Diet newDiet = new Diet(name, protein, carbs, fat, totalDays, days, maintain, loseWeight, targetWeight);
     dietList.add(newDiet);
     saveAllDiets(dietList);
