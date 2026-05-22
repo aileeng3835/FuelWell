@@ -42,6 +42,14 @@ public void toDeletePlanTab_click(GButton source, GEvent event) { //_CODE_:toDel
   customPlanTab.setVisible(false);
 } //_CODE_:toDeletePlanTab:716853:
 
+public void newDayButton_click1(GButton source, GEvent event) { //_CODE_:newDayButton:829911:
+  // println("newDayButton - GButton >> GEvent." + event + " @ " + millis());
+  if (user.diet != null) {
+    user.diet.daysPassed += 1;
+    saveAllDiets(dietList);
+  }
+} //_CODE_:newDayButton:829911:
+
 synchronized public void userInfoTab_draw(PApplet appc, GWinData data) { //_CODE_:userInfoTab:277410:
   appc.background(230);
 } //_CODE_:userInfoTab:277410:
@@ -273,19 +281,22 @@ public void createGUI(){
   dashboard.noLoop();
   dashboard.setActionOnClose(G4P.KEEP_OPEN);
   dashboard.addDrawHandler(this, "dashboard_draw");
-  toUserInfoTab = new GButton(dashboard, 130, 160, 140, 30);
+  toUserInfoTab = new GButton(dashboard, 130, 149, 140, 30);
   toUserInfoTab.setText("Modify User Info >");
   toUserInfoTab.addEventHandler(this, "toUserInfoTab_click");
   welcomeMessage = new GLabel(dashboard, 90, 120, 220, 20);
   welcomeMessage.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   welcomeMessage.setText("Welcome to the FuelWell dashboard.");
   welcomeMessage.setOpaque(false);
-  toCustomPlanTab = new GButton(dashboard, 130, 200, 140, 30);
+  toCustomPlanTab = new GButton(dashboard, 130, 186, 140, 30);
   toCustomPlanTab.setText("Create Custom Plan >");
   toCustomPlanTab.addEventHandler(this, "toCustomPlanTab_clicked");
-  toDeletePlanTab = new GButton(dashboard, 130, 240, 140, 30);
+  toDeletePlanTab = new GButton(dashboard, 130, 225, 140, 30);
   toDeletePlanTab.setText("Delete Custom Plan >");
   toDeletePlanTab.addEventHandler(this, "toDeletePlanTab_click");
+  newDayButton = new GButton(dashboard, 160, 262, 80, 30);
+  newDayButton.setText("Click If A Day Has Passed");
+  newDayButton.addEventHandler(this, "newDayButton_click1");
   userInfoTab = GWindow.getWindow(this, "userInfo", 0, 0, 400, 300, JAVA2D);
   userInfoTab.noLoop();
   userInfoTab.setActionOnClose(G4P.KEEP_OPEN);
@@ -487,6 +498,7 @@ GButton toUserInfoTab;
 GLabel welcomeMessage; 
 GButton toCustomPlanTab; 
 GButton toDeletePlanTab; 
+GButton newDayButton; 
 GWindow userInfoTab;
 GButton toDashboardButton; 
 GLabel ageLabel; 
