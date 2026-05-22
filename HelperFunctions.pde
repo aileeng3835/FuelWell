@@ -120,7 +120,7 @@ boolean foodMatchesRestrictions(Food food, User user) {
                 break;
             }
         }
-        if (!found) return false;
+        if (found) return false;
     }
     return true;
 }
