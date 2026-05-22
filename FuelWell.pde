@@ -3,7 +3,8 @@ import g4p_controls.*;
 User user;
 ArrayList<Diet> dietList = new ArrayList<Diet>();
 ArrayList<Food> foodDB;
-ArrayList<Food> recommendations;
+HashMap<String, Float> recommendations;
+ArrayList<String> recommendationsKeys;
 
 boolean SubmitClicked = false; 
 
@@ -19,7 +20,8 @@ void setup() {
   }
   
   foodDB = loadFoods();
-  recommendations = new ArrayList<Food>();
+  recommendations = new HashMap<String, Float>();
+  recommendationsKeys = new ArrayList<String>();
   
   createGUI();
   
@@ -69,18 +71,14 @@ void draw() {
     text("Food Recommendations:", 380, 140);
 
     textSize(16);
-    if(recommendations.size() > 0) {
-        for (int i = 0; i < recommendations.size(); i++) {
-          Food f = recommendations.get(i);
-          text("- " + f.name, 380, 180 + (i * 30));
-          
-          String topMacro = "protein";
-          if(user.diet.carbsPerDay > user.diet.proteinPerDay) topMacro = "carbs";
-          if(user.diet.fatPerDay > user.diet.carbsPerDay && user.diet.fatPerDay > user.diet.proteinPerDay) topMacro = "fat";
+    if(recommendationsKeys.size() > 0) {
+        for (int i = 0; i < recommendationsKeys.size(); i++) {
+          String foodName = recommendationsKeys.get(i);
+          text("- " + foodName, 380, 180 + (i * 30));
           
           textSize(12);
           fill(180);
-          text("   Suggest: " + getServingSuggestion(f, topMacro, 20.0) + " per meal", 380, 195 + (i * 30));
+          text("   Suggest: " + round(recommendations.get(recommendationsKeys.get(i))) + " grams per day", 380, 195 + (i * 30));
           fill(255);
           textSize(16);
         }

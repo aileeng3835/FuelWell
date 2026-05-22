@@ -72,7 +72,8 @@ public void saveUserInfoButton_click(GButton source, GEvent event) { //_CODE_:sa
   
   if (user.diet != null) {
       user.diet.storeInfoPerDay(user);
-      recommendations = recommendFoods(user);
+      recommendations = recommendFoods(user, foodDB);
+      recommendationsKeys = new ArrayList<String>(recommendations.keySet());
       saveUserToJson(user);
       saveAllDiets(dietList);
       SubmitClicked = true;

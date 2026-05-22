@@ -126,47 +126,142 @@ boolean foodMatchesRestrictions(Food food, User user) {
 }
 
 
-ArrayList<Food> recommendFoods(User user) {
-    ArrayList<Food> recs = new ArrayList<Food>();
-    if(user.diet == null) return recs;
+HashMap<String, Float> recommendFoods(User user, ArrayList<Food> foodData) {
+    // ArrayList<Food> finalRecommentations = new ArrayList<Food>(); // final recs food list
+    float totalFoodGrams = 0;
+    HashMap<String, Float> recommendedFoodGrams = new HashMap<String, Float>();
 
-    float proteinNeeded = user.diet.proteinPerDay;
-    float carbsNeeded = user.diet.carbsPerDay;
-    float fatNeeded = user.diet.fatPerDay;
+    ArrayList<Food> safeToEatFoods = new ArrayList<Food>();
+    for(Food food : foodData) { // i'm yoinking raama's way of doing for loops here
+        if(foodMatchesRestrictions(food, user)) {
+            safeToEatFoods.add(food);
+        }
+    }
 
-    for (Food food : foodDB) {
-        if (!foodMatchesRestrictions(food, user)) continue;
-        
-        boolean goodProtein = food.gramsProtein >= 15;
-        boolean goodCarbs = food.gramsCarbs >= 15;
-        boolean goodFat = food.gramsFat >= 10;
+    float proteinStillNeeded = user.diet.proteinPerDay;
+    float carbsStillNeeded = user.diet.carbsPerDay;
+    float fatStillNeeded = user.diet.fatPerDay;
 
-        if (proteinNeeded > carbsNeeded && proteinNeeded > fatNeeded && goodProtein) {
-            recs.add(food);
-        } else if (carbsNeeded > fatNeeded && goodCarbs) {
-            recs.add(food);
-        } else if (goodFat) {
-            recs.add(food);
-        } else if (recs.size() < 3) {
-            recs.add(food); 
+    HashMap<String, Integer> howOftenFoodHasAppeared = new HashMap<String, Integer>(); // tracks how often a specfic food appears
+    int percentErrorTolerance = 3; // how much error we tolerate within our plan
+
+    for (int i = 0; i < 20; i++) { // goes for as many iterations as is specficed
+
+
+        if ((((proteinStillNeeded / user.diet.proteinPerDay) * 100 < percentErrorTolerance) && ((carbsStillNeeded / user.diet.carbsPerDay) * 100 < percentErrorTolerance) && ((fatStillNeeded / user.diet.fatPerDay) * 100 < percentErrorTolerance)) || totalFoodGrams > 1500) {
+            break;
+        }
+        Food bestFoodToAdd = null;
+        float bestFoodScore = -99999999.9; // we set it really negative initially because scores can go into the negatives
+
+        for (Food food : safeToEatFoods) { 
+            float currentFoodScore = (food.gramsProtein * proteinStillNeeded) + (food.gramsCarbs * carbsStillNeeded) + (food.gramsFat * fatStillNeeded); // the base score for the current food
+            
+            // a lot of the food score numbers here are completely arbitrary, so play around with them if you wish
+
+            // if we've already hit the amount of a macro needed, and the food we're currently looking at has that macro, then subtract from the current food's score
+            // we don't do one if statement because we want it to be even more negative if the food exceeds two or more already met macro categories
+            if (proteinStillNeeded <= 0 && food.gramsProtein > 0) {
+                currentFoodScore -= 40;
+            }
+            if (carbsStillNeeded <= 0 && food.gramsCarbs > 0) {
+                currentFoodScore -= 40;
+            }
+            if (fatStillNeeded <= 0 && food.gramsFat > 0) {
+                currentFoodScore -= 40;
+            }
+
+            float densityOfCurrentFood = food.gramsProtein + food.gramsCarbs + food.gramsFat;
+            float bonusPointsForLowDensity = (100 - densityOfCurrentFood) * 0.15; // this makes sure that we still get foods that aren't super macro-packed, for some variety (without this something like lettuce would never be picked)
+            currentFoodScore += bonusPointsForLowDensity;
+
+            // an additional penalty for having a food recomended too often
+            float timesUsedPenalty = howOftenFoodHasAppeared.getOrDefault(food.name, 0) * 30.0;
+            currentFoodScore -= timesUsedPenalty;
+
+            if (currentFoodScore > bestFoodScore) {
+                bestFoodScore = currentFoodScore;
+                bestFoodToAdd = food;
+            }
+
         }
 
-        if (recs.size() >= 6) break;
+        if (bestFoodToAdd == null) { // may not be required, idk i'll keep it in for now
+            break;
+        }
+
+        float maxGramsPerServing;
+        if (bestFoodToAdd.gramsProtein + bestFoodToAdd.gramsCarbs + bestFoodToAdd.gramsFat > 30) {
+            maxGramsPerServing = 150.0;
+        }
+        else {
+            maxGramsPerServing = 250.0;
+        }
+
+        // this chunck of code basically checks if a certain amount of grams would go over the required grams (if we still need more grams that is), and if it does, it sets the maxServingGrams to a value that won't be in excess of what is stated
+        // yeah this code could be more compact but my like 2am brain can't handle reading it so unessesarily long code it is
+        if (bestFoodToAdd.gramsProtein > 0 && proteinStillNeeded > 0) {
+            if (maxGramsPerServing > (proteinStillNeeded / bestFoodToAdd.gramsProtein) * 100) {
+                maxGramsPerServing = (proteinStillNeeded / bestFoodToAdd.gramsProtein) * 100;
+            }
+        }
+        if (bestFoodToAdd.gramsCarbs > 0 && carbsStillNeeded > 0) {
+            if (maxGramsPerServing > (carbsStillNeeded / bestFoodToAdd.gramsCarbs) * 100) {
+                maxGramsPerServing = (carbsStillNeeded / bestFoodToAdd.gramsCarbs) * 100;
+            }
+        }
+        if (bestFoodToAdd.gramsFat > 0 && fatStillNeeded > 0) {
+            if (maxGramsPerServing > (fatStillNeeded / bestFoodToAdd.gramsFat) * 100) {
+                maxGramsPerServing = (fatStillNeeded / bestFoodToAdd.gramsFat) * 100;
+            }
+        }
+
+        if (maxGramsPerServing < 20.0) { // if the serving size is really small, don't bother
+            safeToEatFoods.remove(bestFoodToAdd); // removes it from consideration
+            continue;
+        }
+
+        
+
+        howOftenFoodHasAppeared.put(bestFoodToAdd.name, howOftenFoodHasAppeared.getOrDefault(bestFoodToAdd.name, 0) + 1); // increments how often the food has been selected by one (it starts at 0 and adds one if its never been selected before)
+        
+        float absoluteFoodGramCap = 250.0;
+
+        if (recommendedFoodGrams.containsKey(bestFoodToAdd.name)) { // if we have already added the food previously, then just increment its entry in the hashmap by the appropriate amount
+            float currentGrams = recommendedFoodGrams.get(bestFoodToAdd.name);
+            if (currentGrams + maxGramsPerServing >= absoluteFoodGramCap) {
+                maxGramsPerServing = absoluteFoodGramCap - currentGrams; // if the cap is exceeded this turn, then to find out how many grams we need to add in order to hit the cap we just subtract the already existing amount of grams from the cap on the grams
+                totalFoodGrams += absoluteFoodGramCap - currentGrams;
+                recommendedFoodGrams.put(bestFoodToAdd.name, absoluteFoodGramCap);
+                safeToEatFoods.remove(bestFoodToAdd);
+            }
+            else {
+                recommendedFoodGrams.put(bestFoodToAdd.name, currentGrams + maxGramsPerServing);
+                totalFoodGrams += maxGramsPerServing;
+            }
+        }
+        else {
+            // finalRecommentations.add(bestFoodToAdd);
+            
+            recommendedFoodGrams.put(bestFoodToAdd.name, maxGramsPerServing);
+            totalFoodGrams += maxGramsPerServing;
+        }
+
+        // this chunck of code is down here so that if there is calculate to be extra food there isn't any phantom food counting where it shouldn't
+        float servingGramMultiplier = maxGramsPerServing / 100.0;
+        proteinStillNeeded -= bestFoodToAdd.gramsProtein * servingGramMultiplier;
+        carbsStillNeeded -= bestFoodToAdd.gramsCarbs * servingGramMultiplier;
+        fatStillNeeded -= bestFoodToAdd.gramsFat * servingGramMultiplier;
+
+        println(proteinStillNeeded, "proteinStillNeeded");
+        println(carbsStillNeeded, "carbsStillNeeded");
+        println(fatStillNeeded, "fatStillNeeded");
+        println("");
     }
-    return recs;
+    return recommendedFoodGrams;
+
 }
 
-String getServingSuggestion(Food food, String macroType, float targetAmount) {
-    float gramsPer100 = 0;
-    if (macroType.equalsIgnoreCase("protein")) gramsPer100 = food.gramsProtein;
-    else if (macroType.equalsIgnoreCase("carbs")) gramsPer100 = food.gramsCarbs;
-    else if (macroType.equalsIgnoreCase("fat")) gramsPer100 = food.gramsFat;
-    
-    if (gramsPer100 <= 0) return "100g";
-
-    float gramsNeeded = (targetAmount / gramsPer100) * 100;
-    return round(gramsNeeded) + "g";
-}
 
 ArrayList<Diet> createDietsFromJson() {
     JSONObject jsonData = loadJSONObject("Diets.json");
