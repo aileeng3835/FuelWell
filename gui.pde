@@ -23,6 +23,14 @@ public void toUserInfoTab_click(GButton source, GEvent event) { //_CODE_:toUserI
   dashboard.setVisible(false);
 } //_CODE_:toUserInfoTab:777504:
 
+public void toCustomPlanTab_clicked(GButton source, GEvent event) { //_CODE_:toCustomPlanTab:959556:
+  println("button1 - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:toCustomPlanTab:959556:
+
+public void toDeletePlanTab_click(GButton source, GEvent event) { //_CODE_:toDeletePlanTab:716853:
+  println("toDeletePlanTab - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:toDeletePlanTab:716853:
+
 synchronized public void userInfoTab_draw(PApplet appc, GWinData data) { //_CODE_:userInfoTab:277410:
   appc.background(230);
 } //_CODE_:userInfoTab:277410:
@@ -129,6 +137,58 @@ public void NumberofDaysTyped(GTextField source, GEvent event) { //_CODE_:Number
   user.diet.numDays = int(NumberofDays.getText());
 } //_CODE_:NumberofDays:465733:
 
+synchronized public void customPlanTab_draw(PApplet appc, GWinData data) { //_CODE_:customPlanTab:742484:
+  appc.background(230);
+} //_CODE_:customPlanTab:742484:
+
+public void toDashboardButton2_clicked(GButton source, GEvent event) { //_CODE_:toDashboardButton2:346182:
+  println("toDashboardButton2 - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:toDashboardButton2:346182:
+
+public void customNameField_type(GTextField source, GEvent event) { //_CODE_:customNameField:605669:
+  println("textfield1 - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:customNameField:605669:
+
+public void proteinPercentField_type(GTextField source, GEvent event) { //_CODE_:proteinPercentField:585488:
+  println("proteinPercentField - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:proteinPercentField:585488:
+
+public void carbPercentField_type(GTextField source, GEvent event) { //_CODE_:carbPercentField:648206:
+  println("textfield1 - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:carbPercentField:648206:
+
+public void fatPercentField_type(GTextField source, GEvent event) { //_CODE_:fatPercentField:446832:
+  println("fatPercentField - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:fatPercentField:446832:
+
+public void isMaintainBox_click(GCheckbox source, GEvent event) { //_CODE_:isMaintainBox:337901:
+  println("isMaintainBox - GCheckbox >> GEvent." + event + " @ " + millis());
+} //_CODE_:isMaintainBox:337901:
+
+public void isLoseBox_click(GCheckbox source, GEvent event) { //_CODE_:isLoseBox:976316:
+  println("isLoseBox - GCheckbox >> GEvent." + event + " @ " + millis());
+} //_CODE_:isLoseBox:976316:
+
+public void customDaysField_type(GTextField source, GEvent event) { //_CODE_:customDaysField:318736:
+  println("customDaysField - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:customDaysField:318736:
+
+synchronized public void deletePlanTab_draw(PApplet appc, GWinData data) { //_CODE_:deletePlanTab:428170:
+  appc.background(230);
+} //_CODE_:deletePlanTab:428170:
+
+public void toDashboardButton3_click(GButton source, GEvent event) { //_CODE_:toDashboardButton3:523269:
+  println("toDashboardButton3 - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:toDashboardButton3:523269:
+
+public void planToDeleteField_type(GTextField source, GEvent event) { //_CODE_:planToDeleteField:866039:
+  println("planToDeleteField - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:planToDeleteField:866039:
+
+public void deletePlanButton_click(GButton source, GEvent event) { //_CODE_:deletePlanButton:217754:
+  println("deletePlanButton - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:deletePlanButton:217754:
+
 
 
 // Create all the GUI controls. 
@@ -149,6 +209,12 @@ public void createGUI(){
   welcomeMessage.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   welcomeMessage.setText("Welcome to the FuelWell dashboard.");
   welcomeMessage.setOpaque(false);
+  toCustomPlanTab = new GButton(dashboard, 130, 200, 140, 30);
+  toCustomPlanTab.setText("Create Custom Plan >");
+  toCustomPlanTab.addEventHandler(this, "toCustomPlanTab_clicked");
+  toDeletePlanTab = new GButton(dashboard, 130, 240, 140, 30);
+  toDeletePlanTab.setText("Delete Custom Plan >");
+  toDeletePlanTab.addEventHandler(this, "toDeletePlanTab_click");
   userInfoTab = GWindow.getWindow(this, "userInfo", 0, 0, 400, 300, JAVA2D);
   userInfoTab.noLoop();
   userInfoTab.setActionOnClose(G4P.KEEP_OPEN);
@@ -252,8 +318,92 @@ public void createGUI(){
   NumberofDays = new GTextField(userInfoTab, 100, 207, 50, 20, G4P.SCROLLBARS_NONE);
   NumberofDays.setOpaque(true);
   NumberofDays.addEventHandler(this, "NumberofDaysTyped");
+  customPlanTab = GWindow.getWindow(this, "Create Custom Plan", 0, 0, 400, 300, JAVA2D);
+  customPlanTab.noLoop();
+  customPlanTab.setActionOnClose(G4P.KEEP_OPEN);
+  customPlanTab.addDrawHandler(this, "customPlanTab_draw");
+  toDashboardButton2 = new GButton(customPlanTab, 11, 12, 140, 30);
+  toDashboardButton2.setText("< Back to Dashboard");
+  toDashboardButton2.addEventHandler(this, "toDashboardButton2_clicked");
+  customNameField = new GTextField(customPlanTab, 203, 50, 120, 20, G4P.SCROLLBARS_NONE);
+  customNameField.setOpaque(true);
+  customNameField.addEventHandler(this, "customNameField_type");
+  customNameLabel = new GLabel(customPlanTab, 87, 50, 113, 20);
+  customNameLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
+  customNameLabel.setText("Custom Plan Name:");
+  customNameLabel.setOpaque(false);
+  proteinPercentLabel = new GLabel(customPlanTab, 92, 74, 109, 20);
+  proteinPercentLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
+  proteinPercentLabel.setText("Protein Percentage:");
+  proteinPercentLabel.setOpaque(false);
+  proteinPercentField = new GTextField(customPlanTab, 203, 75, 50, 20, G4P.SCROLLBARS_NONE);
+  proteinPercentField.setOpaque(true);
+  proteinPercentField.addEventHandler(this, "proteinPercentField_type");
+  carbPercentLabel = new GLabel(customPlanTab, 97, 98, 106, 20);
+  carbPercentLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
+  carbPercentLabel.setText("Carbs Percentage:");
+  carbPercentLabel.setOpaque(false);
+  carbPercentField = new GTextField(customPlanTab, 203, 98, 50, 20, G4P.SCROLLBARS_NONE);
+  carbPercentField.setOpaque(true);
+  carbPercentField.addEventHandler(this, "carbPercentField_type");
+  fatPercentLabel = new GLabel(customPlanTab, 113, 123, 90, 20);
+  fatPercentLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
+  fatPercentLabel.setText("Fat Percentage:");
+  fatPercentLabel.setOpaque(false);
+  fatPercentField = new GTextField(customPlanTab, 203, 123, 50, 20, G4P.SCROLLBARS_NONE);
+  fatPercentField.setOpaque(true);
+  fatPercentField.addEventHandler(this, "fatPercentField_type");
+  percentTipLabel = new GLabel(customPlanTab, 78, 146, 250, 20);
+  percentTipLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  percentTipLabel.setText("Tip - the percentages should add up to 100%!");
+  percentTipLabel.setOpaque(false);
+  isMaintainBox = new GCheckbox(customPlanTab, 139, 172, 120, 20);
+  isMaintainBox.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  isMaintainBox.setText("Maintain Weight");
+  isMaintainBox.setOpaque(false);
+  isMaintainBox.addEventHandler(this, "isMaintainBox_click");
+  isLoseBox = new GCheckbox(customPlanTab, 140, 195, 120, 20);
+  isLoseBox.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  isLoseBox.setText("Lose Weight");
+  isLoseBox.setOpaque(false);
+  isLoseBox.addEventHandler(this, "isLoseBox_click");
+  customDaysLabel = new GLabel(customPlanTab, 111, 259, 90, 20);
+  customDaysLabel.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
+  customDaysLabel.setText("Total # of Days:");
+  customDaysLabel.setOpaque(false);
+  customDaysField = new GTextField(customPlanTab, 203, 259, 50, 20, G4P.SCROLLBARS_NONE);
+  customDaysField.setOpaque(true);
+  customDaysField.addEventHandler(this, "customDaysField_type");
+  weightTipLabel = new GLabel(customPlanTab, 3, 226, 394, 20);
+  weightTipLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  weightTipLabel.setText("Tip - Maintain and Lose Weight are mutually exclusive, either you maintain your current weight (by checking Maintain), or you gain/lose weight (by checking or unchecking Lose)");
+  weightTipLabel.setOpaque(false);
+  deletePlanTab = GWindow.getWindow(this, "Delete Custom Plan", 0, 0, 400, 300, JAVA2D);
+  deletePlanTab.noLoop();
+  deletePlanTab.setActionOnClose(G4P.KEEP_OPEN);
+  deletePlanTab.addDrawHandler(this, "deletePlanTab_draw");
+  toDashboardButton3 = new GButton(deletePlanTab, 11, 12, 140, 30);
+  toDashboardButton3.setText("< Back to Dashboard");
+  toDashboardButton3.addEventHandler(this, "toDashboardButton3_click");
+  label2 = new GLabel(deletePlanTab, 71, 64, 129, 20);
+  label2.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
+  label2.setText("Name of Plan to Delete:");
+  label2.setOpaque(false);
+  planToDeleteField = new GTextField(deletePlanTab, 206, 64, 120, 20, G4P.SCROLLBARS_NONE);
+  planToDeleteField.setOpaque(true);
+  planToDeleteField.addEventHandler(this, "planToDeleteField_type");
+  deletePlanButton = new GButton(deletePlanTab, 155, 136, 90, 30);
+  deletePlanButton.setText("DELETE PLAN");
+  deletePlanButton.setLocalColorScheme(GCScheme.RED_SCHEME);
+  deletePlanButton.addEventHandler(this, "deletePlanButton_click");
+  label3 = new GLabel(deletePlanTab, 80, 103, 240, 20);
+  label3.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label3.setText("Warning: this action is irreversible!");
+  label3.setOpaque(false);
   dashboard.loop();
   userInfoTab.loop();
+  customPlanTab.loop();
+  deletePlanTab.loop();
 }
 
 // Variable declarations 
@@ -261,6 +411,8 @@ public void createGUI(){
 GWindow dashboard;
 GButton toUserInfoTab; 
 GLabel welcomeMessage; 
+GButton toCustomPlanTab; 
+GButton toDeletePlanTab; 
 GWindow userInfoTab;
 GButton toDashboardButton; 
 GLabel ageLabel; 
@@ -287,3 +439,25 @@ GLabel targetWeightLabel;
 GTextField targetWeightField; 
 GLabel label1; 
 GTextField NumberofDays; 
+GWindow customPlanTab;
+GButton toDashboardButton2; 
+GTextField customNameField; 
+GLabel customNameLabel; 
+GLabel proteinPercentLabel; 
+GTextField proteinPercentField; 
+GLabel carbPercentLabel; 
+GTextField carbPercentField; 
+GLabel fatPercentLabel; 
+GTextField fatPercentField; 
+GLabel percentTipLabel; 
+GCheckbox isMaintainBox; 
+GCheckbox isLoseBox; 
+GLabel customDaysLabel; 
+GTextField customDaysField; 
+GLabel weightTipLabel; 
+GWindow deletePlanTab;
+GButton toDashboardButton3; 
+GLabel label2; 
+GTextField planToDeleteField; 
+GButton deletePlanButton; 
+GLabel label3; 
