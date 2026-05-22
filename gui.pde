@@ -66,8 +66,9 @@ public void saveUserInfoButton_click(GButton source, GEvent event) { //_CODE_:sa
       user.diet.storeInfoPerDay(user);
       recommendations = recommendFoods(user);
       saveUserToJson(user);
+      saveAllDiets(dietList);
       SubmitClicked = true;
-      println("User Profile and Recommendations Saved.");
+      println("User Profile and Diet Saved.");
   }
 } //_CODE_:saveUserInfoButton:890613:
 
