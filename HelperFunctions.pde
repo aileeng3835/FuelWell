@@ -183,7 +183,7 @@ HashMap<String, Float> recommendFoods(User user, ArrayList<Food> foodData) {
 
         }
 
-        if (bestFoodToAdd == null) { // may not be required, idk i'll keep it in for now
+        if (bestFoodToAdd == null) { // fallback incase something really weird happens
             break;
         }
 

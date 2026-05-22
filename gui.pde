@@ -165,31 +165,31 @@ public void toDashboardButton2_clicked(GButton source, GEvent event) { //_CODE_:
 } //_CODE_:toDashboardButton2:346182:
 
 public void customNameField_type(GTextField source, GEvent event) { //_CODE_:customNameField:605669:
-  println("textfield1 - GTextField >> GEvent." + event + " @ " + millis());
+  // println("textfield1 - GTextField >> GEvent." + event + " @ " + millis());
 } //_CODE_:customNameField:605669:
 
 public void proteinPercentField_type(GTextField source, GEvent event) { //_CODE_:proteinPercentField:585488:
-  println("proteinPercentField - GTextField >> GEvent." + event + " @ " + millis());
+  // println("proteinPercentField - GTextField >> GEvent." + event + " @ " + millis());
 } //_CODE_:proteinPercentField:585488:
 
 public void carbPercentField_type(GTextField source, GEvent event) { //_CODE_:carbPercentField:648206:
-  println("textfield1 - GTextField >> GEvent." + event + " @ " + millis());
+  // println("textfield1 - GTextField >> GEvent." + event + " @ " + millis());
 } //_CODE_:carbPercentField:648206:
 
 public void fatPercentField_type(GTextField source, GEvent event) { //_CODE_:fatPercentField:446832:
-  println("fatPercentField - GTextField >> GEvent." + event + " @ " + millis());
+  // println("fatPercentField - GTextField >> GEvent." + event + " @ " + millis());
 } //_CODE_:fatPercentField:446832:
 
 public void isMaintainBox_click(GCheckbox source, GEvent event) { //_CODE_:isMaintainBox:337901:
-  println("isMaintainBox - GCheckbox >> GEvent." + event + " @ " + millis());
+  // println("isMaintainBox - GCheckbox >> GEvent." + event + " @ " + millis());
 } //_CODE_:isMaintainBox:337901:
 
 public void isLoseBox_click(GCheckbox source, GEvent event) { //_CODE_:isLoseBox:976316:
-  println("isLoseBox - GCheckbox >> GEvent." + event + " @ " + millis());
+  // println("isLoseBox - GCheckbox >> GEvent." + event + " @ " + millis());
 } //_CODE_:isLoseBox:976316:
 
 public void customDaysField_type(GTextField source, GEvent event) { //_CODE_:customDaysField:318736:
-  println("customDaysField - GTextField >> GEvent." + event + " @ " + millis());
+  // println("customDaysField - GTextField >> GEvent." + event + " @ " + millis());
 } //_CODE_:customDaysField:318736:
 
 public void addPlanButton_click1(GButton source, GEvent event) { //_CODE_:addPlanButton:244947:
@@ -237,11 +237,27 @@ public void toDashboardButton3_click(GButton source, GEvent event) { //_CODE_:to
 } //_CODE_:toDashboardButton3:523269:
 
 public void planToDeleteField_type(GTextField source, GEvent event) { //_CODE_:planToDeleteField:866039:
-  println("planToDeleteField - GTextField >> GEvent." + event + " @ " + millis());
+  // println("planToDeleteField - GTextField >> GEvent." + event + " @ " + millis());
 } //_CODE_:planToDeleteField:866039:
 
 public void deletePlanButton_click(GButton source, GEvent event) { //_CODE_:deletePlanButton:217754:
-  println("deletePlanButton - GButton >> GEvent." + event + " @ " + millis());
+  // println("deletePlanButton - GButton >> GEvent." + event + " @ " + millis());
+  try {
+      String dietToBeDeletedName = "";
+      if(!planToDeleteField.getText().equals("")) dietToBeDeletedName = (planToDeleteField.getText());
+      Diet dietToBeDeleted = fetchDietWithDietName(dietToBeDeletedName, dietList);
+      dietList.remove(dietToBeDeleted);
+      saveAllDiets(dietList);
+      userInfoTab.setVisible(false);
+      dashboard.setVisible(true);
+      deletePlanTab.setVisible(false);
+      customPlanTab.setVisible(false);
+
+  } catch (Exception e) {
+      println("Invalid input. Please make sure you have inputted all relevant information.");
+      return; 
+  }
+
 } //_CODE_:deletePlanButton:217754:
 
 
