@@ -243,6 +243,7 @@ void saveAllDiets(ArrayList<Diet> dietsList) {
         obj.setBoolean("isLoseWeight", d.isLoseWeight);
         obj.setInt("totalDays", d.numDays);
         obj.setInt("daysPassed", d.daysPassed);
+        obj.setFloat("targetWeight", d.targetWeight);
         diets.setJSONObject(i, obj);
     }
     root.setJSONArray("DietsList", diets);
