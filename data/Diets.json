@@ -12,8 +12,8 @@
         },
         {
             "name": "Bulk",
-            "proteinPercent": 0.30,
-            "carbsPercent": 0.40,
+            "proteinPercent": 0.35,
+            "carbsPercent": 0.35,
             "fatPercent": 0.30,
             "isMaintain": false,
             "isLoseWeight": false,
@@ -36,8 +36,8 @@
         },
         {
             "name": "Lose Weight",
-            "proteinPercent": 0.30,
-            "carbsPercent": 0.40,
+            "proteinPercent": 0.25,
+            "carbsPercent": 0.45,
             "fatPercent": 0.30,
             "isMaintain": false,
             "isLoseWeight": true,
