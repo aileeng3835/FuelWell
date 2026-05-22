@@ -1,0 +1,227 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 1073741824 bytes for G1 virtual space
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Zero Based Compressed Oops mode in which the Java heap is
+#     placed in the first 32GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 32GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_windows.cpp:3617), pid=12340, tid=31196
+#
+# JRE version:  (17.0.8.1+1) (build )
+# Java VM: OpenJDK 64-Bit Server VM (17.0.8.1+1, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Djpackage.app-version=4.5.2 -Dcompose.application.resources.dir=C:\Program Files\Processing\app\resources -Dcompose.application.configure.swing.globals=true -Dprocessing.version=4.5.2 -Dprocessing.revision=1313 -Dprocessing.contributions.source=https://contributions.processing.org/contribs -Dprocessing.download.page=https://processing.org/download/ -Dprocessing.download.latest=https://processing.org/download/latest.txt -Dprocessing.tutorials=https://processing.org/tutorials/ -Dsun.java2d.metal=true -Dawt.useSystemAAFontSettings=on -Dskiko.library.path=C:\Program Files\Processing\app -Djpackage.app-path=C:\Program Files\Processing\Processing.exe processing.app.ProcessingKt --version
+
+Host: AMD Ryzen 7 5700X 8-Core Processor             , 16 cores, 63G,  Windows 10 , 64 bit Build 19041 (10.0.19041.7181)
+Time: Fri May 22 01:29:05 2026 Eastern Daylight Time elapsed time: 0.006163 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000001a8119b7840):  JavaThread "Unknown thread" [_thread_in_vm, id=31196, stack(0x000000353b900000,0x000000353ba00000)]
+
+Stack: [0x000000353b900000,0x000000353ba00000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x678b0a]
+V  [jvm.dll+0x835e84]
+V  [jvm.dll+0x83762e]
+V  [jvm.dll+0x837c93]
+V  [jvm.dll+0x24746f]
+V  [jvm.dll+0x675859]
+V  [jvm.dll+0x66a0ea]
+V  [jvm.dll+0x306c7b]
+V  [jvm.dll+0x30e166]
+V  [jvm.dll+0x35dd3e]
+V  [jvm.dll+0x35df6f]
+V  [jvm.dll+0x2ddb48]
+V  [jvm.dll+0x2deab4]
+V  [jvm.dll+0x807f31]
+V  [jvm.dll+0x36bb21]
+V  [jvm.dll+0x7e733c]
+V  [jvm.dll+0x3ee4af]
+V  [jvm.dll+0x3f00c1]
+C  [jli.dll+0x528b]
+C  [ucrtbase.dll+0x21bb2]
+C  [KERNEL32.DLL+0x17374]
+C  [ntdll.dll+0x4cc91]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007fffd405a018, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x000001a8243709c0 GCTaskThread "GC Thread#0" [stack: 0x000000353ba00000,0x000000353bb00000] [id=29400]
+  0x000001a8119f9160 ConcurrentGCThread "G1 Main Marker" [stack: 0x000000353bb00000,0x000000353bc00000] [id=32424]
+  0x000001a8119f9a80 ConcurrentGCThread "G1 Conc#0" [stack: 0x000000353bc00000,0x000000353bd00000] [id=34336]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007fffd382e587]
+
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x000001a8119b2fa0] Heap_lock - owner thread: 0x000001a8119b7840
+
+Heap address: 0x0000000401000000, size: 16368 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 1.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+GC Precious Log:
+<Empty>
+
+Heap:
+ garbage-first heap   total 0K, used 0K [0x0000000401000000, 0x0000000800000000)
+  region size 8192K, 0 young (0K), 0 survivors (0K)
+
+[error occurred during error reporting (printing heap information), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007fffd3c12699]
+
+GC Heap History (0 events):
+No events
+
+Dll operation events (1 events):
+Event: 0.004 Loaded shared library C:\Program Files\Processing\runtime\bin\java.dll
+
+Deoptimization events (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff6ad190000 - 0x00007ff6ad208000 	C:\Program Files\Processing\Processing.exe
+0x00007ff8669f0000 - 0x00007ff866be8000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ff8657b0000 - 0x00007ff865872000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ff864060000 - 0x00007ff864357000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ff865460000 - 0x00007ff8655fd000 	C:\WINDOWS\System32\USER32.dll
+0x00007ff864360000 - 0x00007ff864382000 	C:\WINDOWS\System32\win32u.dll
+0x00007ff866100000 - 0x00007ff86612b000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ff8645f0000 - 0x00007ff86470a000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ff8644c0000 - 0x00007ff86455d000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ff8643c0000 - 0x00007ff8644c0000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ff864ad0000 - 0x00007ff865241000 	C:\WINDOWS\System32\SHELL32.dll
+0x00007ff866020000 - 0x00007ff86604f000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ff866050000 - 0x00007ff8660fd000 	C:\WINDOWS\System32\shcore.dll
+0x00007ff865880000 - 0x00007ff86591e000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ff866650000 - 0x00007ff8669a3000 	C:\WINDOWS\System32\combase.dll
+0x00007ff866270000 - 0x00007ff866396000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ff847880000 - 0x00007ff847897000 	C:\Program Files\Processing\runtime\bin\jli.dll
+0x00007ff841ce0000 - 0x00007ff841f7b000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.6926_none_60b5a53971f8f7e6\COMCTL32.dll
+0x00007ff847070000 - 0x00007ff847089000 	C:\Program Files\Processing\runtime\bin\VCRUNTIME140.dll
+0x00007ff854130000 - 0x00007ff85413c000 	C:\Program Files\Processing\runtime\bin\vcruntime140_1.dll
+0x00007fffe8590000 - 0x00007fffe8621000 	C:\Program Files\Processing\runtime\bin\msvcp140.dll
+0x00007fffd3540000 - 0x00007fffd418c000 	C:\Program Files\Processing\runtime\bin\server\jvm.dll
+0x00007ff866530000 - 0x00007ff8665e1000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ff866420000 - 0x00007ff8664bf000 	C:\WINDOWS\System32\sechost.dll
+0x00007ff864390000 - 0x00007ff8643b7000 	C:\WINDOWS\System32\bcrypt.dll
+0x00007ff863570000 - 0x00007ff8635bb000 	C:\WINDOWS\SYSTEM32\POWRPROF.dll
+0x00007ff85b030000 - 0x00007ff85b057000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ff83fba0000 - 0x00007ff83fba9000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ff85db30000 - 0x00007ff85db3a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ff8664c0000 - 0x00007ff86652b000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ff8633e0000 - 0x00007ff8633f2000 	C:\WINDOWS\SYSTEM32\UMPDC.dll
+0x00007ff861eb0000 - 0x00007ff861ec2000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ff853cf0000 - 0x00007ff853cfa000 	C:\Program Files\Processing\runtime\bin\jimage.dll
+0x00007ff85ca30000 - 0x00007ff85cc31000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ff8597f0000 - 0x00007ff859824000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ff864560000 - 0x00007ff8645e2000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ff833500000 - 0x00007ff833525000 	C:\Program Files\Processing\runtime\bin\java.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Processing;C:\WINDOWS\SYSTEM32;C:\Program Files\Processing\runtime\bin;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.6926_none_60b5a53971f8f7e6;C:\Program Files\Processing\runtime\bin\server
+
+VM Arguments:
+jvm_args: -Djpackage.app-version=4.5.2 -Dcompose.application.resources.dir=C:\Program Files\Processing\app\resources -Dcompose.application.configure.swing.globals=true -Dprocessing.version=4.5.2 -Dprocessing.revision=1313 -Dprocessing.contributions.source=https://contributions.processing.org/contribs -Dprocessing.download.page=https://processing.org/download/ -Dprocessing.download.latest=https://processing.org/download/latest.txt -Dprocessing.tutorials=https://processing.org/tutorials/ -Dsun.java2d.metal=true -Dawt.useSystemAAFontSettings=on -Dskiko.library.path=C:\Program Files\Processing\app -Djpackage.app-path=C:\Program Files\Processing\Processing.exe 
+java_command: processing.app.ProcessingKt --version
+java_class_path (initial): C:\Program Files\Processing\app\app-4.5.2-ebded6c96bb4e1665e50a11ee244b79.jar;C:\Program Files\Processing\app\animation-core-desktop-1.9.1-d2678252affd90119d35c260a72a42.jar;C:\Program Files\Processing\app\animation-desktop-1.9.1-419db6b0dd5d8ab84f63fdafac8219a.jar;C:\Program Files\Processing\app\annotation-jvm-1.9.1-1d6a04b3b9847638d0529df8ef76a.jar;C:\Program Files\Processing\app\annotations-23.0.0-8484cd17d040d837983323f760b2c660.jar;C:\Program Files\Processing\app\ant-1.10.14-263e0d844d0e4efa54440ec5ed6362a.jar;C:\Program Files\Processing\app\ant-launcher-1.10.14-e6c71b2f05383e1fb891e99f5267663.jar;C:\Program Files\Processing\app\antlr-2.7.7-f8f1352c52a4c6a50b59759651fc64.jar;C:\Program Files\Processing\app\antlr-runtime-3.5.3-b5cce1bb9c8190e2e641fc439daa.jar;C:\Program Files\Processing\app\antlr4-4.13.2-307387ba9ce03f1e566b5ce82a121a.jar;C:\Program Files\Processing\app\antlr4-runtime-4.13.2-eecf198f0cfff10f8bb82878b5ca41.jar;C:\Program Files\Processing\app\atomicfu-jvm-0.23.2-5e4f88ed1c37222d791f5dcadf481498.jar;C:\Program Files\Processing\app\classpath-explorer-1.0-caab34e762a7f05d30ac7d40af90b3ef.jar;C:\Program Files\Processing\app\clikt-jvm-56324132fdbcd27f903c16d7bcfa4b8.jar;C:\Program Files\Processing\app\clikt-mordant-jvm-3c28e5f442b1e2978ce8fbd2f56e541.jar;C:\Program Files\Processing\app\collection-jvm-1.5.0-4421442c114a4f8c8fe587cf2d668237.jar;C:\Program Files\Processing\app\colormath-jvm-6a279b2713acb5c7ffb5e683bf2841.jar;C:\Program Files\Processing\app\compottie-desktop-2.0.0-rc02-5f1edfd67e18f4319b4c781c2b3d1e4.jar;C:\Program Files\Processing\app\core-4.5.2-e2f1365b74e463fe926eb3ecb3af6ec.jar;C:\Program Files\Processing\app\core-common-2.2.0-2212d240dfe1e8a7598ee117ccc316d.jar;C:\Program Files\Processing\app\desktop-jvm-1.9.1-50d7ad53522a4f6df8d72803486e1b7.jar;C:\Program Files\Processing\app\flatlaf-2.4-6481e9fa65e13e28c37547e0fd1dc2.jar;C:\Program Files\Processing\app\foundation-desktop-1.9.1-b9dca8cf9c212f6bb4a0aeeafac
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 12                                        {product} {ergonomic}
+     uint ConcGCThreads                            = 3                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 13                                        {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 8388608                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 1073741824                                {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 17163091968                               {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 8388608                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 7602480                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122027880                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122027880                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 17163091968                            {manageable} {ergonomic}
+     bool UseCompressedClassPointers               = true                           {product lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+PATH=C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\VulkanSDK\1.2.198.1\Bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\libnvvp;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2019.1\;C:\Program Files\WorldPainter;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;D:\youtube-dl;C:\Program Files\nssm;C:\Program Files\Mullvad VPN\resources;C:\Program Files\Git\cmd;C:\Program Files\Calibre2\;C:\ffmpeg;;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR;C:\Users\Akshay\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\Akshay\AppData\Local\Programs\Python\Python310\;C:\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin;C:\Users\Akshay\AppData\Local\Microsoft\WindowsApps;C:\Users\Akshay\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Akshay\AppData\Local\Programs\Ollama;C:\ffmpeg;C:\Program Files\Processing\;C:\Program Files\Processing\app
+USERNAME=Akshay
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD
+TMP=C:\Users\Akshay\AppData\Local\Temp
+TEMP=C:\Users\Akshay\AppData\Local\Temp
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 10 , 64 bit Build 19041 (10.0.19041.7181)
+OS uptime: 16 days 7:00 hours
+Hyper-V role detected
+
+CPU: total 16 (initial active 16) (16 cores per cpu, 2 threads per core) family 25 model 33 stepping 2 microcode 0x0, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4a, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, adx, sha, fma, vzeroupper, clflush, clflushopt, hv
+Processor Information for all 16 processors :
+  Max Mhz: 3401, Current Mhz: 3401, Mhz Limit: 3401
+
+Memory: 4k page, system-wide physical 65446M (10246M free)
+TotalPageFile size 98214M (AvailPageFile size 708M)
+current process WorkingSet (physical memory assigned to process): 12M, peak: 12M
+current process commit charge ("private bytes"): 71M, peak: 1095M
+
+vm_info: OpenJDK 64-Bit Server VM (17.0.8.1+1) for windows-amd64 JRE (17.0.8.1+1), built on Aug 23 2023 15:29:17 by "admin" with MS VC++ 16.7 (VS2019)
+
+END.

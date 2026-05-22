@@ -192,6 +192,10 @@ public void customDaysField_type(GTextField source, GEvent event) { //_CODE_:cus
   println("customDaysField - GTextField >> GEvent." + event + " @ " + millis());
 } //_CODE_:customDaysField:318736:
 
+public void addPlanButton_click1(GButton source, GEvent event) { //_CODE_:addPlanButton:244947:
+  println("addPlanButton - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:addPlanButton:244947:
+
 synchronized public void deletePlanTab_draw(PApplet appc, GWinData data) { //_CODE_:deletePlanTab:428170:
   appc.background(230);
 } //_CODE_:deletePlanTab:428170:
@@ -401,6 +405,9 @@ public void createGUI(){
   weightTipLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   weightTipLabel.setText("Tip - Maintain and Lose Weight are mutually exclusive, either you maintain your current weight (by checking Maintain), or you gain/lose weight (by checking or unchecking Lose)");
   weightTipLabel.setOpaque(false);
+  addPlanButton = new GButton(customPlanTab, 310, 263, 80, 30);
+  addPlanButton.setText("Add Plan");
+  addPlanButton.addEventHandler(this, "addPlanButton_click1");
   deletePlanTab = GWindow.getWindow(this, "Delete Custom Plan", 0, 0, 400, 300, JAVA2D);
   deletePlanTab.noLoop();
   deletePlanTab.setActionOnClose(G4P.KEEP_OPEN);
@@ -478,6 +485,7 @@ GCheckbox isLoseBox;
 GLabel customDaysLabel; 
 GTextField customDaysField; 
 GLabel weightTipLabel; 
+GButton addPlanButton; 
 GWindow deletePlanTab;
 GButton toDashboardButton3; 
 GLabel label2; 
